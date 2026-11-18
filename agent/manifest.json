@@ -1,0 +1,40 @@
+{
+  "version": "2026-11-18T18:35:18.505Z",
+  "repo": "CehennemGibiyim/Arena",
+  "branch": "main",
+  "rawBase": "https://raw.githubusercontent.com/CehennemGibiyim/Arena/main/",
+  "files": {
+    "agent/arena-agent.mjs": {
+      "sha256": "3dbf38fd613dab6105d6b25dafece0b600cc7c1898dfe692bfb7a25bbf793eaf",
+      "size": 9207
+    },
+    "agent/collect.mjs": {
+      "sha256": "c2eafa570afdc6a3ab698509d410810768d77775a5dbf5a51805987f9038aaff",
+      "size": 8280
+    },
+    "agent/update.mjs": {
+      "sha256": "3174233d9c11e7a34cd2c9bce5df37dbed3b4727507a26362fc1276f228e1dbe",
+      "size": 3519
+    },
+    "Arena-Agent.bat": {
+      "sha256": "916a94e1bedc663ca46d991099bdb28da1533ac76a9ab7ec9675a3a7e36189f8",
+      "size": 414
+    },
+    "docs/app.js": {
+      "sha256": "44721502d1b491eef33005a2cad4cde22adaf36c15e450af6c5f68a1799fbb8c",
+      "size": 3041
+    },
+    "docs/index.html": {
+      "sha256": "06a5deb517640437c936f891f6dce3a047b7eb0561bb285eccbf30a7aa592fa8",
+      "size": 1133
+    },
+    "docs/style.css": {
+      "sha256": "f5409c5098b29b453e1fb1d134fce112ee68773f658aa8d203540afe55eefbc9",
+      "size": 1676
+    },
+    "public/arena-widget.js": {
+      "sha256": "c87ad2a77c60f9031462593a33581466f996ce82aa8c9930b74db5c310a8ccff",
+      "size": 13425
+    }
+  }
+}
