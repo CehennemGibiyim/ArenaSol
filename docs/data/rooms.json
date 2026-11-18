@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-11-18T18:31:57.864Z",
+  "source": "watchlist+public-sample",
+  "eulerKey": false,
+  "checked": 9,
+  "liveCount": 8,
+  "rooms": [
+    {
+      "user": "officalkiddo8",
+      "roomId": "7709556518639946504",
+      "nickname": "𝐊𝐢𝐝𝐝𝐨𝐆𝐨𝐭𝐋𝐨𝐬𝐭...🫆",
+      "title": "",
+      "region": "TT",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.711Z"
+    },
+    {
+      "user": "carol.linni",
+      "roomId": "7709562028255546134",
+      "nickname": "kaja🎀",
+      "title": "",
+      "region": "HU+",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.743Z"
+    },
+    {
+      "user": "aeriko__",
+      "roomId": "7709548937019624214",
+      "nickname": "🔥 💎 𝑨𝒏𝒅𝒓𝒊𝒂𝒏𝒂 💎 🔥",
+      "title": "",
+      "region": "BA",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.816Z"
+    },
+    {
+      "user": "v698341",
+      "roomId": "7709519126276606741",
+      "nickname": "豆子の豆🫘",
+      "title": "",
+      "region": "TW",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.824Z"
+    },
+    {
+      "user": "coenwillemse1",
+      "roomId": "7709561125741857568",
+      "nickname": "KING COEN 👑🦍",
+      "title": "",
+      "region": "NL",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.849Z"
+    },
+    {
+      "user": "kapsas38",
+      "roomId": "7709575882519726870",
+      "nickname": "Coinsu dėdė",
+      "title": "",
+      "region": "CD",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.855Z"
+    },
+    {
+      "user": "betullyilmazz2",
+      "roomId": "7709579291196918549",
+      "nickname": "KUŞUMM🐣",
+      "title": "",
+      "region": "TR",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.918Z"
+    },
+    {
+      "user": "zaj4ik.santux",
+      "roomId": "7709571915014212374",
+      "nickname": "❤️🖤❤️ Z.A.J.4.I.X)❤️🖤❤️",
+      "title": "",
+      "region": "IE",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T18:31:39.935Z"
+    }
+  ]
+}

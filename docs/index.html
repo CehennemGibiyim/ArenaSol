@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arena Live OS — Sandık Radarı (Web)</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>" />
+</head>
+<body>
+<header>
+  <h1>🎯 Sandık Radarı <span class="badge">7/24 otomatik</span></h1>
+  <p id="meta">Yükleniyor…</p>
+  <p class="hint">Bu sayfa GitHub Actions tarafından her 5 dakikada bir güncellenen gerçek veriyi gösterir; sen sisteme girmesen de tarama sürer. Sandık kartına tıklayınca yayına gidilir.</p>
+</header>
+
+<section id="chests-section">
+  <h2>⏳ Bekleyen / açık sandıklar</h2>
+  <div id="chests" class="grid"><p class="empty">Şu anda aktif sandık yok. Yeni tarama 5 dakika içinde gelir.</p></div>
+</section>
+
+<section>
+  <h2>🔴 Doğrulanmış canlı yayınlar</h2>
+  <div id="rooms" class="grid"><p class="empty">Yükleniyor…</p></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
