@@ -1,89 +1,149 @@
 {
-  "generatedAt": "2026-11-18T18:31:57.864Z",
+  "generatedAt": "2026-11-18T19:21:44.775Z",
   "source": "watchlist+public-sample",
   "eulerKey": false,
-  "checked": 9,
-  "liveCount": 8,
+  "checked": 17,
+  "liveCount": 14,
   "rooms": [
     {
-      "user": "officalkiddo8",
-      "roomId": "7709556518639946504",
-      "nickname": "𝐊𝐢𝐝𝐝𝐨𝐆𝐨𝐭𝐋𝐨𝐬𝐭...🫆",
+      "user": "alaa_alkhateeb9",
+      "roomId": "7709557416785890049",
+      "nickname": "Loloo🐰💗",
       "title": "",
-      "region": "TT",
+      "region": "MENA",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.711Z"
+      "checkedAt": "2026-11-18T19:20:55.538Z"
     },
     {
-      "user": "carol.linni",
-      "roomId": "7709562028255546134",
-      "nickname": "kaja🎀",
+      "user": "baharudun12345",
+      "roomId": "7709591093771324212",
+      "nickname": "President Mame Mame",
       "title": "",
-      "region": "HU+",
+      "region": "NG+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.743Z"
-    },
-    {
-      "user": "aeriko__",
-      "roomId": "7709548937019624214",
-      "nickname": "🔥 💎 𝑨𝒏𝒅𝒓𝒊𝒂𝒏𝒂 💎 🔥",
-      "title": "",
-      "region": "BA",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.816Z"
-    },
-    {
-      "user": "v698341",
-      "roomId": "7709519126276606741",
-      "nickname": "豆子の豆🫘",
-      "title": "",
-      "region": "TW",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.824Z"
-    },
-    {
-      "user": "coenwillemse1",
-      "roomId": "7709561125741857568",
-      "nickname": "KING COEN 👑🦍",
-      "title": "",
-      "region": "NL",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.849Z"
+      "checkedAt": "2026-11-18T19:20:55.545Z"
     },
     {
       "user": "kapsas38",
       "roomId": "7709575882519726870",
       "nickname": "Coinsu dėdė",
       "title": "",
-      "region": "CD",
-      "source": "public-sample",
+      "region": "",
+      "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.855Z"
+      "checkedAt": "2026-11-18T19:20:55.576Z"
+    },
+    {
+      "user": "aeriko__",
+      "roomId": "7709548937019624214",
+      "nickname": "🔥 💎 𝑨𝒏𝒅𝒓𝒊𝒂𝒏𝒂 💎 🔥",
+      "title": "Ολικό Restart 🌷",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.743Z"
     },
     {
       "user": "betullyilmazz2",
       "roomId": "7709579291196918549",
       "nickname": "KUŞUMM🐣",
       "title": "",
-      "region": "TR",
-      "source": "public-sample",
+      "region": "",
+      "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.918Z"
+      "checkedAt": "2026-11-18T19:20:55.744Z"
     },
     {
       "user": "zaj4ik.santux",
       "roomId": "7709571915014212374",
       "nickname": "❤️🖤❤️ Z.A.J.4.I.X)❤️🖤❤️",
       "title": "",
-      "region": "IE",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.758Z"
+    },
+    {
+      "user": "chajihyuk_official",
+      "roomId": "7709509290475326228",
+      "nickname": "🎩CHA⚜️CHA🎩",
+      "title": "",
+      "region": "KR",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-18T18:31:39.935Z"
+      "checkedAt": "2026-11-18T19:20:55.778Z"
+    },
+    {
+      "user": "edithanyamene",
+      "roomId": "7709565276712766230",
+      "nickname": "edithanyamene",
+      "title": "",
+      "region": "MT",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.790Z"
+    },
+    {
+      "user": "chandansharma704",
+      "roomId": "7709591937514212148",
+      "nickname": "chandansharma704",
+      "title": "",
+      "region": "NP",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.812Z"
+    },
+    {
+      "user": "typicalgamer",
+      "roomId": "7709559180184652552",
+      "nickname": "Typical Gamer",
+      "title": "",
+      "region": "CA",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.829Z"
+    },
+    {
+      "user": "snipeur2.0",
+      "roomId": "7709586813480520481",
+      "nickname": "M.Queen 👑🧨",
+      "title": "",
+      "region": "FR+",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.862Z"
+    },
+    {
+      "user": "v698341",
+      "roomId": "7709519126276606741",
+      "nickname": "豆子の豆🫘",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.868Z"
+    },
+    {
+      "user": "chefinoficial",
+      "roomId": "7709578944386861842",
+      "nickname": "Chefin 23",
+      "title": "",
+      "region": "BR",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.994Z"
+    },
+    {
+      "user": "sianspzone",
+      "roomId": "7709584519821855494",
+      "nickname": "เซียน.ᖇǤ👹🏴‍☠️",
+      "title": "",
+      "region": "TH",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-18T19:20:55.998Z"
     }
   ]
 }
