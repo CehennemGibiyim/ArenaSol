@@ -1,0 +1,40 @@
+name: Collect live rooms + chests (7/24)
+
+on:
+  schedule:
+    # Her 5 dakikada bir arka plan taraması — kullanıcı sistemde olmasa da çalışır
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install connector
+        run: npm install --no-save tiktok-live-connector@^2.5.0
+
+      - name: Scan and listen
+        env:
+          EULER_API_KEY: ${{ secrets.EULER_API_KEY }}
+          WATCHLIST: ${{ vars.WATCHLIST }}
+          MAX_ROOMS: ${{ vars.MAX_ROOMS }}
+          LISTEN_SECONDS: "45"
+        run: node agent/collect.mjs
+
+      - name: Commit data
+        run: |
+          git config user.name "arena-collector"
+          git config user.email "arena-collector@users.noreply.github.com"
+          git add docs/data/rooms.json docs/data/chests.json
+          git diff --cached --quiet || git commit -m "chore(data): live rooms + chests $(date -u +%FT%TZ)"
+          git push
