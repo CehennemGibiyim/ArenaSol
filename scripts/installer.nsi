@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
 ; Arena Live OS — NSIS kurulum paketi
-; GitHub Actions (windows-release.yml) içinde `makensis scripts/installer.nsi`
-; ile derlenir. Çıktı: release/ArenaLiveOS-Setup-<surum>.exe
+; GitHub Actions (windows-release.yml) içinde derlenir. Kaynak ve çıktı
+; klasörleri mutlak yol olarak /DAPPSTAGE ve /DOUTDIR ile geçilir; verilmezse
+; betik klasörüne göre ..\release kullanılır.
+; Çıktı: <OUTDIR>\ArenaLiveOS-Setup-<surum>.exe
 ; ---------------------------------------------------------------------------
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
@@ -14,9 +16,18 @@
   !define VERSION "1.2.0"
 !endif
 
+; File komutu göreli yolları betik klasörüne göre çözer; bu yüzden yollar
+; mutlak olarak verilir.
+!ifndef APPSTAGE
+  !define APPSTAGE "..\release\Arena-Live-OS"
+!endif
+!ifndef OUTDIR
+  !define OUTDIR "..\release"
+!endif
+
 Name "${APPNAME} ${VERSION}"
 ; Yolları betik dosyasına göre çöz: makensis farklı bir çalışma dizininden çağrılabilir.
-OutFile "${__FILEDIR__}\..\release\ArenaLiveOS-Setup-${VERSION}.exe"
+OutFile "${OUTDIR}\ArenaLiveOS-Setup-${VERSION}.exe"
 InstallDir "$LOCALAPPDATA\Arena-Live-OS"
 InstallDirRegKey HKCU "Software\ArenaLiveOS" "InstallDir"
 RequestExecutionLevel user
@@ -41,7 +52,7 @@ SetCompressor /SOLID lzma
 
 Section "Arena Live OS" SecMain
   SetOutPath "$INSTDIR"
-  File /r "${__FILEDIR__}\..\release\Arena-Live-OS\*.*"
+  File /r "${APPSTAGE}\*.*"
 
   WriteRegStr HKCU "Software\ArenaLiveOS" "InstallDir" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\ArenaLiveOS" "DisplayName" "${APPNAME}"

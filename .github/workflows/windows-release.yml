@@ -85,7 +85,9 @@ jobs:
             throw "makensis bulunamadı"
           }
           $diag += "makensis=$makensis"
-          & $makensis "/DVERSION=$version" scripts/installer.nsi 2>&1 | Tee-Object -Variable out | Out-Host
+          $appStage = (Resolve-Path "release\Arena-Live-OS").Path
+          $outDir = (Resolve-Path "release").Path
+          & $makensis "/DVERSION=$version" "/DAPPSTAGE=$appStage" "/DOUTDIR=$outDir" scripts/installer.nsi 2>&1 | Tee-Object -Variable out | Out-Host
           $code = $LASTEXITCODE
           $diag += "exit=$code"
           $diag += ($out -join "`n")
