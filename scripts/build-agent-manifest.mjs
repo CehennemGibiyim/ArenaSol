@@ -37,7 +37,9 @@ const FILES = [
 ];
 
 const manifest = {
-  version: new Date().toISOString(),
+  // Sürüm, dosya özetlerinden türetilir: aynı içerik her zaman aynı manifest'i üretir.
+  // Böylece CI'da yeniden üretim gereksiz commit/push yarışı yaratmaz.
+  version: "",
   repo: REPO,
   branch: BRANCH,
   rawBase: `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`,
@@ -57,5 +59,10 @@ for (const file of FILES) {
 }
 
 await mkdir(path.join(ROOT, "agent"), { recursive: true });
+const digest = createHash("sha256");
+for (const file of Object.keys(manifest.files).sort()) {
+  digest.update(`${file}:${manifest.files[file].sha256}\n`);
+}
+manifest.version = digest.digest("hex").slice(0, 16);
 await writeFile(path.join(ROOT, "agent", "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 console.log("manifest güncellendi:", Object.keys(manifest.files).length, "dosya, sürüm", manifest.version, "·", REPO);

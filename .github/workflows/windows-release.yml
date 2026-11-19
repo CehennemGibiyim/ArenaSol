@@ -148,7 +148,13 @@ jobs:
           git config user.name "arena-builder"
           git config user.email "arena-builder@users.noreply.github.com"
           git add agent/manifest.json
-          git diff --cached --quiet && echo "manifest degismedi" || (
-            git commit -m "chore(agent): manifest $(date -u +%FT%TZ) [skip ci]" &&
-            git push
-          )
+          if git diff --cached --quiet; then echo "manifest degismedi"; exit 0; fi
+          git commit -m "chore(agent): manifest $(date -u +%FT%TZ) [skip ci]"
+          # Derleme ~8 dk sürüyor; bu arada collect botu main'i ilerletebilir.
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "manifest push basarisiz" >&2
+          exit 1
