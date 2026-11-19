@@ -324,7 +324,7 @@ async function localListen() {
           try {
             const conn = new mod.TikTokLiveConnection(t.username, {
               processInitialData: false,
-              signApiKey: process.env.EULER_API_KEY || undefined,
+              signApiKey: process.env.SIGN_API_KEY || process.env.EULER_API_KEY || undefined,
             });
             let diamonds = 0,
               gifts = 0,

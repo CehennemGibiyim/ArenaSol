@@ -38,6 +38,7 @@ jobs:
       - name: Scan and listen
         env:
           EULER_API_KEY: ${{ secrets.EULER_API_KEY }}
+          SIGN_API_KEY: ${{ secrets.SIGN_API_KEY }}
           WATCHLIST: ${{ vars.WATCHLIST }}
           MAX_ROOMS: ${{ vars.MAX_ROOMS }}
           LISTEN_SECONDS: "50"

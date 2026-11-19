@@ -55,6 +55,8 @@ Tarama **GitHub Actions** üzerinde çalışır; panel veya bilgisayarın kapal�
 
 **Kapsam:** izleme listesi (`WATCHLIST`) + sabitlenen odalar + [Tik.Tools açık listesi](https://tik.tools/docs) (en fazla 10 yayın) + `EULER_API_KEY` varsa bölge feed'i. Liste boşsa boş olarak raporlanır; sahte kayıt üretilmez. Detay: [docs/RADAR-DINLEME.md](docs/RADAR-DINLEME.md)
 
+**Ücretli API zorunlu değil:** Keşif ve canlı doğrulama TikTok'un kendi anahtarsız uçlarıyla (`api-live/user/room`, `room/check_alive`, `room/info`), dinleme ise `tiktok-live-connector`'ün ücretsiz topluluk imza kotasıyla çalışır. Ölçüm (2026-11-19): anahtarsız bağlantı kuruldu ve 25 saniyede chat/hediye/beğeni/katılım olayları alındı. `SIGN_API_KEY` yalnızca bağlantı kotasını yükseltir, `EULER_API_KEY` yalnızca bölge feed'i (Business) içindir; ikisi de isteğe bağlıdır.
+
 ## Windows kurulum paketi
 
 ![Windows kurulum](public/help/windows-kurulum.svg)

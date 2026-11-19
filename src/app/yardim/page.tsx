@@ -17,7 +17,7 @@ const STEPS = [
   },
   {
     title: "3 · 7/24 otomatik tarama",
-    body: "GitHub Actions her 5 dakikada bir tarar; sen sistemde olmasan da sandık ve yayın verisi birikir. Depo ayarlarına EULER_API_KEY ve WATCHLIST eklemek kapsamı genişletir.",
+    body: "GitHub Actions her 5 dakikada bir tarar; sen sistemde olmasan da sandık ve yayın verisi birikir. Depo ayarlarına EULER_API_KEY ve WATCHLIST eklemek kapsamı genişletir. Anahtar zorunlu değil: keşif ve dinleme ücretsiz çalışır, SIGN_API_KEY yalnızca bağlantı kotasını yükseltir.",
     code: "Settings → Secrets and variables → Actions",
   },
   {

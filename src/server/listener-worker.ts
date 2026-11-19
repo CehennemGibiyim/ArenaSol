@@ -83,7 +83,8 @@ async function listen(job: ListenerJob) {
   try {
     const mod = await import("tiktok-live-connector");
     connection = new mod.TikTokLiveConnection(job.username, { processInitialData: true, enableExtendedGiftInfo: false,
-      signApiKey: process.env.EULER_API_KEY || undefined }) as unknown as Connection;
+      // Anahtar zorunlu değil: boşsa ücretsiz topluluk kotası kullanılır.
+      signApiKey: process.env.SIGN_API_KEY || process.env.EULER_API_KEY || undefined }) as unknown as Connection;
     running.set(job.id, connection);
     const socket = connection;
     const closed = new Promise<void>((resolve) => {

@@ -9,11 +9,11 @@
  *   3) DİNLEME: canlı odaya imzalı WebSocket (im/fetch) bağlanıp
  *               WebcastGiftMessage + WebcastEnvelopeMessage olaylarını okumak.
  *
- * 1 ve 2 numaralı adımlar herhangi bir anahtar gerektirmez; kendi sunucumuzda
- * ücretsiz çalışır. 3 numaralı adım için TikTok artık imzalı bağlantı istediği
- * için opsiyonel bir imza anahtarı (SIGN_API_KEY) tanımlanabilir; tanımlanmazsa
- * sistem otomatik olarak "manuel toplama" moduna düşer (uygulama tamamen
- * kullanılabilir kalır).
+ * 1 ve 2 numaralı adımlar herhangi bir anahtar gerektirmez. 3 numaralı adımda
+ * imzalama, tiktok-live-connector'ün varsayılan ücretsiz topluluk kotasıyla
+ * anahtarsız da çalışır (2026-11-19'da ölçüldü: bağlantı kuruldu ve
+ * chat/gift/like/member olayları alındı). SIGN_API_KEY tanımlarsanız yalnızca
+ * bağlantı kotası yükselir; anahtar zorunlu değildir.
  */
 
 const WEB_UA =
@@ -281,7 +281,7 @@ export async function fetchRoomGifts(
 
 /**
  * Canlı odaya WebSocket bağlanır.
- * Bağlantı için imza anahtarı gerekir (SIGN_API_KEY). Anahtar yoksa null döner.
+ * İmza anahtarı zorunlu değildir; SIGN_API_KEY tanımlıysa bağlantı kotasını yükseltir.
  */
 export async function connectToRoom(params: {
   uniqueId: string;
@@ -291,10 +291,6 @@ export async function connectToRoom(params: {
   signApiKey?: string;
   sessionId?: string;
 }): Promise<RoomConnection | null> {
-  if (!params.signApiKey) {
-    params.onStatus?.("no-signer", "Imza anahtari tanimli degil");
-    return null;
-  }
   try {
     const mod = (await import("tiktok-live-connector")) as {
       TikTokLiveConnection: new (
@@ -307,7 +303,7 @@ export async function connectToRoom(params: {
       };
     };
     const conn = new mod.TikTokLiveConnection(params.uniqueId, {
-      signApiKey: params.signApiKey,
+      signApiKey: params.signApiKey || process.env.SIGN_API_KEY || undefined,
       session: params.sessionId ? { cookie: `sessionid=${params.sessionId}` } : undefined,
       fetchRoomInfoOnConnect: false,
       processInitialData: true,

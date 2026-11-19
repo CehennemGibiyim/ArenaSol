@@ -10,6 +10,7 @@
  *
  * Ortam değişkenleri (Actions secrets/variables):
  *   EULER_API_KEY   (opsiyonel, Business feed için)
+ *   SIGN_API_KEY    (opsiyonel, yalnızca WS imza kotası; boşsa ücretsiz kota)
  *   WATCHLIST       "@a,@b" (opsiyonel)
  *   MAX_ROOMS       dinlenecek oda sayısı (varsayılan 8)
  *   LISTEN_SECONDS  oda başına dinleme (varsayılan 50)
@@ -151,6 +152,7 @@ async function main() {
     if (/^[\w.]{2,24}$/.test(room.user)) candidates.set(room.user.toLowerCase(), { ...room, source: "public-sample" });
 
   const eulerKey = (process.env.EULER_API_KEY || "").trim();
+  const signKey = (process.env.SIGN_API_KEY || "").trim() || eulerKey;
   if (eulerKey) {
     for (const room of await eulerFeed(eulerKey, REGIONS)) {
       if (/^[\w.]{2,24}$/.test(room.user)) candidates.set(room.user.toLowerCase(), { ...room, source: "euler" });
@@ -210,7 +212,7 @@ async function main() {
           const conn = new mod.TikTokLiveConnection(room.user, {
             processInitialData: false,
             enableExtendedGiftInfo: false,
-            signApiKey: eulerKey || undefined,
+            signApiKey: signKey || undefined,
           });
           conn.on("envelope", (raw) => {
             const info = raw?.envelopeInfo;
