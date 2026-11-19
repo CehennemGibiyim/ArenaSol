@@ -15,7 +15,7 @@
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
+import { execFileSync, execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -65,9 +65,11 @@ async function main() {
   // Üretim bağımlılıklarını lockfile'dan kur: pg'nin alt bağımlılıkları
   // (pg-pool, pg-protocol, pg-cloudflare …) elle kopyalanınca eksik kalıyordu.
   log("üretim bağımlılıkları kuruluyor (npm ci --omit=dev)");
-  execFileSync(process.platform === "win32" ? "npm.cmd" : "npm", ["ci", "--omit=dev", "--ignore-scripts", "--no-audit", "--no-fund"], {
+  // execSync kabuğu kullanır; Windows'ta npm.cmd doğrudan spawn edilemiyor (EINVAL).
+  execSync("npm ci --omit=dev --ignore-scripts --no-audit --no-fund", {
     cwd: OUT,
     stdio: "inherit",
+    shell: true,
   });
 
   if (process.env.ARENA_PORTABLE_NODE === "1") {
