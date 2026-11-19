@@ -1,11 +1,12 @@
 {
-  "generatedAt": null,
-  "ok": null,
+  "generatedAt": "2026-11-19T02:10:00.530Z",
+  "ok": true,
+  "durationMs": 55987,
   "nextRunInSeconds": 300,
-  "candidates": 0,
-  "liveRooms": 0,
+  "candidates": 20,
+  "liveRooms": 17,
   "activeChests": 0,
   "autoJoin": true,
   "source": "watchlist+public-sample",
-  "note": "Henüz tarama çalışmadı. GitHub Actions collect.yml ilk turu 5 dakika içinde yazar; panel kapalı olsa da tarama sürer."
+  "note": "GitHub Actions taraması — kullanıcı paneli kapalı olsa da çalışır."
 }
