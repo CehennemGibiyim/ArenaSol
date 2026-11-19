@@ -3,26 +3,147 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Arena Live OS — Sandık Radarı (Web)</title>
+<title>Arena Live OS — 7/24 Sandık Radarı (Web)</title>
+<meta name="description" content="TikTok LIVE sandık radarı: GitHub Actions ile 7/24 otomatik tarama, jeton/kontenjan/oran takibi ve Windows paketi." />
 <link rel="stylesheet" href="style.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>" />
 </head>
 <body>
-<header>
-  <h1>🎯 Sandık Radarı <span class="badge">7/24 otomatik</span></h1>
-  <p id="meta">Yükleniyor…</p>
-  <p class="hint">Bu sayfa GitHub Actions tarafından her 5 dakikada bir güncellenen gerçek veriyi gösterir; sen sisteme girmesen de tarama sürer. Sandık kartına tıklayınca yayına gidilir.</p>
+<div class="bg-glow a"></div>
+<div class="bg-glow b"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">A</span>
+    <span>
+      <b>ARENA</b>
+      <small>LIVE OS · WEB RADAR</small>
+    </span>
+  </div>
+  <nav class="links">
+    <a href="yardim.html">📘 Yardım</a>
+    <a href="#sandiklar">🎁 Sandıklar</a>
+    <a href="#yayinlar">🔴 Yayınlar</a>
+    <a id="download" class="cta" href="https://github.com/CehennemGibiyim/ArenaSol/releases" target="_blank" rel="noopener">⬇ Windows paketi</a>
+  </nav>
 </header>
 
-<section id="chests-section">
-  <h2>⏳ Bekleyen / açık sandıklar</h2>
-  <div id="chests" class="grid"><p class="empty">Şu anda aktif sandık yok. Yeni tarama 5 dakika içinde gelir.</p></div>
-</section>
+<main>
+  <section class="hero">
+    <p class="eyebrow">GENEL BAKIŞ · CANLI MERKEZ</p>
+    <h1>Sandık radarı <span>7/24 çalışır</span></h1>
+    <p class="lead">
+      Bu sayfa GitHub Actions tarafından her 5 dakikada bir güncellenen gerçek TikTok LIVE verisini gösterir.
+      Sen sisteme girmesen de tarama sürer; Windows paketi aynı veriyi 3 saniyede bir çeker ve sandık açılışında yayını açar.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="yardim.html">Resimli kurulum rehberi</a>
+      <a class="btn" href="#sandiklar">Sandıkları gör</a>
+      <a class="btn ghost" href="https://github.com/CehennemGibiyim/ArenaSol/actions" target="_blank" rel="noopener">Tarama durumu ↗</a>
+    </div>
+    <p id="meta" class="meta">Veri yükleniyor…</p>
+  </section>
 
-<section>
-  <h2>🔴 Doğrulanmış canlı yayınlar</h2>
-  <div id="rooms" class="grid"><p class="empty">Yükleniyor…</p></div>
-</section>
+  <section class="kpis" aria-label="Özet metrikler">
+    <div class="kpi">
+      <p>AKTİF SANDIK</p>
+      <b id="kpi-chests">0</b>
+      <span id="kpi-coins">0 jeton</span>
+    </div>
+    <div class="kpi">
+      <p>CANLI YAYIN</p>
+      <b id="kpi-rooms">0</b>
+      <span>doğrulanmış oda</span>
+    </div>
+    <div class="kpi">
+      <p>EN İYİ ORAN</p>
+      <b id="kpi-ratio" class="cyan">0</b>
+      <span>jeton ÷ kontenjan</span>
+    </div>
+    <div class="kpi">
+      <p>OTOMATİK TARAMA</p>
+      <b id="kpi-status" class="green">—</b>
+      <span id="kpi-heartbeat">henüz tur yok</span>
+    </div>
+  </section>
+
+  <section id="sandiklar" class="block">
+    <div class="block-head">
+      <div>
+        <h2>⏳ Bekleyen / açık sandıklar</h2>
+        <p>Oran = jeton ÷ kontenjan. Yüksek oran, kişi başı daha çok jeton demektir.</p>
+      </div>
+      <div class="filters">
+        <input id="q" placeholder="Yayıncı ara…" aria-label="Yayıncı ara" />
+        <select id="sort" aria-label="Sıralama">
+          <option value="opens_at">Açılış zamanı</option>
+          <option value="coins">Jeton</option>
+          <option value="ratio">Oran</option>
+          <option value="slots">Kontenjan</option>
+          <option value="viewers">İzleyici</option>
+        </select>
+        <button id="dir" title="Sıralama yönü">↓</button>
+        <button id="refresh" title="Yenile">↻</button>
+      </div>
+    </div>
+    <div id="chests" class="grid">
+      <p class="empty">Şu anda aktif sandık yok. Yeni tarama 5 dakika içinde gelir.</p>
+    </div>
+  </section>
+
+  <section id="yayinlar" class="block">
+    <div class="block-head">
+      <div>
+        <h2>🔴 Doğrulanmış canlı yayınlar</h2>
+        <p>check_alive ile doğrulanmış odalar; kart yayına gider.</p>
+      </div>
+      <span class="chip" id="room-count">0 oda</span>
+    </div>
+    <div id="rooms" class="grid rooms">
+      <p class="empty">Yükleniyor…</p>
+    </div>
+  </section>
+
+  <section class="block split">
+    <div class="panel">
+      <h3>⚡ Sandık açma nasıl çalışır?</h3>
+      <ol class="steps">
+        <li><b>Tarama:</b> GitHub Actions her 5 dakikada bir yayınları tarar, sandıkları kaydeder.</li>
+        <li><b>Bildirim:</b> Web paneli ve Windows ajanı sandığı anında listeler; Telegram/Discord uyarısı gider.</li>
+        <li><b>Açma:</b> Windows ajanı açılışa 20 sn kala yayını tarayıcıda açar (AUTO_JOIN=1).</li>
+        <li><b>Katılım:</b> Açılan yayında tek dokunuşla katıl; jeton cüzdanına düşer.</li>
+      </ol>
+      <p class="note">
+        Dürüst sınır: Sandık açma asistanı yalnızca yayını açar ve bildirir; jeton toplamaz.
+        TikTok zarf/jeton toplama mobil oturum ister; sistem hesabına giriş yapmaz ve senin yerine talep göndermez.
+      </p>
+    </div>
+    <div class="panel">
+      <h3>🖥️ Windows kurulum paketi</h3>
+      <p class="muted">
+        GitHub Actions her sürümde <code>ArenaLiveOS-Setup-*.exe</code> üretir. Kurulumdan sonra panel
+        <code>http://localhost:3000</code> adresinde açılır; ajan arka planda çalışır.
+      </p>
+      <ul class="checks">
+        <li>Açılışta GitHub manifest kontrolü (sha256) → değişen dosyalar otomatik iner</li>
+        <li>Çalışırken 30 dakikada bir güncelleme kontrolü</li>
+        <li>Sandık verisi 3 sn'de bir; sayaç saniyelik</li>
+        <li>Yerel hızlı durum: <code>http://localhost:4780</code></li>
+      </ul>
+      <a class="btn primary wide" id="download2" href="https://github.com/CehennemGibiyim/ArenaSol/releases" target="_blank" rel="noopener">En son sürümü indir ↗</a>
+      <p class="note">Gereksinim: Node.js 22 LTS + PostgreSQL 14+ · Rehber: <a href="yardim.html">Yardım</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Arena Live OS · TikTok LIVE ajans işletim sistemi</span>
+    <span>
+      <a href="yardim.html">Yardım</a> ·
+      <a href="https://github.com/CehennemGibiyim/ArenaSol" target="_blank" rel="noopener">GitHub</a> ·
+      tiktok-live-connector · MIT
+    </span>
+  </footer>
+</main>
 
 <script src="app.js"></script>
 </body>

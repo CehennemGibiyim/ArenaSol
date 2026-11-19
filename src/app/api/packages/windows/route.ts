@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import JSZip from "jszip";
 import { NextResponse } from "next/server";
+import { isCloudflareWorkers } from "@/lib/runtime";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,10 +16,12 @@ const INCLUDE_FILES = [
   "next.config.ts",
   "postcss.config.mjs",
   "eslint.config.mjs",
-  "drizzle.config.json",
+  "drizzle.config.ts",
   ".env.example",
   "KURULUM.bat",
+  "Arena-Live-OS.bat",
   "Arena-Agent.bat",
+  "Durdur.bat",
   "README.md",
 ];
 const SKIP = new Set(["node_modules", ".next", ".git", "release", "logs", ".turbo", "tsconfig.tsbuildinfo"]);
@@ -45,10 +48,13 @@ pause
 
 const AGENT_BAT = `@echo off
 chcp 65001 >nul
-title Arena Agent
+title Arena Agent - 7/24 tarama + sandik acma asistani
 cd /d "%~dp0"
-node agent/update.mjs
-node agent/arena-agent.mjs
+echo GitHub kutuphanesindeki degisiklikler kontrol ediliyor...
+node agent\\update.mjs
+if exist agent\\arena-agent.mjs.pending move /Y agent\\arena-agent.mjs.pending agent\\arena-agent.mjs >nul
+echo Agent baslatiliyor (3 sn veri yenileme, sandık açma)...
+node agent\\arena-agent.mjs
 pause
 `;
 
@@ -67,7 +73,7 @@ Ilk veri: Invoke-RestMethod -Method Post http://localhost:3000/api/demo/seed
 `;
 
 async function addDirectory(zip: JSZip, relative: string) {
-  const absolute = path.join(ROOT, relative);
+  const absolute = path.join(/* turbopackIgnore: true */ ROOT, relative);
   let entries: string[] = [];
   try {
     entries = await readdir(absolute);
@@ -87,6 +93,15 @@ async function addDirectory(zip: JSZip, relative: string) {
 }
 
 export async function GET() {
+  if (isCloudflareWorkers()) {
+    return NextResponse.json(
+      {
+        error: "Windows paketi bulut sürümünde üretilmez.",
+        hint: "Paketi GitHub Actions → Releases bölümünden veya Windows kurulum betiğiyle indirin.",
+      },
+      { status: 501 },
+    );
+  }
   try {
     const zip = new JSZip();
     const base = "Arena-Live-OS";
@@ -96,7 +111,7 @@ export async function GET() {
     }
     for (const file of INCLUDE_FILES) {
       try {
-        zip.file(file, await readFile(path.join(ROOT, file)));
+        zip.file(file, await readFile(path.join(/* turbopackIgnore: true */ ROOT, file)));
       } catch {
         /* dosya opsiyonel */
       }
@@ -106,10 +121,11 @@ export async function GET() {
     zip.file("Arena-Agent.bat", AGENT_BAT);
     zip.file("Durdur.bat", STOP);
     zip.file("README-WINDOWS.md", README);
+    zip.file("docs/help/panel-genel.svg", await readFile(path.join(ROOT, "public", "help", "panel-genel.svg")).catch(() => ""));
     zip.file(
       "SURUM.txt",
       [
-        "Arena Live OS 1.2.0 — GitHub auto-update agent + 7/24 Actions collector + SSE anlık sandık",
+        "Arena Live OS 1.2.0 — GitHub auto-update + 7/24 Actions tarama + otomatik sandık açma + resimli yardım",
         `Paketlenme: ${new Date().toISOString()}`,
         "Node: 20+ (onerilen 22 LTS)",
         "Icerir: Next.js panel, Drizzle semasi, tiktok-live-connector, overlay kutuphanesi, Windows kurulum betikleri",
@@ -122,8 +138,9 @@ export async function GET() {
         {
           scripts: {
             "windows:install": "powershell -ExecutionPolicy Bypass -File scripts/install-windows.ps1",
-            "windows:start": "powershell -ExecutionPolicy Bypass -File scripts/start-windows.ps1",
-            "windows:bundle": "node scripts/build-exe.js",
+            "windows:start": "Arena-Live-OS.bat",
+            "windows:bundle": "node scripts/build-exe.mjs",
+            "windows:installer": "makensis scripts/installer.nsi",
             "db:push": "drizzle-kit push",
           },
         },

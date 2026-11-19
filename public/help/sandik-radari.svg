@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Arena Sandık Radarı ekranı">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07070d"/><stop offset="1" stop-color="#0b0710"/>
+    </linearGradient>
+    <linearGradient id="brand2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#7c5cff"/><stop offset="1" stop-color="#fe2c55"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.075"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg2)"/>
+  <text x="40" y="52" font-family="Segoe UI,sans-serif" font-size="8" letter-spacing="1.8" fill="#f5b642" opacity="0.85">OTOMASYON · SANDIK RADARI</text>
+  <text x="40" y="84" font-family="Segoe UI,sans-serif" font-size="25" font-weight="800" fill="#fff">Sandık radarı</text>
+  <text x="40" y="106" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.42">Canlı yayınlardaki sandık ve çantalar; jeton, kontenjan, oran ve açılış geri sayımı. Tarama 7/24 otomatik.</text>
+
+  <rect x="840" y="34" width="196" height="30" rx="9" fill="url(#brand2)"/>
+  <text x="938" y="53" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="700" fill="#05060a" text-anchor="middle">◉ 7/24 taramayı aç</text>
+  <rect x="1044" y="34" width="196" height="30" rx="9" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="1142" y="53" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.8" text-anchor="middle">↓ CSV dışa aktar</text>
+
+  <!-- status bar -->
+  <rect x="40" y="124" width="1200" height="44" rx="11" fill="url(#card2)" stroke="#2ee6a8" stroke-opacity="0.25"/>
+  <circle cx="62" cy="146" r="4" fill="#2ee6a8"/>
+  <text x="76" y="150" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#8df0c9">Otomatik tarama açık · 5 sn'de bir yenilenir · ajan sandık açılışında yayını açar</text>
+  <text x="1218" y="150" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#ffffff" opacity="0.4" text-anchor="end">Son tarama: 12 sn önce · 38 aday · 6 canlı</text>
+
+  <!-- tabs -->
+  <g font-family="Segoe UI,sans-serif" font-size="8.5">
+    <rect x="40" y="184" width="86" height="24" rx="8" fill="#25f4ee" opacity="0.14" stroke="#25f4ee" stroke-opacity="0.4"/>
+    <text x="83" y="200" fill="#9df9f5" text-anchor="middle">Sandık (4)</text>
+    <rect x="134" y="184" width="92" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="180" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Oran ≥ 1 (3)</text>
+    <rect x="234" y="184" width="92" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="280" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Oran ≥ 2 (2)</text>
+    <rect x="334" y="184" width="92" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="380" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Oran ≥ 4 (1)</text>
+    <rect x="434" y="184" width="92" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="480" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Kısmet ≥ 7</text>
+    <rect x="534" y="184" width="102" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="585" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">20/16 sandık</text>
+    <rect x="644" y="184" width="96" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="692" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Altın sandık</text>
+    <rect x="748" y="184" width="104" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="800" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Askıda sandık</text>
+    <rect x="860" y="184" width="80" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="900" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Çanta</text>
+    <rect x="948" y="184" width="70" height="24" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="983" y="200" fill="#ffffff" opacity="0.55" text-anchor="middle">Tümü</text>
+  </g>
+
+  <!-- chest cards -->
+  <g>
+    <rect x="40" y="230" width="290" height="168" rx="13" fill="url(#card2)" stroke="#f5b642" stroke-opacity="0.35"/>
+    <text x="58" y="256" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" fill="#fff">@elif_live</text>
+    <rect x="248" y="242" width="64" height="16" rx="8" fill="#f5b642" opacity="0.15"/>
+    <text x="280" y="253" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#f7d493" text-anchor="middle">ALTIN</text>
+    <text x="58" y="272" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">Sohbet · yeni takipçilere sürpriz</text>
+    <text x="312" y="256" font-family="Segoe UI,sans-serif" font-size="19" font-weight="800" fill="#2ee6a8" text-anchor="end">01:24</text>
+    <text x="312" y="270" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="end">AÇILIŞA</text>
+    <g>
+      <rect x="58" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="98" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">1.200</text>
+      <text x="98" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">JETON</text>
+      <rect x="148" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="188" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#9df9f5" text-anchor="middle">12</text>
+      <text x="188" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">ORAN</text>
+      <rect x="238" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="278" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">100</text>
+      <text x="278" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">KONTENJAN</text>
+    </g>
+    <text x="58" y="350" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">1.830 izleyici · katılan 42 · otomatik açma hazır</text>
+    <rect x="58" y="360" width="260" height="26" rx="8" fill="url(#brand2)"/>
+    <text x="188" y="377" font-family="Segoe UI,sans-serif" font-size="9" font-weight="700" fill="#05060a" text-anchor="middle">CANLI'yi Aç · Manuel katıl</text>
+  </g>
+
+  <g>
+    <rect x="346" y="230" width="290" height="168" rx="13" fill="url(#card2)" stroke="#fe2c55" stroke-opacity="0.45"/>
+    <text x="364" y="256" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" fill="#fff">@mertt34</text>
+    <rect x="554" y="242" width="64" height="16" rx="8" fill="#fe2c55" opacity="0.16"/>
+    <text x="586" y="253" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffb3c4" text-anchor="middle">AÇIK</text>
+    <text x="364" y="272" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">Gece yayını · hediye yağmuru</text>
+    <text x="618" y="256" font-family="Segoe UI,sans-serif" font-size="19" font-weight="800" fill="#ff6b8a" text-anchor="end">●</text>
+    <text x="618" y="270" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="end">AÇIK</text>
+    <g>
+      <rect x="364" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="404" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">500</text>
+      <text x="404" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">JETON</text>
+      <rect x="454" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="494" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#9df9f5" text-anchor="middle">5</text>
+      <text x="494" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">ORAN</text>
+      <rect x="544" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="584" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">100</text>
+      <text x="584" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">KONTENJAN</text>
+    </g>
+    <text x="364" y="350" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">4.120 izleyici · katılan 88 · 2 dk içinde açıldı</text>
+    <rect x="364" y="360" width="260" height="26" rx="8" fill="url(#brand2)"/>
+    <text x="494" y="377" font-family="Segoe UI,sans-serif" font-size="9" font-weight="700" fill="#05060a" text-anchor="middle">CANLI'yi Aç · Manuel katıl</text>
+  </g>
+
+  <g>
+    <rect x="652" y="230" width="290" height="168" rx="13" fill="url(#card2)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="670" y="256" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" fill="#fff">@zeynep.dj</text>
+    <rect x="860" y="242" width="64" height="16" rx="8" fill="#ffffff" opacity="0.07"/>
+    <text x="892" y="253" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffffff" opacity="0.6" text-anchor="middle">SANDIK</text>
+    <text x="670" y="272" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">Müzik yayını · çanta seviyesi 4</text>
+    <text x="924" y="256" font-family="Segoe UI,sans-serif" font-size="19" font-weight="800" fill="#f5b642" text-anchor="end">03:41</text>
+    <text x="924" y="270" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="end">AÇILIŞA</text>
+    <g>
+      <rect x="670" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="710" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">360</text>
+      <text x="710" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">JETON</text>
+      <rect x="760" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="800" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#9df9f5" text-anchor="middle">2.4</text>
+      <text x="800" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">ORAN</text>
+      <rect x="850" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="890" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">150</text>
+      <text x="890" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">KONTENJAN</text>
+    </g>
+    <text x="670" y="350" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">920 izleyici · katılan 12 · QR ile telefondan katıl</text>
+    <rect x="670" y="360" width="260" height="26" rx="8" fill="#ffffff" opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="800" y="377" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.75" text-anchor="middle">Detay · QR · Jetonu manuel al</text>
+  </g>
+
+  <g>
+    <rect x="958" y="230" width="282" height="168" rx="13" fill="url(#card2)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="976" y="256" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" fill="#fff">@arena_sahne</text>
+    <rect x="1150" y="242" width="72" height="16" rx="8" fill="#7c5cff" opacity="0.18"/>
+    <text x="1186" y="253" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#c3b6ff" text-anchor="middle">ÇANTA Lv 2</text>
+    <text x="976" y="272" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">Sohbet · topluluk etkinliği</text>
+    <text x="1222" y="256" font-family="Segoe UI,sans-serif" font-size="19" font-weight="800" fill="#2ee6a8" text-anchor="end">00:48</text>
+    <text x="1222" y="270" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="end">AÇILIŞA</text>
+    <g>
+      <rect x="976" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="1016" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">240</text>
+      <text x="1016" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">JETON</text>
+      <rect x="1066" y="286" width="80" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="1106" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#9df9f5" text-anchor="middle">1.6</text>
+      <text x="1106" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">ORAN</text>
+      <rect x="1156" y="286" width="66" height="44" rx="9" fill="#000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.07"/>
+      <text x="1189" y="306" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">150</text>
+      <text x="1189" y="320" font-family="Segoe UI,sans-serif" font-size="7" fill="#ffffff" opacity="0.35" text-anchor="middle">KONTENJAN</text>
+    </g>
+    <text x="976" y="350" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">2.310 izleyici · katılan 64</text>
+    <rect x="976" y="360" width="244" height="26" rx="8" fill="#ffffff" opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="1098" y="377" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.75" text-anchor="middle">Detay · QR · Jetonu manuel al</text>
+  </g>
+
+  <!-- explainer -->
+  <rect x="40" y="418" width="600" height="262" rx="14" fill="url(#card2)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="60" y="446" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">Oran nedir, sandık açma nasıl çalışır?</text>
+  <text x="60" y="470" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">Oran = jeton ÷ kontenjan. 500 jeton / 100 kişi = 5. Yüksek oran, kişi başı daha çok jeton demektir.</text>
+  <text x="60" y="490" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">Windows ajanı sandık açılışından 20 sn önce yayını tarayıcıda açar ve bildirim gönderir.</text>
+  <text x="60" y="510" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">Jetonu almak için TikTok hesabınla giriş yapıp tek dokunuşla katılman gerekir; sistem senin</text>
+  <text x="60" y="530" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">hesabına giriş yapmaz, senin yerine talep göndermez (TikTok mobil oturum ister).</text>
+  <text x="60" y="562" font-family="Segoe UI,sans-serif" font-size="8.5" letter-spacing="1.4" fill="#f5b642" opacity="0.8">ADIMLAR</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.6">
+    <text x="60" y="586">1 · Ayarlar → sandık uyarı oranı eşiğini belirle (ör. 2).</text>
+    <text x="60" y="606">2 · Windows paketinde AUTO_JOIN=1 olsun; ajan GitHub verisini 3 sn'de bir yeniler.</text>
+    <text x="60" y="626">3 · Telegram/Discord webhook ekle; yüksek oranlı sandık anında bildirilir.</text>
+    <text x="60" y="646">4 · Açılan yayında "Toplamaya Katıl"a dokun; jeton cüzdanına düşer.</text>
+  </g>
+
+  <rect x="660" y="418" width="580" height="262" rx="14" fill="url(#card2)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="680" y="446" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">Kapsam ve sınırlar (dürüst rapor)</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">
+    <text x="680" y="472">• GitHub Actions taraması her 5 dakikada bir çalışır; panel kapalı olsa da veri birikir.</text>
+    <text x="680" y="494">• Kaynak: izleme listesi + sabitlenen odalar + Tik.Tools açık listesi (10 yayın).</text>
+    <text x="680" y="516">• EULER_API_KEY varsa bölge feed'i ile kapsam genişler; yoksa dünya taraması yapılmaz.</text>
+    <text x="680" y="538">• Sandık olayı bazı yayınlarda hiç iletilmez; tespit garantisi yoktur.</text>
+    <text x="680" y="560">• Boş liste = veri yok. Panel sahte sandık, sahte jeton veya sahte izleyici üretmez.</text>
+    <text x="680" y="582">• Tanımlı olmayan kimlik/jeton/kontenjan için kayıt açılmaz.</text>
+  </g>
+  <rect x="680" y="606" width="540" height="56" rx="10" fill="#25f4ee" opacity="0.07" stroke="#25f4ee" stroke-opacity="0.18"/>
+  <text x="696" y="626" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#9df9f5">7/24 tarama GitHub'da çalışır → Windows paketi aynı veriyi 3 sn'de bir çeker.</text>
+  <text x="696" y="644" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#9df9f5">Panel içi rehber: /yardim · Web rehber: docs/yardim.html</text>
+</svg>

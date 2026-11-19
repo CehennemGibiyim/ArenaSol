@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import JSZip from "jszip";
 import { NextResponse } from "next/server";
+import { isCloudflareWorkers } from "@/lib/runtime";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -348,6 +349,15 @@ SOFTWARE.
 `;
 
 export async function GET() {
+  if (isCloudflareWorkers()) {
+    return NextResponse.json(
+      {
+        error: "Kütüphane arşivi bulut sürümünde üretilmez.",
+        hint: "Depodaki public/arena-widget.js dosyasını doğrudan kullanın.",
+      },
+      { status: 501 },
+    );
+  }
   try {
     const zip = new JSZip();
     const pub = path.join(process.cwd(), "public", "arena-widget.js");

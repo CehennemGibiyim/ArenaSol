@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-label="7/24 veri akışı mimarisi">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07070d"/><stop offset="1" stop-color="#0c0810"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#7c5cff"/><stop offset="1" stop-color="#fe2c55"/></linearGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.075"/><stop offset="1" stop-color="#fff" stop-opacity="0.02"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#25f4ee" opacity="0.7"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="560" fill="url(#bg3)"/>
+  <text x="48" y="54" font-family="Segoe UI,sans-serif" font-size="8" letter-spacing="1.8" fill="#9df9f5" opacity="0.85">MİMARİ · SEN SİSTEMDE OLMASAN DA ÇALIŞIR</text>
+  <text x="48" y="88" font-family="Segoe UI,sans-serif" font-size="24" font-weight="800" fill="#fff">7/24 otomatik tarama akışı</text>
+
+  <rect x="48" y="122" width="250" height="130" rx="13" fill="url(#c3)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="70" y="148" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#ffffff" opacity="0.35">KAYNAKLAR</text>
+  <text x="70" y="174" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">TikTok LIVE</text>
+  <g font-family="Segoe UI,sans-serif" font-size="8.6" fill="#ffffff" opacity="0.52">
+    <text x="70" y="196">• İzleme listesi (WATCHLIST)</text>
+    <text x="70" y="212">• Sabitlenen odalar</text>
+    <text x="70" y="228">• Tik.Tools açık liste (10)</text>
+    <text x="70" y="244">• EulerStream bölge feed'i</text>
+  </g>
+
+  <line x1="298" y1="187" x2="352" y2="187" stroke="#25f4ee" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="358" y="122" width="286" height="130" rx="13" fill="url(#c3)" stroke="#2ee6a8" stroke-opacity="0.35"/>
+  <text x="380" y="148" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#8df0c9" opacity="0.9">GITHUB ACTIONS · HER 5 DAKİKA</text>
+  <text x="380" y="174" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">agent/collect.mjs</text>
+  <g font-family="Segoe UI,sans-serif" font-size="8.6" fill="#ffffff" opacity="0.52">
+    <text x="380" y="196">1 · Adayları topla (paralel)</text>
+    <text x="380" y="212">2 · check_alive ile doğrula</text>
+    <text x="380" y="228">3 · Odaları dinle, zarf yakala</text>
+    <text x="380" y="244">4 · data/*.json commit'le</text>
+  </g>
+
+  <line x1="644" y1="187" x2="698" y2="187" stroke="#25f4ee" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="704" y="122" width="256" height="130" rx="13" fill="url(#c3)" stroke="#7c5cff" stroke-opacity="0.35"/>
+  <text x="726" y="148" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#c3b6ff" opacity="0.9">GITHUB PAGES</text>
+  <text x="726" y="174" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">docs/data/*.json</text>
+  <g font-family="Consolas,monospace" font-size="8.6" fill="#ffffff" opacity="0.55">
+    <text x="726" y="196">rooms.json</text>
+    <text x="726" y="212">chests.json</text>
+    <text x="726" y="228">status.json (heartbeat)</text>
+    <text x="726" y="244">index.html · yardim.html</text>
+  </g>
+
+  <line x1="960" y1="187" x2="1014" y2="187" stroke="#25f4ee" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="1020" y="122" width="212" height="130" rx="13" fill="url(#c3)" stroke="#fe2c55" stroke-opacity="0.35"/>
+  <text x="1042" y="148" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#ffb3c4" opacity="0.9">WINDOWS AJANI</text>
+  <text x="1042" y="174" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">arena-agent.mjs</text>
+  <g font-family="Segoe UI,sans-serif" font-size="8.6" fill="#ffffff" opacity="0.52">
+    <text x="1042" y="196">3 sn'de bir veri çeker</text>
+    <text x="1042" y="212">Sandık açılışında</text>
+    <text x="1042" y="228">canlıyı otomatik açar</text>
+    <text x="1042" y="244">4780'de durum sunar</text>
+  </g>
+
+  <!-- loop row -->
+  <rect x="48" y="284" width="1184" height="1" fill="#ffffff" opacity="0.08"/>
+  <text x="48" y="318" font-family="Segoe UI,sans-serif" font-size="9" letter-spacing="1.2" fill="#ffffff" opacity="0.35">AKIŞ SIRASI</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9.4">
+    <rect x="48" y="332" width="130" height="34" rx="9" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.18"/>
+    <text x="113" y="353" fill="#9df9f5" text-anchor="middle">Keşif</text>
+    <text x="186" y="353" fill="#ffffff" opacity="0.3">→</text>
+    <rect x="200" y="332" width="130" height="34" rx="9" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.18"/>
+    <text x="265" y="353" fill="#9df9f5" text-anchor="middle">Doğrulama</text>
+    <text x="338" y="353" fill="#ffffff" opacity="0.3">→</text>
+    <rect x="352" y="332" width="160" height="34" rx="9" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.18"/>
+    <text x="432" y="353" fill="#9df9f5" text-anchor="middle">Webcast dinleme</text>
+    <text x="520" y="353" fill="#ffffff" opacity="0.3">→</text>
+    <rect x="534" y="332" width="160" height="34" rx="9" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.18"/>
+    <text x="614" y="353" fill="#9df9f5" text-anchor="middle">Sandık kaydı + SSE</text>
+    <text x="702" y="353" fill="#ffffff" opacity="0.3">→</text>
+    <rect x="716" y="332" width="200" height="34" rx="9" fill="#fe2c55" opacity="0.1" stroke="#fe2c55" stroke-opacity="0.25"/>
+    <text x="816" y="353" fill="#ffb3c4" text-anchor="middle">Anlık bildirim + otomatik açma</text>
+    <text x="924" y="353" fill="#ffffff" opacity="0.3">→</text>
+    <rect x="938" y="332" width="180" height="34" rx="9" fill="#f5b642" opacity="0.1" stroke="#f5b642" stroke-opacity="0.25"/>
+    <text x="1028" y="353" fill="#f7d493" text-anchor="middle">Tek dokunuşla katıl</text>
+  </g>
+
+  <rect x="48" y="392" width="584" height="120" rx="13" fill="url(#c3)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="70" y="418" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="700" fill="#fff">Güncelleme akışı (Windows paketi)</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">
+    <text x="70" y="442">Açılış → agent/update.mjs → manifest.json → sha256 farkı → dosyaları indir</text>
+    <text x="70" y="462">Çalışırken → 30 dakikada bir kontrol → fark varsa pending olarak bırak</text>
+    <text x="70" y="482">Sonraki açılış → pending dosyalar devreye girer · .env ve veritabanı korunur</text>
+    <text x="70" y="502" fill="#f7d493" font-size="8.6">Kaynak: raw.githubusercontent.com/CehennemGibiyim/ArenaSol/main/agent/manifest.json</text>
+  </g>
+
+  <rect x="648" y="392" width="584" height="120" rx="13" fill="url(#c3)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="670" y="418" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="700" fill="#fff">Güvenlik ve sınırlar</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.55">
+    <text x="670" y="442">• Sandık açma hesabına giriş yapmaz; TikTok mobil oturumu ister.</text>
+    <text x="670" y="462">• Sandık verisi boşsa sahte kayıt üretilmez; durum açıkça raporlanır.</text>
+    <text x="670" y="482">• Oturum çerezleri yalnızca mesaj gönderme içindir, maskeli saklanır.</text>
+    <text x="670" y="502">• Tüm veri okuma kamuya açık yayınlarla sınırlıdır.</text>
+  </g>
+</svg>

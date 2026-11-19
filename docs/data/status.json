@@ -1,0 +1,11 @@
+{
+  "generatedAt": null,
+  "ok": null,
+  "nextRunInSeconds": 300,
+  "candidates": 0,
+  "liveRooms": 0,
+  "activeChests": 0,
+  "autoJoin": true,
+  "source": "watchlist+public-sample",
+  "note": "Henüz tarama çalışmadı. GitHub Actions collect.yml ilk turu 5 dakika içinde yazar; panel kapalı olsa da tarama sürer."
+}

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="Windows kurulum adımları">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07070d"/><stop offset="1" stop-color="#0d0912"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#7c5cff"/><stop offset="1" stop-color="#fe2c55"/></linearGradient>
+    <linearGradient id="c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.075"/><stop offset="1" stop-color="#fff" stop-opacity="0.02"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#b)"/>
+  <text x="48" y="58" font-family="Segoe UI,sans-serif" font-size="8" letter-spacing="1.8" fill="#9df9f5" opacity="0.85">DAĞITIM · WINDOWS KURULUM PAKETİ</text>
+  <text x="48" y="94" font-family="Segoe UI,sans-serif" font-size="26" font-weight="800" fill="#fff">GitHub'dan indir → kur → çalıştır</text>
+  <text x="48" y="118" font-family="Segoe UI,sans-serif" font-size="10" fill="#ffffff" opacity="0.45">Kurulum paketi GitHub Actions üzerinde otomatik derlenir (ArenaLiveOS-Setup-*.exe). Panel her açılışta GitHub'daki değişiklikleri algılar.</text>
+
+  <!-- step 1 -->
+  <rect x="48" y="148" width="380" height="212" rx="14" fill="url(#c)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="76" cy="178" r="14" fill="url(#g)"/>
+  <text x="76" y="183" font-family="Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#05060a" text-anchor="middle">1</text>
+  <text x="102" y="183" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff">Kurulum dosyasını indir</text>
+  <text x="70" y="208" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.5">GitHub deposu → Releases → en yeni sürüm:</text>
+  <rect x="70" y="220" width="336" height="30" rx="8" fill="#000" opacity="0.35" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="82" y="240" font-family="Consolas,monospace" font-size="10" fill="#9df9f5">ArenaLiveOS-Setup-1.2.0.exe</text>
+  <text x="70" y="270" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.5">Taşınabilir sürüm: Arena-Live-OS-1.2.0-windows.zip</text>
+  <rect x="70" y="288" width="336" height="52" rx="9" fill="#f5b642" opacity="0.08" stroke="#f5b642" stroke-opacity="0.22"/>
+  <text x="82" y="307" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#f7d493">Ön koşullar: Node.js 22 LTS + PostgreSQL 14+</text>
+  <text x="82" y="324" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#f7d493">İndirme linki panelde: Windows Paketi sayfası</text>
+
+  <!-- step 2 -->
+  <rect x="450" y="148" width="380" height="212" rx="14" fill="url(#c)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="478" cy="178" r="14" fill="url(#g)"/>
+  <text x="478" y="183" font-family="Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#05060a" text-anchor="middle">2</text>
+  <text x="504" y="183" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff">KURULUM.bat / Setup.exe</text>
+  <rect x="470" y="200" width="340" height="140" rx="10" fill="#05060a" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="484" y="220" font-family="Consolas,monospace" font-size="9.5" fill="#8df0c9">C:\&gt; KURULUM.bat</text>
+  <text x="484" y="240" font-family="Consolas,monospace" font-size="9" fill="#ffffff" opacity="0.55">[i] Node.js v22 bulundu.</text>
+  <text x="484" y="258" font-family="Consolas,monospace" font-size="9" fill="#ffffff" opacity="0.55">==&gt; .env yapılandırması</text>
+  <text x="484" y="276" font-family="Consolas,monospace" font-size="9" fill="#ffffff" opacity="0.55">==&gt; Bağımlılıklar kuruluyor (npm ci)</text>
+  <text x="484" y="294" font-family="Consolas,monospace" font-size="9" fill="#ffffff" opacity="0.55">==&gt; Veritabanı şeması uygulanıyor</text>
+  <text x="484" y="312" font-family="Consolas,monospace" font-size="9" fill="#ffffff" opacity="0.55">==&gt; Production build alınıyor</text>
+  <text x="484" y="330" font-family="Consolas,monospace" font-size="9" fill="#8df0c9">[OK] Kısayol oluşturuldu</text>
+
+  <!-- step 3 -->
+  <rect x="852" y="148" width="380" height="212" rx="14" fill="url(#c)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="880" cy="178" r="14" fill="url(#g)"/>
+  <text x="880" y="183" font-family="Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#05060a" text-anchor="middle">3</text>
+  <text x="906" y="183" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#fff">Masaüstü kısayolunu aç</text>
+  <text x="874" y="208" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.5">Arena Live OS açılırken sırayla:</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.6">
+    <rect x="874" y="220" width="340" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="886" y="237">1 · GitHub güncelleme kontrolü (sha256)</text>
+    <rect x="874" y="252" width="340" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="886" y="269">2 · Panel http://localhost:3000</text>
+    <rect x="874" y="284" width="340" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="886" y="301">3 · Ajan: 3 sn'de bir sandık verisi</text>
+    <rect x="874" y="316" width="340" height="26" rx="8" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.2"/>
+    <text x="886" y="333" fill="#9df9f5">4 · Sandık açılışında sandık açma</text>
+  </g>
+
+  <!-- footer band -->
+  <rect x="48" y="388" width="1184" height="216" rx="14" fill="url(#c)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="72" y="418" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#fff">Kurulu paketin yetenekleri</text>
+  <g font-family="Segoe UI,sans-serif" font-size="9.2" fill="#ffffff" opacity="0.6">
+    <text x="72" y="446">✓ Açılışta agent/update.mjs GitHub manifestini indirir, dosya özetlerini karşılaştırır; değişenleri uygular.</text>
+    <text x="72" y="468">✓ Çalışırken her 30 dakikada bir güncelleme kontrolü yapılır (UPDATE_CHECK_SECONDS).</text>
+    <text x="72" y="490">✓ GitHub Pages verisi 3 saniyede bir yenilenir; sandık sayacı saniyelik güncellenir.</text>
+    <text x="72" y="512">✓ Sandık açılışına 20 sn kala yayın tarayıcıda açılır (AUTO_JOIN=1, minimum oran/jeton ayarlanabilir).</text>
+    <text x="72" y="534">✓ Yerel hızlı durum: http://localhost:4780 — panel kapalıyken de sandık listesi.</text>
+    <text x="72" y="556">✓ Telegram/Discord uyarıları + alerts.jsonl olay kaydı; aynı sandık için tekrar açma koruması.</text>
+    <text x="72" y="578">✓ Durdur.bat ile panel ve ajan kapatılır; .env ve veritabanı korunur.</text>
+  </g>
+  <rect x="860" y="410" width="348" height="168" rx="11" fill="#05060a" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="878" y="432" font-family="Segoe UI,sans-serif" font-size="9" font-weight="700" fill="#9df9f5">.env (Windows paketi)</text>
+  <text x="878" y="454" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">ARENA_BACKEND=https://&lt;user&gt;.github.io/ArenaSol</text>
+  <text x="878" y="472" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">ARENA_REPO=CehennemGibiyim/ArenaSol</text>
+  <text x="878" y="490" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">AUTO_JOIN=1</text>
+  <text x="878" y="508" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">AUTO_JOIN_MIN_RATIO=1</text>
+  <text x="878" y="526" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">AUTO_JOIN_LEAD_SECONDS=20</text>
+  <text x="878" y="544" font-family="Consolas,monospace" font-size="8.5" fill="#ffffff" opacity="0.6">POLL_SECONDS=3 · AGENT_PORT=4780</text>
+  <text x="878" y="566" font-family="Segoe UI,sans-serif" font-size="8" fill="#f7d493">Değişiklikten sonra Durdur.bat → Arena-Live-OS.bat</text>
+</svg>

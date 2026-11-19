@@ -259,7 +259,6 @@ function sanitize(
   return { values: cfg.beforeWrite ? cfg.beforeWrite(values) : values, missing };
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 type LooseTable = Record<string, any>;
 
 export async function listResource(

@@ -133,7 +133,7 @@ export function LiveStudio({
   }, [fetchSnapshot]);
 
   useEffect(() => {
-    void loadSessions();
+    queueMicrotask(() => void loadSessions());
     const statusTimer = fetch("/api/live/status")
       .then((response) => response.json())
       .then((data) => setConnector(data.connector))

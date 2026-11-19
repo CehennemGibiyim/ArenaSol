@@ -1,0 +1,125 @@
+name: Build Windows installer + release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "agent/**"
+      - "src/**"
+      - "docs/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "KURULUM.bat"
+      - "Arena-Live-OS.bat"
+      - "Durdur.bat"
+      - ".github/workflows/windows-release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: windows-release
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      # Build sırasında gerçek veritabanı gerekmez; pg bağlantısı tembeldir.
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/app_db
+      NEXT_TELEMETRY_DISABLED: "1"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck + build
+        run: npm run typecheck
+
+      - name: Next.js production build
+        run: npm run build
+
+      - name: Package portable app + zip
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          node scripts/build-exe.mjs
+          if ($LASTEXITCODE -ne 0) { throw "build-exe.mjs başarısız" }
+          $zip = Get-ChildItem "release\Arena-Live-OS-*-windows.zip" -ErrorAction SilentlyContinue
+          if (-not $zip) { throw "Taşınabilir zip üretilmedi" }
+          Get-ChildItem release | Format-Table Name, Length
+
+      - name: Install NSIS
+        run: choco install nsis -y --no-progress
+
+      - name: Build setup exe
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $version = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $cmd = Get-Command makensis -ErrorAction SilentlyContinue
+          $makensis = if ($cmd) { $cmd.Source } else { "C:\Program Files (x86)\NSIS\makensis.exe" }
+          if (-not (Test-Path $makensis)) { throw "makensis bulunamadı: $makensis" }
+          & $makensis "/DVERSION=$version" scripts/installer.nsi
+          if ($LASTEXITCODE -ne 0) { throw "makensis başarısız (kod $LASTEXITCODE)" }
+          $setup = "release\ArenaLiveOS-Setup-$version.exe"
+          if (-not (Test-Path $setup)) { throw "Beklenen kurulum dosyası üretilmedi: $setup" }
+          Get-Item $setup | Format-Table Name, Length
+
+      - name: Regenerate agent manifest
+        run: node scripts/build-agent-manifest.mjs
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-windows-${{ github.run_number }}
+          path: |
+            release/ArenaLiveOS-Setup-*.exe
+            release/Arena-Live-OS-*-windows.zip
+          retention-days: 30
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: windows-v${{ github.run_number }}
+          name: "Arena Live OS — Windows v${{ github.run_number }}"
+          body: |
+            Windows kurulum paketi otomatik olarak derlendi.
+
+            **Kurulum:** `ArenaLiveOS-Setup-*.exe` indir → çalıştır → masaüstündeki "Arena Live OS" kısayolu.
+            **Taşınabilir:** `Arena-Live-OS-*-windows.zip` arşivini aç → `KURULUM.bat`.
+
+            - Gereksinim: Node.js 22 LTS + PostgreSQL 14+
+            - Panel açılışında GitHub'daki güncellemeler otomatik algılanır (`agent/update.mjs`)
+            - Tarama GitHub Actions üzerinde 7/24 çalışır; panel kapalı olsa da veri birikir
+            - Sandık açılışında sandık açma asistanı (`AUTO_JOIN=1`)
+
+            Detaylı rehber: `docs/WINDOWS-KURULUM.md` · Panel içi: `/yardim`
+          files: |
+            release/ArenaLiveOS-Setup-*.exe
+            release/Arena-Live-OS-*-windows.zip
+          draft: false
+          prerelease: false
+
+      - name: Commit updated manifest (main only)
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          git config user.name "arena-builder"
+          git config user.email "arena-builder@users.noreply.github.com"
+          git add agent/manifest.json
+          git diff --cached --quiet && echo "manifest degismedi" || (
+            git commit -m "chore(agent): manifest $(date -u +%FT%TZ) [skip ci]" &&
+            git push
+          )

@@ -47,7 +47,12 @@ Değişkenler:
 | `WATCHLIST` | boş | Virgülle ayrılmış kullanıcı adları |
 | `CONCURRENCY` | `5` | Aynı anda dinlenen oda |
 | `LISTEN_SECONDS` | `300` | Oda başına dinleme süresi |
-| `POLL_SECONDS` | `60` | Panel oda listesi yenileme aralığı |
+| `POLL_SECONDS` | `3` | GitHub/panel verisi yenileme aralığı |
+| `AUTO_JOIN` | `1` | Sandık açılışında yayını tarayıcıda aç |
+| `AUTO_JOIN_MIN_RATIO` | `1` | Otomatik açma için min. oran |
+| `AUTO_JOIN_LEAD_SECONDS` | `20` | Açılıştan kaç saniye önce |
+| `UPDATE_CHECK_SECONDS` | `1800` | Çalışırken GitHub güncelleme kontrolü |
+| `AGENT_PORT` | `4780` | Yerel hızlı durum sunucusu |
 
 ## Panel tarafı
 

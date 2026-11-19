@@ -22,11 +22,12 @@ const TABS = [
 
 const FILES = [
   ["KURULUM.bat", "Çift tıkla kurulum sihirbazı"],
-  ["scripts/install-windows.ps1", "Node/PostgreSQL kontrolü + build"],
-  ["scripts/start-windows.ps1", "Hızlı başlatma"],
-  ["scripts/build-exe.js", "Portable release klasörü"],
-  ["scripts/installer.nsi", "NSIS kurulum dosyası şablonu"],
-  ["Arena-Live-OS.bat", "Üretim başlatıcı (paket içinde)"],
+  ["scripts/install-windows.ps1", "Node/PostgreSQL kontrolü + .env + build"],
+  ["scripts/build-exe.mjs", "Portable release klasörü + zip"],
+  ["scripts/installer.nsi", "NSIS kurulum dosyası (setup.exe)"],
+  ["Arena-Live-OS.bat", "Güncelleme kontrolü + panel + ajan"],
+  ["Durdur.bat", "Panel ve ajanı durdurur"],
+  ["agent/update.mjs", "Açılışta GitHub güncelleme kontrolü"],
   ["src/", "Next.js panel kaynak kodu"],
   ["public/arena-widget.js", "GitHub Pages overlay kütüphanesi"],
 ];
@@ -36,16 +37,15 @@ npm ci
 npx drizzle-kit push
 npm run build
 
-# 2) Portable dagitim klasoru (release/Arena-Live-OS)
-node scripts/build-exe.js
+# 2) Portable dagitim klasoru + zip (release/Arena-Live-OS)
+npm run windows:bundle
 
 # 3) Opsiyonel: gomulu node runtime
-$env:ARENA_PORTABLE_NODE=1
-node scripts/build-exe.js
+$env:ARENA_PORTABLE_NODE=1; npm run windows:bundle
 
 # 4) NSIS kurulum dosyasi (makensis kurulu ise)
-makensis scripts/installer.nsi
-# Cikti: ArenaLiveOS-Setup-1.1.0.exe`;
+npm run windows:installer
+# Cikti: ArenaLiveOS-Setup-1.2.0.exe`;
 
 const SERVICE_COMMANDS = `# NSSM ile arka plan servisi
 nssm install ArenaLiveOS "C:\\Program Files\\nodejs\\node.exe" "C:\\Arena-Live-OS\\node_modules\\next\\dist\\bin\\next start"

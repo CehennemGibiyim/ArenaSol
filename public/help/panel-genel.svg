@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Arena Live OS panel genel görünüm">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07070d"/><stop offset="1" stop-color="#0d0912"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#7c5cff"/><stop offset="1" stop-color="#fe2c55"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.07"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="26"/></filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="200" cy="120" r="150" fill="#25f4ee" opacity="0.10" filter="url(#glow)"/>
+  <circle cx="1050" cy="640" r="200" fill="#fe2c55" opacity="0.12" filter="url(#glow)"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="0" width="208" height="720" fill="#08080f" opacity="0.96"/>
+  <rect x="207" y="0" width="1" height="720" fill="#ffffff" opacity="0.07"/>
+  <rect x="20" y="20" width="30" height="30" rx="9" fill="url(#brand)"/>
+  <text x="35" y="41" font-family="Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#05060a" text-anchor="middle">A</text>
+  <text x="60" y="34" font-family="Segoe UI,sans-serif" font-size="12" font-weight="800" letter-spacing="3" fill="#fff">ARENA</text>
+  <text x="60" y="47" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#ffffff" opacity="0.35">LIVE OS · V1.1</text>
+
+  <text x="22" y="88" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="2" fill="#ffffff" opacity="0.28">GENEL</text>
+  <rect x="12" y="96" width="184" height="27" rx="9" fill="#25f4ee" opacity="0.12" stroke="#25f4ee" stroke-opacity="0.35"/>
+  <text x="24" y="114" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#eaf9ff">▦  Panel</text>
+  <text x="24" y="145" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">◉  Canlı Stüdyo</text>
+  <text x="24" y="175" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">◈  Radar</text>
+  <text x="24" y="205" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">▤  Canlı Yayınlar</text>
+  <text x="24" y="235" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">🎁  Sandık Radarı</text>
+  <text x="22" y="272" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="2" fill="#ffffff" opacity="0.28">YÖNETİM</text>
+  <text x="24" y="294" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">☰  Hesaplar</text>
+  <text x="24" y="320" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">▣  Ajanslar</text>
+  <text x="24" y="346" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">◧  Fırsatlar</text>
+  <text x="24" y="372" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">₺  Gelir</text>
+  <text x="22" y="406" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="2" fill="#ffffff" opacity="0.28">OTOMASYON</text>
+  <text x="24" y="428" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">⚡  Bot &amp; Uyarılar</text>
+  <text x="24" y="454" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">✦  AI Koç</text>
+  <text x="22" y="488" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="2" fill="#ffffff" opacity="0.28">PLATFORM</text>
+  <text x="24" y="510" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">▧  Kütüphane</text>
+  <text x="24" y="536" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">◪  Windows Paketi</text>
+  <text x="24" y="562" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#ffffff" opacity="0.5">⚙  Ayarlar</text>
+  <rect x="12" y="590" width="184" height="62" rx="11" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="24" y="610" font-family="Segoe UI,sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" opacity="0.7">TIKTOK-LIVE-CONNECTOR</text>
+  <text x="24" y="626" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.35">Webcast bağlantısı hazır.</text>
+  <rect x="24" y="633" width="160" height="13" rx="5" fill="#ffffff" opacity="0.07"/>
+  <text x="32" y="643" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffffff" opacity="0.6">Stüdyoyu aç ›</text>
+  <circle cx="28" cy="682" r="11" fill="#fe2c55"/>
+  <text x="28" y="686" font-family="Segoe UI,sans-serif" font-size="8" font-weight="800" fill="#fff" text-anchor="middle">CY</text>
+  <text x="46" y="680" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.8">Cehennem Yönetim</text>
+  <text x="46" y="692" font-family="Segoe UI,sans-serif" font-size="7" letter-spacing="1" fill="#ffffff" opacity="0.3">ELITE PARTNER</text>
+
+  <!-- topbar -->
+  <text x="236" y="34" font-family="Segoe UI,sans-serif" font-size="10" fill="#ffffff" opacity="0.3">Arena › <tspan fill="#ffffff" opacity="0.75">Panel</tspan></text>
+  <rect x="900" y="16" width="170" height="26" rx="8" fill="#ffffff" opacity="0.04" stroke="#ffffff" stroke-opacity="0.09"/>
+  <text x="914" y="33" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.3">Yayıncı, ajans, fırsat ara...</text>
+  <rect x="1084" y="16" width="104" height="26" rx="13" fill="#ffffff" opacity="0.05" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="1104" y="33" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#ffffff" opacity="0.6">● Connector hazır</text>
+  <rect x="1198" y="16" width="70" height="26" rx="8" fill="url(#brand)"/>
+  <text x="1233" y="33" font-family="Segoe UI,sans-serif" font-size="9" font-weight="700" fill="#05060a" text-anchor="middle">Yeni yayın</text>
+
+  <!-- header -->
+  <text x="236" y="80" font-family="Segoe UI,sans-serif" font-size="8" letter-spacing="1.8" fill="#25f4ee" opacity="0.8">GENEL BAKIŞ · CANLI MERKEZ</text>
+  <text x="236" y="112" font-family="Segoe UI,sans-serif" font-size="26" font-weight="800" fill="#fff">Yayın merkezi</text>
+  <text x="236" y="134" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.4">Ajans kadron, canlı yayın metrikleri, sandık radarı ve otomasyonların tek ekranda.</text>
+  <rect x="1000" y="86" width="128" height="30" rx="9" fill="url(#brand)"/>
+  <text x="1064" y="105" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="700" fill="#05060a" text-anchor="middle">◉  Canlı stüdyo</text>
+  <rect x="1136" y="86" width="124" height="30" rx="9" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="1198" y="105" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.8" text-anchor="middle">◈ Radar tara</text>
+
+  <!-- hero card -->
+  <rect x="236" y="156" width="768" height="196" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <rect x="254" y="176" width="66" height="17" rx="9" fill="#f5b642" opacity="0.14" stroke="#f5b642" stroke-opacity="0.35"/>
+  <text x="287" y="188" font-family="Segoe UI,sans-serif" font-size="8" font-weight="700" fill="#f7d493" text-anchor="middle">Yayın yok</text>
+  <rect x="328" y="176" width="112" height="17" rx="9" fill="#ffffff" opacity="0.05" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="384" y="188" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.5" text-anchor="middle">Demo motoru hazır</text>
+  <text x="254" y="226" font-family="Segoe UI,sans-serif" font-size="18" font-weight="800" fill="#fff">TikTok LIVE stüdyonu başlat</text>
+  <text x="254" y="246" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.42">Yayında olan bir yayıncı gir; sistem gerçek TikTok durumunu doğrular ve Webcast bağlantısı kurar.</text>
+  <rect x="254" y="264" width="104" height="28" rx="9" fill="url(#brand)"/>
+  <text x="306" y="282" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="700" fill="#05060a" text-anchor="middle">Yayın başlat</text>
+  <rect x="366" y="264" width="104" height="28" rx="9" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="418" y="282" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.8" text-anchor="middle">⚡ Otomasyonlar</text>
+  <rect x="478" y="264" width="90" height="28" rx="9" fill="#ffffff" opacity="0.03" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="523" y="282" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#ffffff" opacity="0.55" text-anchor="middle">⌁ Overlay al</text>
+
+  <rect x="712" y="176" width="272" height="156" rx="12" fill="#000000" opacity="0.3" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="728" y="196" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.4" fill="#ffffff" opacity="0.35">OTURUM HEDEFİ</text>
+  <text x="728" y="224" font-family="Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#fff">0<tspan font-size="10" fill="#ffffff" opacity="0.35"> / 25K</tspan></text>
+  <rect x="728" y="234" width="240" height="5" rx="2.5" fill="#ffffff" opacity="0.1"/>
+  <text x="728" y="258" font-family="Segoe UI,sans-serif" font-size="7" letter-spacing="1" fill="#ffffff" opacity="0.3">BEĞENİ</text>
+  <text x="828" y="258" font-family="Segoe UI,sans-serif" font-size="7" letter-spacing="1" fill="#ffffff" opacity="0.3">TAKİPÇİ</text>
+  <text x="728" y="272" font-family="Segoe UI,sans-serif" font-size="10" font-weight="600" fill="#ffffff" opacity="0.85">0</text>
+  <text x="828" y="272" font-family="Segoe UI,sans-serif" font-size="10" font-weight="600" fill="#2ee6a8">+0</text>
+  <g fill="#25f4ee" opacity="0.7">
+    <rect x="728" y="308" width="16" height="14" rx="3"/><rect x="750" y="300" width="16" height="22" rx="3"/>
+    <rect x="772" y="290" width="16" height="32" rx="3"/><rect x="794" y="296" width="16" height="26" rx="3"/>
+    <rect x="816" y="282" width="16" height="40" rx="3"/><rect x="838" y="288" width="16" height="34" rx="3"/>
+    <rect x="860" y="276" width="16" height="46" rx="3"/><rect x="882" y="270" width="16" height="52" rx="3"/>
+  </g>
+  <text x="728" y="324" font-family="Segoe UI,sans-serif" font-size="7" letter-spacing="1" fill="#ffffff" opacity="0.25">SON 10 SAAT OLAY AKIŞI</text>
+
+  <!-- QR card -->
+  <rect x="1020" y="156" width="240" height="196" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="1036" y="178" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="700" fill="#ffffff" opacity="0.88">Yayıncı hızlı erişim</text>
+  <text x="1036" y="192" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.35">QR ile mobil panel veya overlay bağlantısı</text>
+  <rect x="1036" y="206" width="104" height="104" rx="10" fill="#fff"/>
+  <g fill="#05060a">
+    <rect x="1046" y="216" width="26" height="26"/><rect x="1104" y="216" width="26" height="26"/><rect x="1046" y="274" width="26" height="26"/>
+    <rect x="1080" y="248" width="8" height="8"/><rect x="1096" y="264" width="8" height="8"/><rect x="1080" y="280" width="8" height="8"/>
+    <rect x="1104" y="288" width="14" height="14"/><rect x="1082" y="222" width="8" height="8"/><rect x="1112" y="252" width="10" height="10"/>
+  </g>
+  <text x="1152" y="230" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="700" fill="#ffffff" opacity="0.85">Mobil stüdyo</text>
+  <text x="1152" y="246" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffffff" opacity="0.35">Telefonla QR okut, panele</text>
+  <text x="1152" y="257" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffffff" opacity="0.35">bağlan. Overlay URL'lerini</text>
+  <text x="1152" y="268" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#ffffff" opacity="0.35">OBS'e ekle.</text>
+  <rect x="1152" y="278" width="28" height="13" rx="6" fill="#ffffff" opacity="0.06"/><text x="1166" y="287" font-family="Segoe UI,sans-serif" font-size="6.5" fill="#ffffff" opacity="0.5" text-anchor="middle">OBS</text>
+  <rect x="1184" y="278" width="44" height="13" rx="6" fill="#ffffff" opacity="0.06"/><text x="1206" y="287" font-family="Segoe UI,sans-serif" font-size="6.5" fill="#ffffff" opacity="0.5" text-anchor="middle">Pages</text>
+  <text x="1152" y="310" font-family="Segoe UI,sans-serif" font-size="8" fill="#8ffcf8">Windows paketini indir ↗</text>
+
+  <!-- stat cards -->
+  <g>
+    <rect x="236" y="368" width="240" height="112" rx="13" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="252" y="390" font-family="Segoe UI,sans-serif" font-size="7.8" letter-spacing="1.4" fill="#ffffff" opacity="0.4">SANDIK RADARI</text>
+    <text x="252" y="424" font-family="Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#fff">4</text>
+    <text x="252" y="442" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">3 açılış bekliyor · 1.9K jeton</text>
+    <text x="252" y="460" font-family="Segoe UI,sans-serif" font-size="8" font-weight="600" fill="#f7d493">Radara git →</text>
+    <rect x="430" y="378" width="28" height="24" rx="8" fill="#f5b642" opacity="0.14"/>
+
+    <rect x="488" y="368" width="240" height="112" rx="13" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="504" y="390" font-family="Segoe UI,sans-serif" font-size="7.8" letter-spacing="1.4" fill="#ffffff" opacity="0.4">YAYINCI KADROSU</text>
+    <text x="504" y="424" font-family="Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#fff">0</text>
+    <text x="504" y="442" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">0 toplam takipçi</text>
+    <text x="670" y="442" font-family="Segoe UI,sans-serif" font-size="8" font-weight="600" fill="#2ee6a8">0 canlı</text>
+
+    <rect x="740" y="368" width="240" height="112" rx="13" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="756" y="390" font-family="Segoe UI,sans-serif" font-size="7.8" letter-spacing="1.4" fill="#ffffff" opacity="0.4">ELMAS HAVUZU</text>
+    <text x="756" y="424" font-family="Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#fff">0</text>
+    <text x="756" y="442" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">Tüm yayıncıların kümülatif elması</text>
+    <text x="922" y="442" font-family="Segoe UI,sans-serif" font-size="8" font-weight="600" fill="#ff9eb2">≈ ₺0</text>
+
+    <rect x="992" y="368" width="268" height="112" rx="13" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="1008" y="390" font-family="Segoe UI,sans-serif" font-size="7.8" letter-spacing="1.4" fill="#ffffff" opacity="0.4">AÇIK FIRSATLAR</text>
+    <text x="1008" y="424" font-family="Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#fff">0</text>
+    <text x="1008" y="442" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.4">₺0 pipeline</text>
+  </g>
+
+  <!-- systems -->
+  <rect x="992" y="496" width="268" height="196" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="1008" y="518" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="700" fill="#ffffff" opacity="0.88">Sistemler</text>
+  <rect x="1188" y="504" width="58" height="16" rx="8" fill="#2ee6a8" opacity="0.13" stroke="#2ee6a8" stroke-opacity="0.3"/>
+  <text x="1217" y="515" font-family="Segoe UI,sans-serif" font-size="7" font-weight="700" fill="#8df0c9" text-anchor="middle">Çalışıyor</text>
+  <g font-family="Segoe UI,sans-serif" font-size="8.5" fill="#ffffff" opacity="0.7">
+    <rect x="1008" y="528" width="236" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="1018" y="545">LIVE Studio · Webcast event akışı</text>
+    <circle cx="1232" cy="541" r="2.5" fill="#2ee6a8"/>
+    <rect x="1008" y="558" width="236" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="1018" y="575">Radar Scanner · Canlı durum taraması</text>
+    <circle cx="1232" cy="571" r="2.5" fill="#2ee6a8"/>
+    <rect x="1008" y="588" width="236" height="26" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="1018" y="605">Sandık Radarı · 7/24 otomatik tarama</text>
+    <circle cx="1232" cy="601" r="2.5" fill="#2ee6a8"/>
+  </g>
+  <rect x="1008" y="620" width="236" height="22" rx="8" fill="#25f4ee" opacity="0.08" stroke="#25f4ee" stroke-opacity="0.2"/>
+  <text x="1018" y="635" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#9df9f5">Kütüphane entegrasyonu · 6 aktif</text>
+  <rect x="1008" y="650" width="236" height="26" rx="8" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="1126" y="667" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.75" text-anchor="middle">▧  Kütüphane kataloğu</text>
+
+  <!-- opportunity -->
+  <rect x="236" y="496" width="744" height="196" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="252" y="518" font-family="Segoe UI,sans-serif" font-size="10.5" font-weight="700" fill="#ffffff" opacity="0.88">Fırsat radarı</text>
+  <text x="252" y="532" font-family="Segoe UI,sans-serif" font-size="8" fill="#ffffff" opacity="0.35">Eşleşme skoruna göre sıralı marka iş birlikleri</text>
+  <line x1="236" y1="548" x2="980" y2="548" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="620" y="612" font-family="Segoe UI,sans-serif" font-size="9" fill="#ffffff" opacity="0.3" text-anchor="middle">Henüz fırsat yok — Fırsatlar sayfasından marka iş birliği ekleyin.</text>
+  <text x="252" y="664" font-family="Segoe UI,sans-serif" font-size="7.5" letter-spacing="1.2" fill="#ffffff" opacity="0.22">ARENA LIVE OS · TIKTOK LIVE AJANS İŞLETİM SİSTEMİ</text>
+</svg>

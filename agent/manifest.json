@@ -1,36 +1,68 @@
 {
-  "version": "2026-11-18T18:35:18.505Z",
-  "repo": "CehennemGibiyim/Arena",
+  "version": "2026-11-19T00:05:05.980Z",
+  "repo": "CehennemGibiyim/ArenaSol",
   "branch": "main",
-  "rawBase": "https://raw.githubusercontent.com/CehennemGibiyim/Arena/main/",
+  "rawBase": "https://raw.githubusercontent.com/CehennemGibiyim/ArenaSol/main/",
   "files": {
     "agent/arena-agent.mjs": {
-      "sha256": "3dbf38fd613dab6105d6b25dafece0b600cc7c1898dfe692bfb7a25bbf793eaf",
-      "size": 9207
+      "sha256": "c873a6899f909411b170e3338934c4839987ac5526c341c7ec9f1960deec7d70",
+      "size": 18873
     },
     "agent/collect.mjs": {
-      "sha256": "c2eafa570afdc6a3ab698509d410810768d77775a5dbf5a51805987f9038aaff",
-      "size": 8280
+      "sha256": "a04a666c91df7b265d6466fcb8ac5f645201f7c739ca1503982c75bc28c68b72",
+      "size": 11497
     },
     "agent/update.mjs": {
-      "sha256": "3174233d9c11e7a34cd2c9bce5df37dbed3b4727507a26362fc1276f228e1dbe",
-      "size": 3519
+      "sha256": "bf694a6931c963f91d33ce9209ad2000482cebc50e4ae8bd9fa70cfa351373ce",
+      "size": 5472
+    },
+    "agent/baslat.bat": {
+      "sha256": "3acb289db99d07ce34b91d2e25aacb918b391837569d3b7b388daa79b19540db",
+      "size": 253
     },
     "Arena-Agent.bat": {
-      "sha256": "916a94e1bedc663ca46d991099bdb28da1533ac76a9ab7ec9675a3a7e36189f8",
-      "size": 414
+      "sha256": "1d9dcd57dda3e426bbecfbe7bba5bc19067afc743c2af029138c7af25fb4041a",
+      "size": 645
     },
-    "docs/app.js": {
-      "sha256": "44721502d1b491eef33005a2cad4cde22adaf36c15e450af6c5f68a1799fbb8c",
-      "size": 3041
+    "Arena-Live-OS.bat": {
+      "sha256": "ebeff1101fdc10a9e0011d37e497c2d4e798ca29448902734043aa41b12055b4",
+      "size": 1532
+    },
+    "KURULUM.bat": {
+      "sha256": "47ab85df0f7f10d933a1f7180f68bbaab75aa88edabf5a49c96861f8d4e158c7",
+      "size": 1263
+    },
+    "Durdur.bat": {
+      "sha256": "cb925edead42e56b8b24f8a1bdc4a073606afae4551a99c2d974d3e682643bea",
+      "size": 419
     },
     "docs/index.html": {
-      "sha256": "06a5deb517640437c936f891f6dce3a047b7eb0561bb285eccbf30a7aa592fa8",
-      "size": 1133
+      "sha256": "b31cf331febbe2b423b49d32989364704682c1d10df9ff427e0edde6fedb7c47",
+      "size": 6079
+    },
+    "docs/app.js": {
+      "sha256": "e3f7706262eec69897581d0eda7789e05cc5b602512d53c55b6a66c9325ce408",
+      "size": 8140
     },
     "docs/style.css": {
-      "sha256": "f5409c5098b29b453e1fb1d134fce112ee68773f658aa8d203540afe55eefbc9",
-      "size": 1676
+      "sha256": "79a74e6f0f3303140d34a46fded1797fda409bf90df7f38e5100ff1edf38658c",
+      "size": 10526
+    },
+    "docs/yardim.html": {
+      "sha256": "43c87ba243ee7cb24a039f9efc428d04b10925bb6c111f7910ac5da05c56d7e1",
+      "size": 9357
+    },
+    "docs/data/rooms.json": {
+      "sha256": "28adc08b56060691a37755196194c92b1a4552b549081b0a6d241494d8f79ef0",
+      "size": 3870
+    },
+    "docs/data/chests.json": {
+      "sha256": "279dcf027e82185130b788888fdd311a52a4b584e31eb0f800c7cfc495bb5185",
+      "size": 77
+    },
+    "docs/data/status.json": {
+      "sha256": "e01a8dfe352c5c95c62740879ccecffc5d7abff7a1514580614640db654359af",
+      "size": 323
     },
     "public/arena-widget.js": {
       "sha256": "c87ad2a77c60f9031462593a33581466f996ce82aa8c9930b74db5c310a8ccff",

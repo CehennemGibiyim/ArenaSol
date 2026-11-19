@@ -1,26 +1,43 @@
 # Arena Live OS — Windows Kurulum Rehberi
 
-> TikTok LIVE ajansları için canlı yayın stüdyosu, radar, bot, overlay sunucusu ve gelir muhasebesi.
+> TikTok LIVE ajansları için canlı yayın stüdyosu, radar, 7/24 sandık taraması ve gelir muhasebesi.
+
+![Windows kurulum adımları](../public/help/windows-kurulum.svg)
 
 ## 1. Gereksinimler
 
 | Bileşen | Sürüm | Not |
 | --- | --- | --- |
 | Windows | 10 / 11 (64-bit) | Windows Server 2019+ da desteklenir |
-| Node.js | 20 LTS veya üzeri | https://nodejs.org |
+| Node.js | 22 LTS (min 20) | https://nodejs.org |
 | PostgreSQL | 14+ | Yerel kurulum önerilir |
-| PowerShell | 5.1+ | Yönetici olarak çalıştırın |
+| PowerShell | 5.1+ | Yönetici gerekmez |
 
-## 2. Hızlı kurulum (paket)
+## 2. Kurulum paketi (önerilen)
 
-1. `Arena-Live-OS-windows.zip` dosyasını indirin ve bir klasöre çıkartın.
-2. `KURULUM.bat` dosyasına çift tıklayın.
-3. Sihirbaz; `.env` oluşturur, `npm ci` çalıştırır, veritabanı şemasını uygular (`drizzle-kit push`) ve production build alır.
-4. Kurulum sonunda `Arena-Live-OS.bat` dosyasını çalıştırın.
-5. Tarayıcıda `http://localhost:3000` açılır. Kurulum verisi (izleme listesi + ayarlar) için:
+1. [Releases](https://github.com/CehennemGibiyim/ArenaSol/releases) → en yeni sürüm.
+2. `ArenaLiveOS-Setup-<sürüm>.exe` dosyasını çalıştır (kullanıcı dizinine kurulur, yönetici istemez).
+3. Masaüstündeki **Arena Live OS** kısayolunu aç.
 
-```powershell
-Invoke-RestMethod -Method Post "http://localhost:3000/api/demo/seed"
+Taşınabilir sürüm:
+
+1. `Arena-Live-OS-<sürüm>-windows.zip` arşivini bir klasöre çıkar.
+2. `KURULUM.bat` dosyasına çift tıkla.
+
+Kurulum sihirbazı (`scripts/install-windows.ps1`) şunları yapar:
+
+- Node.js sürüm kontrolü
+- `.env` oluşturma ve `DATABASE_URL` sorma (mevcut `.env` korunur)
+- `npm ci` (lockfile varsa), `npx drizzle-kit push`, `npm run build`
+- Agent manifesti hazırlama, masaüstü kısayolu
+
+Bitişte:
+
+```text
+Panel      : http://localhost:3000
+Başlat     : Arena-Live-OS.bat
+Durdur     : Durdur.bat
+Yardım     : http://localhost:3000/yardim
 ```
 
 ## 3. Manuel kurulum
@@ -28,7 +45,7 @@ Invoke-RestMethod -Method Post "http://localhost:3000/api/demo/seed"
 ```powershell
 cd Arena-Live-OS
 copy .env.example .env
-notepad .env                     # DATABASE_URL değerini düzenleyin
+notepad .env                     # DATABASE_URL düzenle
 npm ci
 npx drizzle-kit push
 npm run build
@@ -43,7 +60,49 @@ CREATE DATABASE app_db;
 
 Bağlantı dizesi: `postgresql://postgres:SIFRE@127.0.0.1:5432/app_db`
 
-## 5. Servis olarak çalıştırma (opsiyonel)
+## 5. Açılış akışı
+
+`Arena-Live-OS.bat` sırayla:
+
+1. `node_modules` yoksa `npm ci`
+2. `agent/update.mjs` → GitHub manifest + sha256 karşılaştırması, değişenleri indirir
+3. `.next` yoksa `npm run build`
+4. `http://localhost:3000` açar
+5. Ayrı pencerede `agent/arena-agent.mjs` çalışır (3 sn'de bir veri, sandık açma, `4780` durum sunucusu)
+6. `npm run start` ile paneli ayakta tutar
+
+## 6. Otomatik güncelleme
+
+| Adım | Davranış |
+| --- | --- |
+| Açılış | `agent/update.mjs` tam kontrol |
+| Çalışırken | Her `UPDATE_CHECK_SECONDS` (varsayılan 1800 sn) kontrol |
+| Çalışan `.mjs` | Windows kilidi nedeniyle `.pending` bırakılır, sonraki açılışta uygulanır |
+| Korunanlar | `.env`, veritabanı, `agent/data/*` |
+| Sonuç dosyası | `agent/data/update.json` |
+
+Depo değiştirmek için `.env`:
+
+```env
+ARENA_REPO=CehennemGibiyim/ArenaSol
+ARENA_BRANCH=main
+```
+
+## 7. Sandık açma asistanı
+
+```env
+AUTO_JOIN=1
+AUTO_JOIN_MIN_RATIO=1
+AUTO_JOIN_MIN_COINS=100
+AUTO_JOIN_LEAD_SECONDS=20
+AUTO_JOIN_COOLDOWN_SECONDS=1800
+```
+
+Ajan, eşiği geçen sandığın açılışına 20 sn kala `https://www.tiktok.com/@kullanıcı/live` adresini varsayılan tarayıcıda açar, `agent/data/alerts.jsonl` dosyasına kaydeder. Aynı sandık için cooldown vardır.
+
+> Sandık açma asistanı yalnızca yayını açar ve bildirir; **jeton toplamaz**. TikTok zarf/jeton toplama mobil oturum ister, betik hesabınıza giriş yapmaz ve sizin adınıza talep göndermez.
+
+## 8. Servis olarak çalıştırma (opsiyonel)
 
 NSSM ile arka plan servisi:
 
@@ -54,50 +113,39 @@ nssm set ArenaLiveOS AppEnvironmentExtra PORT=3000 DATABASE_URL=postgresql://...
 nssm start ArenaLiveOS
 ```
 
-## 6. EXE / kurulum dosyası üretme
+## 9. Kurulum dosyası üretme (geliştirici)
 
 ```powershell
 npm run build
-node scripts/build-exe.js
-# İsteğe bağlı portable Node:
-$env:ARENA_PORTABLE_NODE=1; node scripts/build-exe.js
-# NSIS kurulum dosyası (makensis kurulu ise):
-makensis scripts/installer.nsi
+npm run windows:bundle                 # release/Arena-Live-OS + zip
+$env:ARENA_PORTABLE_NODE=1; npm run windows:bundle   # node.exe'yi de göm
+npm run windows:installer              # makensis kuruluysa setup.exe
 ```
 
-Çıktı: `release/Arena-Live-OS/` klasörü + `ArenaLiveOS-Setup-1.1.0.exe`.
+GitHub Actions bunu otomatik yapar: `.github/workflows/windows-release.yml` → Release'e `.exe` + `.zip` yükler.
 
-> **Not:** Next.js sunucusu Node runtime gerektirir. `build-exe.js` bu nedenle portable bir klasör + çift tıkla çalışan başlatıcı üretir; NSIS ile tek dosya kurulum paketine dönüştürülür. Tamamen tek `.exe` isteyenler için Electron/Tauri sarmalayıcı veya `ARENA_PORTABLE_NODE=1` ile gömülü `node.exe` kullanın.
-
-## 7. TikTok LIVE bağlantısı
-
-- `tiktok-live-connector` paketi kurulumla birlikte gelir (`package.json`).
-- Panel → **Canlı Stüdyo** → kullanıcı adı → **Yayına bağlan**.
-- Yayın aktif ve TikTok Webcast erişilebilirse gerçek bağlantı kurulur; aksi halde otomatik olarak demo motoru ile tüm panel canlı çalışır.
-- Okuma (chat, hediye, sandık) için kimlik gerekmez; sadece **mesaj gönderme** özelliği için `TIKTOK_SESSION_ID` ve `TT_TARGET_IDC` gerekir. Ayarlar sayfasından da girilebilir.
-- Connector durumu: `GET /api/live/status`.
-
-## 8. Sorun giderme
+## 10. Sorun giderme
 
 | Belirti | Çözüm |
 | --- | --- |
-| `DATABASE_URL is required` | `.env` dosyasında bağlantı dizesi eksik |
-| `ECONNREFUSED 5432` | PostgreSQL servisi kapalı: `Get-Service postgresql*` |
-| Port 3000 dolu | `Durdur.bat` çalıştırın veya `PORT=3100 npm run start` |
-| Connector bağlanmıyor | TikTok Webcast bölgesel engeli veya yayın kapalı; hata mesajını kontrol edin |
-| Build yavaş | `npm run build` ilk seferde 1-2 dk sürebilir |
+| `DATABASE_URL is required` | `.env` içinde bağlantı dizesi eksik |
+| `ECONNREFUSED 5432` | `Get-Service postgresql*` → `Start-Service` |
+| Port 3000 dolu | `Durdur.bat` veya `.env` içinde `PORT=3100` |
+| Sandık listesi boş | `docs/data/status.json` ve Actions logları; veri yoksa sahte kayıt üretilmez |
+| Connector bağlanmıyor | TikTok Webcast bölgesel engeli veya yayın kapalı |
+| Güncelleme inmedi | İnternet + `ARENA_REPO`; ajan 30 dk'da bir yeniden dener |
 
-## 9. Güncelleme
+## 11. Güncelleme (git ile çalışanlar)
 
 ```powershell
-git pull            # veya yeni zip'i üzerine yazın (.env korunur)
+git pull
 npm ci
 npx drizzle-kit push
 npm run build
 ```
 
-Otomatik yedek için `pg_dump app_db > yedek.sql` komutunu planlayın.
+Otomatik yedek: `pg_dump app_db > yedek.sql`
 
-## 10. Lisans / uyarı
+## 12. Lisans / uyarı
 
 TikTok LIVE verisi resmi olmayan Webcast protokolü üzerinden okunur. `tiktok-live-connector` MIT lisanslıdır ve TikTok ile bağlantılı değildir. Yalnızca kamuya açık yayınların okunması önerilir.

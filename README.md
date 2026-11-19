@@ -1,82 +1,172 @@
 # Arena Live OS
 
-TikTok LIVE ajansları için uçtan uca işletim paneli. Next.js (App Router) + PostgreSQL + Drizzle ORM üzerine kurulu; `tiktok-live-connector` ile erişilebilen gerçek LIVE olaylarını okur; veri yoksa uydurma sandık üretmez.
+TikTok LIVE ajansları için uçtan uca işletim paneli: canlı stüdyo, sandık radarı, otomatik keşif, overlay kütüphanesi ve Windows kurulum paketi.
 
-> Bu sürüm, `CehennemGibiyim/Arena` deposunun (TikTok ajans paneli) incelenmesi ve TikTok ekosistemindeki açık kaynak kütüphanelerin analizi sonrası geliştirilmiştir.
->
-> **GERÇEK VERİ KURALI:** Panelde demo/simülasyon verisi YOKTUR. Canlı durum, izleyici sayısı, hediye elması ve sandık zarfı yalnızca gerçek TikTok uçlarından gelir. Yayında olmayan hesap için oturum açılmaz; veri yoksa liste boş kalır ve neden açıklanır.
->
-> **KEŞİF KAPSAMI:** Bölge feed’i yalnızca `EULER_API_KEY` (EulerStream Business) varsa çalışır. Anahtarsız kullanımda kayıtlı hesaplar + sabitlenen odalar + [Tik.Tools açık örnek liste](docs/RADAR-DINLEME.md) (en fazla 10 yayın, IP başına 5 dakikada 1 istek) kontrol edilir. Bu dünya taraması değildir; kaynak boşsa boş olarak raporlanır.
+**Web (GitHub Pages):** https://cehennemgibiyim.github.io/ArenaSol/ · **Yardım:** [`docs/yardim.html`](docs/yardim.html) · **Windows:** [Releases](https://github.com/CehennemGibiyim/ArenaSol/releases)
+
+![Panel genel görünümü](public/help/panel-genel.svg)
+
+> **GERÇEK VERİ KURALI:** Panelde demo/simülasyon sandığı yoktur. Canlı durum, izleyici, hediye elması ve sandık zarfı yalnızca gerçek TikTok uçlarından veya GitHub tarama verisinden gelir. Yayında olmayan hesap için oturum açılmaz; veri yoksa liste boş kalır ve nedeni yazılır.
+
+## İçindekiler
+
+- [Öne çıkan sistemler](#öne-çıkan-sistemler)
+- [7/24 otomatik tarama (sen sistemde olmasan da)](#7/24-otomatik-tarama-sen-sistemde-olmasan-da)
+- [Windows kurulum paketi](#windows-kurulum-paketi)
+- [Açılışta otomatik güncelleme](#açılışta-otomatik-güncelleme)
+- [Sandık açma asistanı](#sandık-açma-asistanı)
+- [Hızlı başlangıç (web + yerel panel)](#hızlı-başlangıç-web--yerel-panel)
+- [Dosya haritası](#dosya-haritası)
+- [API](#api)
+- [Kapsam ve dürüst sınırlar](#kapsam-ve-dürüst-sınırlar)
 
 ## Öne çıkan sistemler
 
 | Sistem | Açıklama | Uç |
 | --- | --- | --- |
-| **Canlı Stüdyo** | Chat, hediye, beğeni, takip, paylaşım olayları; top gifter tablosu, hedef barı, oturum geçmişi | `/canli`, `POST /api/live/sessions` |
-| **Radar** | Toplu canlı durum kontrolü (`fetchIsLive`), aday skorlama, pipeline yönetimi | `/radar`, `POST /api/live/check` |
-| **Sandık Radarı** | Canlı yayınlardaki sandıkları (treasure chest) ve hediye elmasını ayrı ölçer: jeton, kontenjan, katılan, oran (jeton ÷ kontenjan), izleyici, açılış geri sayımı, QR ile telefondan katılma, manuel jeton toplama. 16 hazır sekme + gelişmiş filtreler + 9 sıralama anahtarı | `/sandik`, `GET /api/chests`, `GET /api/chests/stream` (SSE), `GET /api/chests/export` |
-| **Canlı Yayınlar** | Keşfedilen yayıncılar kalıcıdır; sabitleme (pin), izleyici/sandık/en iyi oran takibi, elle yayıncı ekleme, eşzamanlı tarama görev listesi | `/yayinlar`, `GET /api/rooms`, `PATCH /api/rooms/[id]` |
-| **Eşzamanlı tarayıcı** | Worker pool ile aynı anda N oda paralel dinlenir; her doğrulanmış oda kalıcı `listener_jobs` sırasına eklenir | `POST /api/radar/scan` |
-| **Küresel bölge kapsamı** | 123 bölge paralel taranır (TR/US/GB/DE/FR/…/JP/BR/NG/AU); bölge başına hata izolasyonu ve canlı oda raporu | `POST /api/radar/scan` (TÜM DÜNYA), `GET /api/radar/scan?regions=list` |
-| **Local Agent** | Kendi bilgisayarınızda çalışan paralel toplayıcı; sandık + jeton akışını panele yazar | `agent/arena-agent.mjs`, `POST /api/ingest` |
-| **Chat Botu** | Tetikleyici/yanıt/cooldown kuralları, eşleşme simülatörü, demo akışında otomatik yanıt | `/bot`, `api/resources/commands` |
-| **Uyarı Motoru** | Hediye eşik alarmları, overlay/ses/Telegram aksiyonları | `api/resources/alerts` |
-| **Overlay Sunucusu** | OBS browser source için hedef barı, top gifter, sohbet, alert, stats widget'ları | `/overlay/[slug]`, `GET /api/live/feed` |
-| **GitHub Web Kütüphanesi** | Zero-dependency `arena-widget.js`, GitHub Pages workflow'u, statik overlay | `GET /api/packages/library` |
-| **Windows Paketi** | `KURULUM.bat`, PowerShell sihirbazı, portable başlatıcı, NSIS şablonu | `GET /api/packages/windows` |
-| **Gelir** | Elmas→TL/USD hesaplayıcı, komisyon, tahsilat durumu | `/gelir` |
-| **Fırsatlar / Ajanslar / Hesaplar** | Tam CRUD, CSV dışa aktarım, arama ve filtreler | `/firsatlar`, `/ajanslar`, `/hesaplar` |
-| **AI Koç** | Yayın senaryosu, hediye stratejisi, marka teklifi; OpenAI opsiyonel | `/ai`, `POST /api/ai/chat` |
+| **Canlı Stüdyo** | Chat, hediye, beğeni, takip, paylaşım; top gifter, hedef barı, oturum geçmişi | `/canli`, `POST /api/live/sessions` |
+| **Radar** | Toplu canlı durum kontrolü (`fetchIsLive`), aday skorlama, pipeline | `/radar`, `POST /api/live/check` |
+| **Sandık Radarı** | Sandık/çanta, jeton, kontenjan, oran, açılış geri sayımı, QR ile katılma, 16 sekme, 9 sıralama | `/sandik`, `GET /api/chests`, `GET /api/chests/stream` (SSE) |
+| **Canlı Yayınlar** | Keşfedilen yayıncılar kalıcı, sabitleme, izleyici/sandık takibi | `/yayinlar`, `GET /api/rooms` |
+| **Eşzamanlı tarayıcı** | Worker pool ile N oda paralel dinleme; doğrulanan oda `listener_jobs` sırasına girer | `POST /api/radar/scan` |
+| **Küresel kapsam** | 123 bölge paralel tarama (EULER_API_KEY ile bölge feed'i) | `POST /api/radar/scan` |
+| **Local Agent** | Kendi bilgisayarında çalışan paralel dinleyici + sandık açma asistanı | `agent/arena-agent.mjs`, `POST /api/ingest` |
+| **GitHub Web Kütüphanesi** | Zero-dependency `arena-widget.js`, GitHub Pages, OBS overlay | `GET /api/packages/library` |
+| **Windows Paketi** | `KURULUM.bat`, PowerShell sihirbazı, NSIS setup, portable zip, otomatik güncelleme | `GET /api/packages/windows`, Releases |
+| **Panel İçi Yardım** | Resimli kurulum/kullanım rehberi, ortam değişkenleri, sorun giderme | `/yardim` |
+| **Gelir / Fırsatlar / Hesaplar** | Elmas→TL, komisyon, tahsilat; tam CRUD, CSV | `/gelir`, `/firsatlar`, `/hesaplar` |
+| **AI Koç** | Yayın senaryosu, hediye stratejisi, marka teklifi (OpenAI opsiyonel) | `/ai`, `POST /api/ai/chat` |
 
-## Hata dayanıklılığı
+![Sandık radarı](public/help/sandik-radari.svg)
 
-Tüm API rotaları hata yutar: geçersiz kimlik → `400`, bulunamayan kayıt → `404`, veritabanı/uzak uç hatası → açıklayıcı JSON (liste uçları `200` + `error` alanı ile bozulmadan yanıt verir). Tarayıcı döngüsü hata olsa bile ayakta kalır. QR üretimi başarısız olsa bile SVG fallback döner. UI'da her boş/başarısız durum için açıklama metni vardır.
+## 7/24 otomatik tarama (sen sistemde olmasan da)
 
-## Hızlı başlangıç
+Tarama **GitHub Actions** üzerinde çalışır; panel veya bilgisayarın kapalı olsa da veri birikir.
+
+![Veri akışı](public/help/veri-akisi.svg)
+
+| Bileşen | Görev |
+| --- | --- |
+| `.github/workflows/collect.yml` | Her **5 dakikada** `agent/collect.mjs` çalışır: keşif → `check_alive` doğrulama → kısa WebSocket dinleme → zarf yakalama |
+| `docs/data/rooms.json` | Doğrulanmış canlı odalar (izleyici, kaynak, bölge) |
+| `docs/data/chests.json` | Aktif sandıklar (jeton, kontenjan, oran, açılış); önceki turun süresi geçmemiş sandıkları korunur |
+| `docs/data/status.json` | Heartbeat: son tur, süre, aday/canlı/sandık sayısı |
+| `.github/workflows/deploy.yml` | `docs/` klasörünü GitHub Pages'e yayınlar |
+
+**Kapsam:** izleme listesi (`WATCHLIST`) + sabitlenen odalar + [Tik.Tools açık listesi](https://tik.tools/docs) (en fazla 10 yayın) + `EULER_API_KEY` varsa bölge feed'i. Liste boşsa boş olarak raporlanır; sahte kayıt üretilmez. Detay: [docs/RADAR-DINLEME.md](docs/RADAR-DINLEME.md)
+
+## Windows kurulum paketi
+
+![Windows kurulum](public/help/windows-kurulum.svg)
+
+Kurulum paketi GitHub Actions içinde **otomatik derlenir** ([`.github/workflows/windows-release.yml`](.github/workflows/windows-release.yml)):
+
+1. `npm ci` → `npm run typecheck` → `npm run build`
+2. `node scripts/build-exe.mjs` → `release/Arena-Live-OS/` + portable zip
+3. `makensis scripts/installer.nsi` → `release/ArenaLiveOS-Setup-<sürüm>.exe`
+4. GitHub Release'e yüklenir (`.exe` + `.zip` artifact)
+
+Kullanıcı tarafı:
+
+```text
+ArenaLiveOS-Setup-1.2.0.exe   → çift tıkla, kur, masaüstü kısayolunu aç
+Arena-Live-OS-1.2.0-windows.zip → aç → KURULUM.bat
+```
+
+```bat
+KURULUM.bat        :: Node kontrolü, .env, npm ci, drizzle push, build, masaüstü kısayolu
+Arena-Live-OS.bat  :: güncelleme kontrolü → panel (localhost:3000) + ajan
+Durdur.bat         :: panel ve ajanı kapatır
+```
+
+Gereksinim: **Windows 10/11 64-bit · Node.js 22 LTS · PostgreSQL 14+**. Ayrıntı: [docs/WINDOWS-KURULUM.md](docs/WINDOWS-KURULUM.md)
+
+## Açılışta otomatik güncelleme
+
+`agent/update.mjs` her açılışta `raw.githubusercontent.com/<repo>/main/agent/manifest.json` dosyasını indirir ve dosya bazında **sha256** karşılaştırır:
+
+- Farklı dosyalar indirilir, `.mjs` betikleri Windows'ta kilitli olduğu için `.pending` bırakılır; sonraki açılışta devreye girer.
+- `.env`, veritabanı ve kullanıcı verisi korunur.
+- Ajan çalışırken **30 dakikada bir** yeniden kontrol eder (`UPDATE_CHECK_SECONDS`).
+- Sonuç `agent/data/update.json` dosyasına yazılır.
+
+Manifest'i güncellemek için:
+
+```bash
+npm run manifest   # = node scripts/build-agent-manifest.mjs
+```
+
+## Sandık açma asistanı
+
+Windows ajanı sandık açılışına yaklaşınca yayını otomatik açar ve bildirim gönderir:
+
+```env
+AUTO_JOIN=1
+AUTO_JOIN_MIN_RATIO=1        # oran = jeton ÷ kontenjan
+AUTO_JOIN_MIN_COINS=100
+AUTO_JOIN_LEAD_SECONDS=20    # açılıştan kaç saniye önce
+AUTO_JOIN_COOLDOWN_SECONDS=1800
+POLL_SECONDS=3               # GitHub verisi yenileme
+```
+
+- Veri GitHub Pages'ten **3 saniyede** bir yenilenir, yoksa panel SSE (`/api/chests/stream`) ile anında itilir.
+- Aynı sandık için tekrar açma koruması vardır; tüm açmalar `agent/data/alerts.jsonl` dosyasına yazılır.
+- Yerel hızlı durum sayfası: `http://localhost:4780` (panel kapalıyken de sandık listesi).
+
+> **Dürüst sınır:** Sandık açma asistanı yalnızca yayını açar ve bildirir; **jeton toplamaz**. TikTok zarf/jeton toplama mobil oturum ister; sistem hesabına giriş yapmaz ve senin adına talep göndermez.
+
+## Hızlı başlangıç (web + yerel panel)
+
+### Web paneli (GitHub Pages)
+
+1. Depo → **Settings → Pages** → Source: **GitHub Actions**
+2. **Actions → Deploy web panel to GitHub Pages** çalıştır
+3. `https://<kullanıcı>.github.io/ArenaSol/` adresini aç · Yardım: `/yardim.html`
+
+### Yerel panel
 
 ```bash
 npm ci
-cp .env.example .env       # DATABASE_URL düzenle
+cp .env.example .env          # DATABASE_URL düzenle
 npx drizzle-kit push
 npm run build && npm run start
-# İlk veri:
-# Kurulum verisi + gerçek canlı kontrol (sahte veri üretmez):
+# İlk veri (sahte sandık üretmez):
 curl -X POST http://localhost:3000/api/demo/seed
 ```
 
-Windows için: `KURULUM.bat` → `Arena-Live-OS.bat`. Detay: [docs/WINDOWS-KURULUM.md](docs/WINDOWS-KURULUM.md)
+Panel: `http://localhost:3000` · Yardım: `http://localhost:3000/yardim` · Ajan: `agent/baslat.bat` veya `Arena-Agent.bat`
 
-GitHub Pages overlay kütüphanesi: [docs/WEB-KUTUPHANE.md](docs/WEB-KUTUPHANE.md)
+## Dosya haritası
 
-## LiveMira premium özellikleri — hepsi ücretsiz
-
-| LiveMira planı | Özellik | Arena |
-| --- | --- | --- |
-| Free | Oran 1, çanta Lv 2–10, açılış sırası | ✅ |
-| Plus | **20/16 sandık**, altın sandık, askıda sandık, oran ≥2, oran ≥4, çanta Lv 0/1, süre filtresi, gelişmiş filtreler | ✅ ücretsiz |
-| Pro | **Kısmet ≥7**, özel filtreler, sınırsız oda | ✅ ücretsiz |
-| Bot servisi | Telegram/Discord uyarısı, 500–1000 eşzamanlı oda | ✅ ücretsiz, sınırsız |
-| Uygulama | Mini pencere, ses eşiği, çoklu dil, sabit sıra, duraklat | ✅ `/sandik` |
-
-Oran formülü LiveMira ile aynıdır: `oran = jeton ÷ kontenjan` (500 jeton / 100 kişi = 5).
-
-## Kütüphane entegrasyonları
-
-- **tiktok-live-connector** (Node.js) — canlı motor, gerçek Webcast bağlantısı
-- **TikTokLive** (Python), **TikTokLiveSharp**, **TikTokLiveJava**, **TikTokLiveRust**, **gotiktoklive** — katalogda; dil bazlı genişleme için hazır
-- **SandıkRadar** (orucmehmet-code) — sandık/çanta radarının açık kaynak referans mimarisi: GiftFlow combo sayımı, EnvelopeEvent zarf yakalama, Euler feed keşfi, imzasız canlı kontrol. Arena'nın sandık motoru bu mimariden türetildi
-- **LiveMira (dichvu321)** — dünya çapında sandık keşfi + Telegram bot servisi; Arena'nın sandık radarı bu ürünün açık kaynak karşılığıdır
-- **EulerStream Business API** — bölge bazlı keşif feed'i (`EULER_API_KEY` ile bağlanır)
-- **tiklive**, **TikTok-Chat-Reader** — overlay ve chat UI referansları
-- **EulerStream TikTok Live API** — yönetilen WebSocket alternatifi
-- **TikTok-Api**, **tiktok-scraper** — radar ve içerik keşfi için veri kaynakları
-
-Katalog panelde `/kutuphane` sayfasında canlı olarak listelenir (`library_items` tablosu).
+```text
+.github/workflows/
+  collect.yml          7/24 tarama (5 dk) → docs/data/*.json commit
+  deploy.yml           GitHub Pages yayını
+  windows-release.yml  Windows setup.exe + zip → GitHub Release
+agent/
+  collect.mjs          Actions tarayıcısı (keşif + doğrulama + dinleme)
+  arena-agent.mjs      Windows ajanı: GitHub verisi, SSE, sandık açma, 4780 durum
+  update.mjs           Açılışta/çalışırken GitHub güncelleme kontrolü
+  manifest.json        Dosya özetleri (npm run manifest)
+scripts/
+  install-windows.ps1  Kurulum sihirbazı
+  build-exe.mjs        Portable paket + zip
+  installer.nsi        NSIS kurulum betiği
+  build-agent-manifest.mjs
+docs/                  GitHub Pages paneli + yardım + veri
+public/help/*.svg      README ve panel içi yardım görselleri
+src/app/yardim/        Panel içi resimli rehber
+```
 
 ## API
 
-`GET /api/rooms` · `POST /api/rooms` · `PATCH/DELETE /api/rooms/[id]` · `POST /api/ingest` (local agent) · `GET /api/chests/export` · `GET /api/health` · `GET /api/live/status` · `GET/POST /api/live/sessions` · `GET /api/live/sessions/[id]` · `GET/POST /api/live/check` · `GET /api/live/feed` · `GET /api/chests` (filtreli sandık listesi + tab sayaçları) · `GET /api/chests/stream` (SSE) · `GET/PATCH/DELETE /api/chests/[id]` (detay, QR, toplama) · `GET/POST /api/radar/scan` (otomatik tarayıcı) · `GET/PUT /api/settings` · `GET/POST /api/resources/[resource]` · `PATCH/DELETE /api/resources/[resource]/[id]` · `GET /api/qr?text=` · `POST /api/ai/chat` · `POST /api/demo/seed?force=1` · `GET /api/packages/windows` · `GET /api/packages/library`
+`GET /api/rooms` · `POST /api/rooms` · `PATCH/DELETE /api/rooms/[id]` · `POST /api/ingest` · `GET /api/chests` · `GET /api/chests/stream` (SSE) · `GET/PATCH/DELETE /api/chests/[id]` · `GET /api/chests/export` · `GET/POST /api/live/sessions` · `GET /api/live/feed` · `GET/POST /api/live/check` · `GET/POST /api/radar/scan` · `GET/PUT /api/settings` · `GET/POST /api/resources/[resource]` · `PATCH/DELETE /api/resources/[resource]/[id]` · `GET /api/qr?text=` · `POST /api/ai/chat` · `POST /api/demo/seed?force=1` · `GET /api/packages/windows` · `GET /api/packages/library` · `GET /api/health`
 
-## Uyarı
+## Kapsam ve dürüst sınırlar
 
-TikTok LIVE verisi resmi olmayan Webcast protokolünden okunur. `tiktok-live-connector` MIT lisanslıdır ve TikTok ile bağlantılı değildir. Yalnızca kamuya açık yayınları okumak için kullanın.
+- Anahtarsız "bütün ülkeler" feed'i yoktur; anahtarsız kapsam kayıtlı hesaplar + sabitlenenler + bulunan odalar + 10 yayınlık açık listedir. Ölçümler: [docs/RADAR-DINLEME.md](docs/RADAR-DINLEME.md)
+- Sandık olayı bazı yayınlarda hiç iletilmeyebilir; tespit garantisi yoktur. Eksik kimlik/jeton/kontenjan için kayıt açılmaz.
+- Sandık açma hesabınıza giriş yapmaz; TikTok mobil oturumu gerektirir.
+- TikTok LIVE verisi resmi olmayan Webcast protokolünden okunur. `tiktok-live-connector` MIT lisanslıdır ve TikTok ile bağlantılı değildir. Yalnızca kamuya açık yayınları okumak için kullanın.
+
+MIT · Arena Live OS

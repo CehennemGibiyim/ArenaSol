@@ -142,7 +142,7 @@ export function LiveRooms() {
   }, [sort, desc, onlyLive, onlyPinned]);
 
   useEffect(() => {
-    void load();
+    queueMicrotask(() => void load());
     const timer = setInterval(() => void load(), 12000);
     return () => clearInterval(timer);
   }, [load]);
@@ -545,6 +545,7 @@ export function LiveRooms() {
               <Link href="/sandik" className="btn btn-primary flex-1 !text-[11px]">
                 <Gift size={12} /> Sandık radarı
               </Link>
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- /api CSV indirme ucu, sayfa değil */}
               <a href="/api/chests/export" className="btn !text-[11px]">
                 <ExternalLink size={12} /> CSV
               </a>

@@ -47,7 +47,7 @@ export function LiveChestFeed() {
   }, []);
 
   useEffect(() => {
-    void load();
+    queueMicrotask(() => void load());
     const data = setInterval(() => void load(), 8_000);
     const tick = setInterval(() => setNow(Date.now()), 1_000);
     return () => { clearInterval(data); clearInterval(tick); };

@@ -13,6 +13,7 @@ import {
   ChevronRight,
   LayoutDashboard,
   Library,
+  LifeBuoy,
   Menu,
   MonitorDown,
   Radar,
@@ -57,6 +58,7 @@ const NAV = [
     items: [
       { href: "/kutuphane", label: "Kütüphane", icon: Library },
       { href: "/windows", label: "Windows Paketi", icon: MonitorDown },
+      { href: "/yardim", label: "Yardım", icon: LifeBuoy },
       { href: "/ayarlar", label: "Ayarlar", icon: Settings },
     ],
   },
@@ -76,17 +78,21 @@ const TITLES: Record<string, string> = {
   "/ai": "AI Koç",
   "/kutuphane": "Kütüphane",
   "/windows": "Windows Paketi",
+  "/yardim": "Yardım",
   "/ayarlar": "Ayarlar",
 };
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
   const [online, setOnline] = useState<{ available: boolean; version: string; detail: string } | null>(null);
 
-  useEffect(() => {
+  // Rota değişince menüyü kapat (effect yerine render sırasında durum düzeltme).
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (pathname.startsWith("/overlay")) return;

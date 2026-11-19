@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arena Live OS — Yardım & Kurulum Rehberi</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+</head>
+<body>
+<div class="bg-glow a"></div>
+<div class="bg-glow b"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <a class="mark" href="index.html" style="text-decoration:none">A</a>
+    <span><b>ARENA</b><small>YARDIM & KURULUM</small></span>
+  </div>
+  <nav class="links">
+    <a href="index.html">← Radar</a>
+    <a href="#windows">Windows</a>
+    <a href="#tarama">7/24 tarama</a>
+    <a href="#sandik">Sandık açma</a>
+    <a class="cta" href="https://github.com/CehennemGibiyim/ArenaSol/releases" target="_blank" rel="noopener">⬇ İndir</a>
+  </nav>
+</header>
+
+<main>
+  <div class="doc">
+    <p class="eyebrow">REHBER · RESİMLİ ANLATIM</p>
+    <h1 style="margin:0;font-size:clamp(26px,4vw,40px);letter-spacing:-0.03em">Arena Live OS nasıl kurulur?</h1>
+    <p class="lead">
+      Panel, 7/24 çalışan GitHub taraması ve Windows paketi. Aşağıdaki adımlar hem web paneli hem de
+      masaüstü kurulumu için geçerlidir. Panel içinde de aynı rehber <code>/yardim</code> adresinde durur.
+    </p>
+
+    <div class="toc">
+      <a href="#akış">1 · Veri akışı</a>
+      <a href="#web">2 · Web paneli</a>
+      <a href="#windows">3 · Windows kurulumu</a>
+      <a href="#guncelleme">4 · Otomatik güncelleme</a>
+      <a href="#tarama">5 · 7/24 tarama</a>
+      <a href="#sandik">6 · Sandık açma</a>
+      <a href="#sorun">7 · Sorun giderme</a>
+      <a href="#video">8 · Videolar</a>
+    </div>
+
+    <h2 id="akış">1 · Veri akışı — sen sistemde olmasan da çalışır</h2>
+    <p>
+      GitHub Actions her 5 dakikada bir <code>agent/collect.mjs</code> çalıştırır: adayları toplar, canlılığını
+      doğrular, odaları dinler ve sandıkları <code>docs/data/*.json</code> dosyalarına yazar. GitHub Pages bu dosyaları
+      yayınlar; web paneli ve Windows paketi aynı veriyi okur.
+    </p>
+    <img src="help/veri-akisi.svg" alt="7/24 veri akışı diyagramı" />
+
+    <h2 id="web">2 · Web paneli (GitHub Pages)</h2>
+    <ol>
+      <li>Depo → <b>Settings → Pages</b> → Source: <b>GitHub Actions</b>.</li>
+      <li><b>Actions → Deploy web panel to GitHub Pages</b> çalıştır (veya main'e push et).</li>
+      <li><code>https://&lt;kullanıcı&gt;.github.io/&lt;depo&gt;/</code> adresini aç.</li>
+      <li>Sandık sayaçları saniyelik, veri 5 sn'de bir yenilenir. <b>⬇ Windows paketi</b> düğmesi Releases sayfasına gider.</li>
+    </ol>
+    <img src="help/sandik-radari.svg" alt="Sandık radarı ekranı" />
+    <div class="callout">
+      <p style="margin:0">
+        Web paneli yalnızca okuma yapar; tarayıcı kapalı olsa bile GitHub'daki tarama devam eder.
+        Tarama geçmişi: <b>Actions → Collect live rooms + chests</b> · Durum dosyası: <code>docs/data/status.json</code>.
+      </p>
+    </div>
+
+    <h2 id="windows">3 · Windows kurulumu</h2>
+    <img src="help/windows-kurulum.svg" alt="Windows kurulum adımları" />
+    <h3>Gereksinimler</h3>
+    <ul>
+      <li>Windows 10/11 (64-bit)</li>
+      <li>Node.js 22 LTS — <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></li>
+      <li>PostgreSQL 14+ (yerel kurulum önerilir)</li>
+    </ul>
+    <h3>Kurulum</h3>
+    <ol>
+      <li><b>Releases</b> sayfasından <code>ArenaLiveOS-Setup-*.exe</code> indir (taşınabilir: <code>-windows.zip</code>).</li>
+      <li>Kurulumu çalıştır, ardından masaüstündeki <b>Arena Live OS</b> kısayolunu aç.</li>
+      <li>Zip kullanıyorsan: arşivi aç → <code>KURULUM.bat</code> → sihirbaz veritabanı, <code>.env</code>, bağımlılıklar ve build'i tamamlar.</li>
+      <li>Panel <code>http://localhost:3000</code> adresinde açılır; ajan ayrı pencerede çalışır.</li>
+    </ol>
+    <pre>KURULUM.bat        → ilk kurulum (Node + PostgreSQL kontrolü, .env, npm ci, drizzle push, build)
+Arena-Live-OS.bat  → paneli + ajanı başlatır, GitHub güncellemesini kontrol eder
+Durdur.bat         → panel ve ajanı kapatır</pre>
+    <div class="callout">
+      <p style="margin:0"><b>Not:</b> Port 3000 doluysa <code>.env</code> içinde <code>PORT=3100</code> yaz ve tekrar başlat.</p>
+    </div>
+
+    <h2 id="guncelleme">4 · Açılışta otomatik güncelleme</h2>
+    <p>
+      <code>Arena-Live-OS.bat</code> her açılışta <code>agent/update.mjs</code> çalıştırır. Betik
+      <code>raw.githubusercontent.com/&lt;repo&gt;/main/agent/manifest.json</code> dosyasını indirir, her dosyanın
+      sha256 özetini yerelle karşılaştırır ve değişenleri uygular. Çalışan betikler Windows'ta kilitli olduğu için
+      <code>.pending</code> olarak bırakılır ve sonraki açılışta devreye girer. Ajan çalışırken de 30 dakikada bir
+      kontrol yapılır.
+    </p>
+    <pre>agent/manifest.json      → sürüm + dosya özetleri
+agent/data/update.json   → son kontrol sonucu
+agent/data/panel.json    → ajanın çektiği güncel sandık/yayın listesi
+agent/data/alerts.jsonl  → otomatik açma ve bildirim kayıtları</pre>
+
+    <h2 id="tarama">5 · 7/24 tarama ayarları</h2>
+    <img src="help/panel-genel.svg" alt="Panel genel görünümü" />
+    <ul>
+      <li>GitHub deposu → <b>Settings → Secrets and variables → Actions</b>:
+        <code>EULER_API_KEY</code> (opsiyonel, bölge feed'i), <code>WATCHLIST</code> (virgüllü kullanıcı adları),
+        <code>MAX_ROOMS</code>.</li>
+      <li>Panelde <b>Ayarlar → Sandık radarı tarayıcısı</b>: tarama aralığı, eşzamanlı oda, uyarı oranı/jeton eşiği.</li>
+      <li>Panel açıkken <code>POST /api/radar/scan</code> anlık tarama başlatır; panel kapalıyken GitHub cron devralır.</li>
+    </ul>
+    <div class="callout">
+      <p style="margin:0">
+        Anahtarsız kapsam sınırlıdır: izleme listesi + sabitlenen odalar + Tik.Tools açık listesi (10 yayın).
+        Daha geniş kapsam için <code>EULER_API_KEY</code> gerekir. Liste boşsa sahte veri üretilmez.
+      </p>
+    </div>
+
+    <h2 id="sandik">6 · Sandık açma asistanı</h2>
+    <ol>
+      <li><code>.env</code> dosyasında <code>AUTO_JOIN=1</code> (varsayılan açık).</li>
+      <li>Eşikleri ayarla: <code>AUTO_JOIN_MIN_RATIO=1</code>, <code>AUTO_JOIN_MIN_COINS=100</code>, <code>AUTO_JOIN_LEAD_SECONDS=20</code>.</li>
+      <li>Ajan, sandık açılışına 20 sn kala <code>https://www.tiktok.com/@kullanıcı/live</code> adresini tarayıcıda açar.</li>
+      <li>Açılan yayında <b>Toplamaya Katıl</b>'a dokun — jeton cüzdanına düşer.</li>
+      <li>Aynı sandık için <code>AUTO_JOIN_COOLDOWN_SECONDS</code> (varsayılan 30 dk) koruması vardır.</li>
+    </ol>
+    <div class="callout">
+      <p style="margin:0">
+        <b>Dürüst sınır:</b> Sandık açma asistanı yalnızca yayını açar ve bildirir; <b>jeton toplamaz</b>.
+        TikTok zarf/jeton toplama işlemi mobil uygulama oturumu ister; sistem hesabına giriş yapmaz ve senin adına talep göndermez.
+      </p>
+    </div>
+
+    <h2 id="sorun">7 · Sorun giderme</h2>
+    <ul>
+      <li><b>DATABASE_URL is required</b> → <code>.env</code> içindeki bağlantı dizesini düzenle.</li>
+      <li><b>ECONNREFUSED 5432</b> → PostgreSQL servisini başlat: <code>Get-Service postgresql*</code>.</li>
+      <li><b>Panel açılmıyor</b> → <code>Durdur.bat</code> sonra <code>Arena-Live-OS.bat</code>; port çakışmasını kontrol et.</li>
+      <li><b>Sandık listesi boş</b> → <code>docs/data/status.json</code> ve Actions loglarına bak; veri yoksa tarama henüz sonuç üretmemiştir.</li>
+      <li><b>Güncelleme inmedi</b> → internet erişimi ve <code>ARENA_REPO</code> değerini kontrol et; manifest 30 dakikada bir yeniden denenir.</li>
+    </ul>
+
+    <h2 id="video">8 · Video anlatımlar</h2>
+    <div class="videos">
+      <div class="video">
+        <b>▶ Kurulum (3 dk)</b>
+        <span>KURULUM.bat → veritabanı → panel açılışı. Video yer tutucu: kendi kaydını bu klasöre <code>video-kurulum.mp4</code> olarak ekleyip bağlantıyı güncelle.</span>
+      </div>
+      <div class="video">
+        <b>▶ Sandık radarı (2 dk)</b>
+        <span>Oran, kontenjan, sandık açma ve Telegram uyarısı. Yer tutucu: <code>video-sandik.mp4</code>.</span>
+      </div>
+      <div class="video">
+        <b>▶ GitHub Pages yayını (2 dk)</b>
+        <span>Actions → Pages → alan adı. Yer tutucu: <code>video-pages.mp4</code>.</span>
+      </div>
+    </div>
+    <p style="margin-top:20px">
+      <a class="btn primary" href="index.html">Radara dön</a>
+      <a class="btn" href="https://github.com/CehennemGibiyim/ArenaSol/releases" target="_blank" rel="noopener">Windows paketini indir</a>
+      <a class="btn ghost" href="https://github.com/CehennemGibiyim/ArenaSol" target="_blank" rel="noopener">GitHub deposu</a>
+    </p>
+
+    <footer>
+      <span>Arena Live OS · Yardım</span>
+      <span><a href="index.html">Radar</a> · <a href="https://github.com/CehennemGibiyim/ArenaSol">GitHub</a></span>
+    </footer>
+  </div>
+</main>
+</body>
+</html>

@@ -54,7 +54,7 @@ export function SettingsForm() {
   };
 
   useEffect(() => {
-    void load();
+    queueMicrotask(() => void load());
     fetch("/api/live/status")
       .then((response) => response.json())
       .then((data) => setStatus(data.connector))
@@ -372,6 +372,7 @@ export function SettingsForm() {
               <a href="/api/packages/library" className="btn w-full !text-[11px]">
                 GitHub Pages web kütüphanesi
               </a>
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- /api JSON ucu, sayfa değil */}
               <a href="/api/resources/creators" className="btn w-full !text-[11px]">
                 Yayıncı verisi (JSON API)
               </a>

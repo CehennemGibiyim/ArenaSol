@@ -1,0 +1,37 @@
+# bağımlılıklar
+node_modules/
+
+# next.js / build
+.next/
+out/
+dist/
+build/
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# windows paketi
+release/
+
+# ajan yerel verisi ve günlükleri (GitHub verisi docs/data'da tutulur)
+agent/data/
+agent/*.pending
+*.log
+alerts.jsonl
+
+# sırlar
+.env
+.env.local
+.env.*.local
+
+# işletim sistemi / editör
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+/freebuff-sites-build/
+/.open-next/
+/.wrangler/
+
+# Freebuff Sites tarafından üretilen yerel yapılandırma
+/freebuff.open-next.config.ts
+/freebuff.wrangler.jsonc

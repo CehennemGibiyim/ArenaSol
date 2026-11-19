@@ -50,7 +50,6 @@ export function RadarConsole() {
   const [scans, setScans] = useState<Array<{ id: number; startedAt: string; finishedAt: string | null; checked: number; liveFound: number; chestsFound: number; source: string; error: string }>>([]);
 
   const load = useCallback(async () => {
-    setLoading(true);
     try {
       const response = await fetch("/api/resources/targets?limit=200", { cache: "no-store" });
       const data = (await response.json()) as { data?: Target[] };
@@ -74,8 +73,10 @@ export function RadarConsole() {
   }, []);
 
   useEffect(() => {
-    void load();
-    void loadScanStatus();
+    queueMicrotask(() => {
+      void load();
+      void loadScanStatus();
+    });
     fetch("/api/live/status")
       .then((response) => response.json())
       .then((data) => setConnector(data.connector))

@@ -20,7 +20,7 @@ export default async function ChestRadarPage({
       <PageHeader
         eyebrow="Sandık Radarı · Tüm premium özellikler açık"
         title="Sandık & jeton radarı"
-        description="Sandık (chest) ve çanta (goody bag) olayları: jeton, kontenjan, katılan, oran, izleyici ve açılış geri sayımı. 16 hazır sekme (20/16, altın, askıda, oran ≥2/≥4/≥7, çanta Lv 0–10) + gelişmiş filtreler + tam sıralama. QR ile telefondan yayına katıl, jetonu manuel topla."
+        description="Sandık (chest) ve çanta (goody bag) olayları: jeton, kontenjan, katılan, oran, izleyici ve açılış geri sayımı. 16 hazır sekme (20/16, altın, askıda, oran ≥2/≥4/≥7, çanta Lv 0–10) + gelişmiş filtreler + tam sıralama. QR ile telefondan yayına katıl, jetonu manuel topla. Sandık açma asistanı yalnızca yayını açar ve bildirir; jeton toplamaz."
         actions={
           <>
             <Link href="/yayinlar" className="btn">
