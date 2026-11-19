@@ -27,7 +27,7 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       # Build sırasında gerçek veritabanı gerekmez; pg bağlantısı tembeldir.
       DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/app_db
@@ -67,15 +67,42 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
+          $diag = @()
           $version = (Get-Content package.json -Raw | ConvertFrom-Json).version
-          $cmd = Get-Command makensis -ErrorAction SilentlyContinue
-          $makensis = if ($cmd) { $cmd.Source } else { "C:\Program Files (x86)\NSIS\makensis.exe" }
-          if (-not (Test-Path $makensis)) { throw "makensis bulunamadı: $makensis" }
-          & $makensis "/DVERSION=$version" scripts/installer.nsi
-          if ($LASTEXITCODE -ne 0) { throw "makensis başarısız (kod $LASTEXITCODE)" }
+          $cmd = Get-Command makensis -All -ErrorAction SilentlyContinue
+          $candidates = @($cmd | ForEach-Object { $_.Source }) + @(
+            "C:\Program Files (x86)\NSIS\makensis.exe",
+            "C:\Program Files\NSIS\makensis.exe",
+            "C:\ProgramData\chocolatey\bin\makensis.exe"
+          )
+          $makensis = $candidates | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+          $diag += "version=$version"
+          $diag += "PATH adaylari=$($candidates -join ';')"
+          if (-not $makensis) {
+            $diag += "NSIS klasoru=" + ((Get-ChildItem "C:\Program Files (x86)\NSIS", "C:\Program Files\NSIS" -ErrorAction SilentlyContinue | ForEach-Object Name) -join ';')
+            $diag += "choco lib=" + ((Get-ChildItem "C:\ProgramData\chocolatey\lib" -Filter "nsis*" -ErrorAction SilentlyContinue | ForEach-Object Name) -join ';')
+            $diag -join "`n" | Set-Content release/nsis-diagnose.txt
+            throw "makensis bulunamadı"
+          }
+          $diag += "makensis=$makensis"
+          & $makensis "/DVERSION=$version" scripts/installer.nsi 2>&1 | Tee-Object -Variable out | Out-Host
+          $code = $LASTEXITCODE
+          $diag += "exit=$code"
+          $diag += ($out -join "`n")
+          $diag -join "`n" | Set-Content release/nsis-diagnose.txt
+          if ($code -ne 0) { throw "makensis başarısız (kod $code)" }
           $setup = "release\ArenaLiveOS-Setup-$version.exe"
           if (-not (Test-Path $setup)) { throw "Beklenen kurulum dosyası üretilmedi: $setup" }
           Get-Item $setup | Format-Table Name, Length
+
+      - name: Upload NSIS diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsis-diagnose
+          path: release/nsis-diagnose.txt
+          if-no-files-found: ignore
+          retention-days: 3
 
       - name: Regenerate agent manifest
         run: node scripts/build-agent-manifest.mjs
