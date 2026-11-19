@@ -16,7 +16,7 @@
 
 Name "${APPNAME} ${VERSION}"
 ; Yolları betik dosyasına göre çöz: makensis farklı bir çalışma dizininden çağrılabilir.
-OutFile "${__FILEDIR__}..\release\ArenaLiveOS-Setup-${VERSION}.exe"
+OutFile "${__FILEDIR__}\..\release\ArenaLiveOS-Setup-${VERSION}.exe"
 InstallDir "$LOCALAPPDATA\Arena-Live-OS"
 InstallDirRegKey HKCU "Software\ArenaLiveOS" "InstallDir"
 RequestExecutionLevel user
@@ -41,7 +41,7 @@ SetCompressor /SOLID lzma
 
 Section "Arena Live OS" SecMain
   SetOutPath "$INSTDIR"
-  File /r "${__FILEDIR__}..\release\Arena-Live-OS\*.*"
+  File /r "${__FILEDIR__}\..\release\Arena-Live-OS\*.*"
 
   WriteRegStr HKCU "Software\ArenaLiveOS" "InstallDir" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\ArenaLiveOS" "DisplayName" "${APPNAME}"
