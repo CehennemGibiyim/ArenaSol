@@ -37,6 +37,8 @@ VIAddVersionKey "ProductName" "${APPNAME}"
 VIAddVersionKey "ProductVersion" "${VERSION}"
 VIAddVersionKey "FileVersion" "${VERSION}"
 VIAddVersionKey "CompanyName" "${COMPANY}"
+VIAddVersionKey "FileDescription" "${APPNAME} kurulum paketi"
+VIAddVersionKey "LegalCopyright" "${COMPANY}"
 SetCompressor /SOLID lzma
 
 !define MUI_ABORTWARNING
