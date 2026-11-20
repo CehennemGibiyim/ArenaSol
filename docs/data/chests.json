@@ -1,5 +1,20 @@
 {
-  "generatedAt": "2026-11-20T16:28:09.898Z",
-  "count": 0,
-  "chests": []
+  "generatedAt": "2026-11-20T22:48:43.275Z",
+  "count": 1,
+  "chests": [
+    {
+      "envelopeId": "7710355641436654356",
+      "username": "nersisyanedgar123",
+      "roomId": "7710332168795228949",
+      "nickname": "Edgar🇦🇲",
+      "coins": 20,
+      "slots": 16,
+      "ratio": 1.25,
+      "opensAt": "2026-11-20T22:51:34.000Z",
+      "detectedAt": "2026-11-20T22:48:35.184Z",
+      "skinId": 0,
+      "source": "actions-collector",
+      "url": "https://www.tiktok.com/@nersisyanedgar123/live"
+    }
+  ]
 }
