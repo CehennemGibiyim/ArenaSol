@@ -1,97 +1,119 @@
 {
-  "generatedAt": "2026-11-20T07:49:24.724Z",
+  "generatedAt": "2026-11-20T16:28:09.898Z",
   "source": "watchlist+public-sample",
   "eulerKey": false,
-  "checked": 21,
-  "liveCount": 8,
+  "checked": 18,
+  "liveCount": 10,
   "rooms": [
     {
-      "user": "june222_",
-      "roomId": "7710137534450010932",
-      "nickname": "˚₊‧꒰ა 222 ໒꒱ ‧₊˚",
-      "title": "Day 2 🍀✨",
-      "region": "CA",
+      "user": "heriss_skuyy",
+      "roomId": "7710268135963151122",
+      "nickname": "Heriss Skuyy",
+      "title": "Lets Go LIVE!",
+      "region": "ID",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.008Z",
-      "url": "https://www.tiktok.com/@june222_/live"
+      "checkedAt": "2026-11-20T16:27:16.339Z",
+      "url": "https://www.tiktok.com/@heriss_skuyy/live"
     },
     {
-      "user": "ahilynsantos",
-      "roomId": "7710094172770487061",
-      "nickname": "🦦'Ahilyn",
-      "title": "HOLIITAS",
-      "region": "SV",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.026Z",
-      "url": "https://www.tiktok.com/@ahilynsantos/live"
-    },
-    {
-      "user": "kim_sales_",
-      "roomId": "7710139026653285126",
-      "nickname": "🐼🧡Kimy_5🇬🇹2",
+      "user": "xolivutxilk",
+      "roomId": "7710271174533565206",
+      "nickname": "18+🔞 YAKUZA🇧🇬🦖",
       "title": "",
-      "region": "CL",
+      "region": "LT",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.029Z",
-      "url": "https://www.tiktok.com/@kim_sales_/live"
-    },
-    {
-      "user": "kakamall66",
-      "roomId": "7710106224448113428",
-      "nickname": "11/20㊗️周年🥃🏴‍☠️パティ船長🏴‍☠️🥃",
-      "title": "20:30 予約バトル⚔️🔥",
-      "region": "JP",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.061Z",
-      "url": "https://www.tiktok.com/@kakamall66/live"
+      "checkedAt": "2026-11-20T16:27:16.355Z",
+      "url": "https://www.tiktok.com/@xolivutxilk/live"
     },
     {
       "user": "queendeapbluesea",
-      "roomId": "7710088274745084693",
+      "roomId": "7710280671991237377",
       "nickname": "🔱𝓠𝓾𝓮𝓮𝓷 𝓓👑",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:16.392Z",
+      "url": "https://www.tiktok.com/@queendeapbluesea/live"
+    },
+    {
+      "user": "sonamthai66",
+      "roomId": "7710289688393321234",
+      "nickname": "tiktok kota",
+      "title": "",
+      "region": "BD+",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:16.612Z",
+      "url": "https://www.tiktok.com/@sonamthai66/live"
+    },
+    {
+      "user": "naaashiiicha",
+      "roomId": "7710268697201380148",
+      "nickname": "なしちゃ👛💫年末新人王⚔️",
+      "title": "降りてきて…♡",
+      "region": "JP",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:16.738Z",
+      "url": "https://www.tiktok.com/@naaashiiicha/live"
+    },
+    {
+      "user": "dendenjunior_",
+      "roomId": "7710250198575991558",
+      "nickname": "DenDen ♠️ 💜 🤍",
       "title": "",
       "region": "PH",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.080Z",
-      "url": "https://www.tiktok.com/@queendeapbluesea/live"
+      "checkedAt": "2026-11-20T16:27:16.759Z",
+      "url": "https://www.tiktok.com/@dendenjunior_/live"
     },
     {
-      "user": "breydin51",
-      "roomId": "7710154477436799752",
-      "nickname": "Joss🫧",
-      "title": "",
-      "region": "PA",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.080Z",
-      "url": "https://www.tiktok.com/@breydin51/live"
-    },
-    {
-      "user": "reve.nocturne_xo",
-      "roomId": "7710111689382939414",
-      "nickname": "𝓔𝓡𝓣𝓐 🇦🇱🇨🇭",
-      "title": "",
-      "region": "CH",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.136Z",
-      "url": "https://www.tiktok.com/@reve.nocturne_xo/live"
-    },
-    {
-      "user": "tatiana_repizo_",
-      "roomId": "7710077577412414229",
-      "nickname": "Tatiana Repizo_❤️‍🔥",
+      "user": "_abeana",
+      "roomId": "7710258664507230982",
+      "nickname": "アベアナ~ 𝓐𝓬𝓮 ~",
       "title": "Lets Go LIVE!",
-      "region": "CO+",
+      "region": "JP",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-20T07:48:30.708Z",
-      "url": "https://www.tiktok.com/@tatiana_repizo_/live"
+      "checkedAt": "2026-11-20T16:27:17.007Z",
+      "url": "https://www.tiktok.com/@_abeana/live"
+    },
+    {
+      "user": "kkiiaaz",
+      "roomId": "7710265556896615190",
+      "nickname": "👻Ghostgirl👻|𝕂𝕀𝕀𝕌𝕊𝕂𝔸⚔️",
+      "title": "",
+      "region": "GL",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:17.091Z",
+      "url": "https://www.tiktok.com/@kkiiaaz/live"
+    },
+    {
+      "user": "taufikmaren",
+      "roomId": "7710278484249152274",
+      "nickname": "TaufikMaren🍉🏆🏅",
+      "title": "",
+      "region": "SG",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:17.119Z",
+      "url": "https://www.tiktok.com/@taufikmaren/live"
+    },
+    {
+      "user": "mua_chuu",
+      "roomId": "7710249046842297108",
+      "nickname": "👩‍🍳무아(MUa)🥖",
+      "title": "보고싶었어",
+      "region": "KR",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-20T16:27:17.462Z",
+      "url": "https://www.tiktok.com/@mua_chuu/live"
     }
   ]
 }
