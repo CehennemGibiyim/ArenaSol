@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-21T18:18:37.449Z",
+  "generatedAt": "2026-11-21T23:30:34.927Z",
   "ok": true,
-  "durationMs": 57603,
+  "durationMs": 56720,
   "nextRunInSeconds": 300,
-  "candidates": 19,
+  "candidates": 23,
   "liveRooms": 13,
   "activeChests": 0,
   "autoJoin": true,
