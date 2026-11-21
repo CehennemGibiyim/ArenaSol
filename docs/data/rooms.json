@@ -1,119 +1,108 @@
 {
-  "generatedAt": "2026-11-21T03:35:45.232Z",
+  "generatedAt": "2026-11-21T11:46:46.544Z",
   "source": "watchlist+public-sample",
   "eulerKey": false,
-  "checked": 19,
-  "liveCount": 10,
+  "checked": 20,
+  "liveCount": 9,
   "rooms": [
     {
-      "user": "sofi_gujratan_official",
-      "roomId": "7710401662272424705",
-      "nickname": "𝕊𝕠𝕗𝕚🤍",
+      "user": "niknando",
+      "roomId": "7710555852331748118",
+      "nickname": "Niknando",
       "title": "",
-      "region": "",
-      "source": "watchlist",
+      "region": "DE",
+      "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.111Z",
-      "url": "https://www.tiktok.com/@sofi_gujratan_official/live"
+      "checkedAt": "2026-11-21T11:45:53.044Z",
+      "url": "https://www.tiktok.com/@niknando/live"
     },
     {
-      "user": "mc.aries97",
-      "roomId": "7710396388864953096",
-      "nickname": "🌺ᗰᗩᖇIᗩ.ᑕ❦✿🖤",
+      "user": "ngm2471",
+      "roomId": "7710547616224447284",
+      "nickname": "NGMF FAMILY",
       "title": "",
-      "region": "LATAM",
+      "region": "ZA",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.443Z",
-      "url": "https://www.tiktok.com/@mc.aries97/live"
+      "checkedAt": "2026-11-21T11:45:53.077Z",
+      "url": "https://www.tiktok.com/@ngm2471/live"
     },
     {
-      "user": "gianlaros",
-      "roomId": "7710430936245373748",
-      "nickname": "🐦‍🔥Gιαηℓяg🖤",
-      "title": "Lets Go LIVE!",
-      "region": "PY",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.600Z",
-      "url": "https://www.tiktok.com/@gianlaros/live"
-    },
-    {
-      "user": "krisss.bh",
-      "roomId": "7710429255096896276",
-      "nickname": "Kristina😈",
+      "user": "marinatan224",
+      "roomId": "7710567444969720596",
+      "nickname": "まりな🧸👑",
       "title": "",
-      "region": "BY",
+      "region": "JP",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.698Z",
-      "url": "https://www.tiktok.com/@krisss.bh/live"
+      "checkedAt": "2026-11-21T11:45:53.111Z",
+      "url": "https://www.tiktok.com/@marinatan224/live"
     },
     {
-      "user": "laumg.16",
-      "roomId": "7710429578367372084",
-      "nickname": "Laura👑",
-      "title": "Lets Go LIVE!",
-      "region": "LATAM",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.753Z",
-      "url": "https://www.tiktok.com/@laumg.16/live"
-    },
-    {
-      "user": "helenshow1392711376611",
-      "roomId": "7710378724542532374",
-      "nickname": "Helen psychology ምሩቅ👁",
+      "user": "i_squti_i_ranes.hjedhun",
+      "roomId": "7710582097207511814",
+      "nickname": "Crazy&Luna",
       "title": "",
-      "region": "DK",
+      "region": "BK",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.786Z",
-      "url": "https://www.tiktok.com/@helenshow1392711376611/live"
+      "checkedAt": "2026-11-21T11:45:53.144Z",
+      "url": "https://www.tiktok.com/@i_squti_i_ranes.hjedhun/live"
     },
     {
-      "user": "osodevikingos",
-      "roomId": "7710449998877477653",
-      "nickname": "⚔️🐻OsoDeVikingos🐻⚔️",
+      "user": "pretty_ivy_1",
+      "roomId": "7710558208732973844",
+      "nickname": "Attraction🇭🇹🇯🇲",
       "title": "",
-      "region": "MX",
+      "region": "NG+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.816Z",
-      "url": "https://www.tiktok.com/@osodevikingos/live"
+      "checkedAt": "2026-11-21T11:45:53.185Z",
+      "url": "https://www.tiktok.com/@pretty_ivy_1/live"
     },
     {
-      "user": "maritzavilled",
-      "roomId": "7710443004569373447",
-      "nickname": "👑SEÑORA MARITZA👑",
+      "user": "tr3hlebova",
+      "roomId": "7710559773703424776",
+      "nickname": "ГУБАТАЯ",
       "title": "",
-      "region": "NI",
+      "region": "UA",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.854Z",
-      "url": "https://www.tiktok.com/@maritzavilled/live"
+      "checkedAt": "2026-11-21T11:45:53.189Z",
+      "url": "https://www.tiktok.com/@tr3hlebova/live"
     },
     {
-      "user": "vincemorriss",
-      "roomId": "7710412968915110664",
-      "nickname": "Vince Morriss💜",
-      "title": "We. Are. LIVE FEST.",
-      "region": "CA",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:51.951Z",
-      "url": "https://www.tiktok.com/@vincemorriss/live"
-    },
-    {
-      "user": "campante10",
-      "roomId": "7710455376914696961",
-      "nickname": "Campante 🐦‍🔥",
+      "user": "mrpapichulo19",
+      "roomId": "7710571441058810646",
+      "nickname": "Maurice skippy masterson",
       "title": "",
-      "region": "BR",
+      "region": "LT",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-21T03:34:52.046Z",
-      "url": "https://www.tiktok.com/@campante10/live"
+      "checkedAt": "2026-11-21T11:45:53.235Z",
+      "url": "https://www.tiktok.com/@mrpapichulo19/live"
+    },
+    {
+      "user": "iamexoticbaby",
+      "roomId": "7710570460471151373",
+      "nickname": "iamexoticbaby",
+      "title": "well hello thereee",
+      "region": "US+",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-21T11:45:53.268Z",
+      "url": "https://www.tiktok.com/@iamexoticbaby/live"
+    },
+    {
+      "user": "redbull.queen75",
+      "roomId": "7710575627019078422",
+      "nickname": "Redbull Queen 👑😍",
+      "title": "",
+      "region": "IE+",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-21T11:45:53.427Z",
+      "url": "https://www.tiktok.com/@redbull.queen75/live"
     }
   ]
 }
