@@ -1,72 +1,72 @@
 {
-  "version": "419dc6cb6b68e212",
+  "version": "84154a57ef8ee1a5",
   "repo": "CehennemGibiyim/ArenaSol",
   "branch": "main",
   "rawBase": "https://raw.githubusercontent.com/CehennemGibiyim/ArenaSol/main/",
   "files": {
     "agent/arena-agent.mjs": {
-      "sha256": "c9bd93f5272e521df270d12dcca4459b2c46b661af5639feac8fac2c621297d9",
-      "size": 18960
+      "sha256": "5d6d4699b8f6e75a387aa97e6c2b2152e13a3cb310323a5e313a144fa5de56ce",
+      "size": 19402
     },
     "agent/collect.mjs": {
-      "sha256": "f0edcda5355d65e54138d5359ea0e6d02aa2a7907c7b90ffd5a6b308556dc776",
-      "size": 12594
+      "sha256": "4b4a2f0cc1b2bdd480ac71d7deff4eb461fbfe05ca29f24b9e1fbc4b6c37e11b",
+      "size": 12936
     },
     "agent/update.mjs": {
-      "sha256": "bf694a6931c963f91d33ce9209ad2000482cebc50e4ae8bd9fa70cfa351373ce",
-      "size": 5472
+      "sha256": "18f1f415b49e8fff3b5ee5736c16802c8657ba5e6a39e310a2f6290ca9755b29",
+      "size": 5613
     },
     "agent/baslat.bat": {
-      "sha256": "1316f5598355bb8f6745b3b4158af2700cdd7897700bc698ee9a3861dd943bc6",
-      "size": 375
+      "sha256": "becbfcd4b8c34ade13d3de8ac597ecc646482b942d9555f2f25a76784ce93f2d",
+      "size": 392
     },
     "Arena-Agent.bat": {
-      "sha256": "14744225730c07a739b0cb5580576efded7a3da89ee46f1557878fc9af557781",
-      "size": 761
+      "sha256": "b77f11e6edb3decf8dfbde4949ab06fe0e94060f140fe276653d1159b75c85a1",
+      "size": 786
     },
     "Arena-Live-OS.bat": {
-      "sha256": "e5849cf13a9953fd4739d4bf984f8ba6e13d5e45e6484b743b39379753f7a2cf",
-      "size": 2086
+      "sha256": "f9dfccca1674e9e4d9a77cc04615f428341232e7b29ab3fa0a9b3b06fa05169d",
+      "size": 2145
     },
     "KURULUM.bat": {
-      "sha256": "47ab85df0f7f10d933a1f7180f68bbaab75aa88edabf5a49c96861f8d4e158c7",
-      "size": 1263
+      "sha256": "f8e215658c054d04c44b258b453708f036241fba33da1600f93c46e2007450ef",
+      "size": 1309
     },
     "Durdur.bat": {
-      "sha256": "e28123b454f5ca45f60b2534feaf1d38e3a54cda6fbc26cdd84f02d9a0ca754f",
-      "size": 929
+      "sha256": "6ae76af77f5a64cc7e6bb0198c2e81b2ad48931a738dd7da5b40a0fd32cb652f",
+      "size": 954
     },
     "docs/index.html": {
-      "sha256": "5f1df7a40421d55cf1208c8c5d2322622e823e81218a0c0a34d4c4a0c28609de",
-      "size": 6191
+      "sha256": "c2eff080af8ad4b21846beabf55b8024d6244091abaec42398113a26c88b602b",
+      "size": 6342
     },
     "docs/app.js": {
-      "sha256": "344d1e1123c2b6a90a22669d83b44ad2b0919d2a72c4dbd58bcaf08aa391a909",
-      "size": 8321
+      "sha256": "b4749744df4f970ac0a9a178b2c58ff2d61587bc46d42b4fe158503c40c9d650",
+      "size": 8535
     },
     "docs/style.css": {
-      "sha256": "79a74e6f0f3303140d34a46fded1797fda409bf90df7f38e5100ff1edf38658c",
-      "size": 10526
+      "sha256": "dbc943a33e90278121508b63b0f140797a4edea27b43121adb4b24f1de45b39c",
+      "size": 10685
     },
     "docs/yardim.html": {
-      "sha256": "8bf2ad0d1a9783be61e1cfcb56e899e55c21953be7987bba5c61ecdbfc578a83",
-      "size": 10137
+      "sha256": "65e9a11babbdac09c730728bfd69b48521f89bf2b32575ba9384d8fc16b326ac",
+      "size": 10317
     },
     "docs/data/rooms.json": {
-      "sha256": "25f36ff2e224938127e984f45e3f1ba28a43afa60d6301c57ddedc40b7dc54d6",
-      "size": 4603
+      "sha256": "c1c901377121ebf1f3bc8ca3550385e128f51b37b1f6804d4a1f49e1237e0530",
+      "size": 4754
     },
     "docs/data/chests.json": {
-      "sha256": "557b9f5b7abdb5cc3aae3413546c5ddff3056b5e777dcac16f0902225b66e41e",
-      "size": 77
+      "sha256": "fa05ebfa09120292934e1642221ca91e6b2b4271b74826e357b6ec1ce6d64ce3",
+      "size": 81
     },
     "docs/data/status.json": {
-      "sha256": "749a1169afa7039475346cef9d96e9c7f12bfced428b6cd94715673fb00d3a28",
-      "size": 320
+      "sha256": "0533a5940d5d252f05441d924cafc8e198af4157fe686d4d74d5bc84b8d5aa10",
+      "size": 331
     },
     "public/arena-widget.js": {
-      "sha256": "c87ad2a77c60f9031462593a33581466f996ce82aa8c9930b74db5c310a8ccff",
-      "size": 13425
+      "sha256": "fb5f2f006058e43f18f2338c20b42e7a9b1b16522c85121c25fc91a428e7f9ee",
+      "size": 13693
     }
   }
 }
