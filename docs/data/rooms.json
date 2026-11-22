@@ -1,10 +1,51 @@
 {
-  "generatedAt": "2026-11-22T19:15:19.670Z",
+  "generatedAt": "2026-11-22T23:11:52.843Z",
   "source": "watchlist+public-sample",
   "eulerKey": false,
-  "checked": 19,
-  "liveCount": 13,
+  "checked": 13,
+  "liveCount": 3,
+  "retainedCount": 10,
+  "totalKnown": 13,
   "rooms": [
+    {
+      "user": "l_dollxx",
+      "roomId": "7711125245909830422",
+      "nickname": "L DOLL♥︎",
+      "title": "Dolly’s Birthday Match 🩷🎂🎀",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-22T23:10:59.454Z",
+      "url": "https://www.tiktok.com/@l_dollxx/live",
+      "live": true,
+      "lastSeenAt": "2026-11-22T23:10:59.454Z"
+    },
+    {
+      "user": "kailany.ph",
+      "roomId": "7711123247336622878",
+      "nickname": "Kailany   PH♡♡🌷",
+      "title": "👋 hola",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-22T23:10:59.455Z",
+      "url": "https://www.tiktok.com/@kailany.ph/live",
+      "live": true,
+      "lastSeenAt": "2026-11-22T23:10:59.455Z"
+    },
+    {
+      "user": "erin.xo20",
+      "roomId": "7711112307111250710",
+      "nickname": "erin.xo20🦋   22/11 🎂🥳",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@erin.xo20/live",
+      "live": true,
+      "lastSeenAt": "2026-11-22T23:10:59.895Z"
+    },
     {
       "user": "semis_weet4",
       "roomId": "7711065884042742535",
@@ -13,8 +54,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.203Z",
-      "url": "https://www.tiktok.com/@semis_weet4/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@semis_weet4/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.203Z"
     },
     {
       "user": "sovra_empire",
@@ -24,8 +67,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.255Z",
-      "url": "https://www.tiktok.com/@sovra_empire/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@sovra_empire/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.255Z"
     },
     {
       "user": "soyvaleryxo_",
@@ -35,8 +80,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.503Z",
-      "url": "https://www.tiktok.com/@soyvaleryxo_/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@soyvaleryxo_/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.503Z"
     },
     {
       "user": "prophetkibokoyawachawi",
@@ -46,8 +93,10 @@
       "region": "LV",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.588Z",
-      "url": "https://www.tiktok.com/@prophetkibokoyawachawi/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@prophetkibokoyawachawi/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.588Z"
     },
     {
       "user": "1slicenation",
@@ -57,8 +106,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.596Z",
-      "url": "https://www.tiktok.com/@1slicenation/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@1slicenation/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.596Z"
     },
     {
       "user": "kuenley.jigs",
@@ -68,8 +119,10 @@
       "region": "MV",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.723Z",
-      "url": "https://www.tiktok.com/@kuenley.jigs/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@kuenley.jigs/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.723Z"
     },
     {
       "user": "taron.sargsyann.officall",
@@ -79,8 +132,10 @@
       "region": "MD",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.843Z",
-      "url": "https://www.tiktok.com/@taron.sargsyann.officall/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@taron.sargsyann.officall/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.843Z"
     },
     {
       "user": "muktah123",
@@ -90,8 +145,10 @@
       "region": "MV",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.851Z",
-      "url": "https://www.tiktok.com/@muktah123/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@muktah123/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.851Z"
     },
     {
       "user": "_pantera88888",
@@ -101,8 +158,10 @@
       "region": "UZ",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.852Z",
-      "url": "https://www.tiktok.com/@_pantera88888/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@_pantera88888/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.852Z"
     },
     {
       "user": "jannat909095",
@@ -112,41 +171,10 @@
       "region": "BT",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.916Z",
-      "url": "https://www.tiktok.com/@jannat909095/live"
-    },
-    {
-      "user": "kailany.ph",
-      "roomId": "7711066209034914591",
-      "nickname": "Kailany   PH♡♡🌷",
-      "title": "👋 hola",
-      "region": "VE",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:25.962Z",
-      "url": "https://www.tiktok.com/@kailany.ph/live"
-    },
-    {
-      "user": "l_dollxx",
-      "roomId": "7711067782911085334",
-      "nickname": "L DOLL♥︎",
-      "title": "Dolly’s Birthday Match 🩷🎂🎀",
-      "region": "GB",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:26.060Z",
-      "url": "https://www.tiktok.com/@l_dollxx/live"
-    },
-    {
-      "user": "erin.xo20",
-      "roomId": "7711068654510574358",
-      "nickname": "erin.xo20🦋   22/11 🎂🥳",
-      "title": "",
-      "region": "GB",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-22T19:14:26.107Z",
-      "url": "https://www.tiktok.com/@erin.xo20/live"
+      "checkedAt": "2026-11-22T23:10:59.895Z",
+      "url": "https://www.tiktok.com/@jannat909095/live",
+      "live": false,
+      "lastSeenAt": "2026-11-22T19:14:25.916Z"
     }
   ]
 }
