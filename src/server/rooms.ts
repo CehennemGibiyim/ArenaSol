@@ -1,6 +1,6 @@
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { chests, listenerJobs, liveRooms, roomFlows, scanTasks, type LiveRoom } from "@/db/schema";
+import { chests, listenerJobs, liveRooms, roomFlows, scanTasks, targets, type LiveRoom } from "@/db/schema";
 
 /* -------------------------------------------------------------------------- */
 /*  Canlı oda kayıtları — keşfedilen yayıncılar panelde sabit tutulabilir      */
@@ -42,6 +42,7 @@ export async function upsertLiveRoom(input: RoomUpsert): Promise<LiveRoom | null
     monitoring: input.monitoring ?? false,
     lastError: input.lastError ?? "",
     lastSeenAt: new Date(),
+    lastCheckedAt: new Date(),
   };
 
   const [row] = await db
@@ -62,7 +63,9 @@ export async function upsertLiveRoom(input: RoomUpsert): Promise<LiveRoom | null
         liveNow: values.liveNow,
         monitoring: values.monitoring,
         lastError: values.lastError,
-        lastSeenAt: new Date(),
+        lastCheckedAt: new Date(),
+        // Çevrimdışı kontrolü "son görülme" bilgisini bozmamalı; havuz rotasyonu buna dayanır.
+        lastSeenAt: values.liveNow ? new Date() : sql`${liveRooms.lastSeenAt}`,
       },
     })
     .returning();
@@ -175,6 +178,44 @@ export async function pinnedUsernames(limit = 60): Promise<string[]> {
     .orderBy(desc(liveRooms.lastSeenAt))
     .limit(limit);
   return rows.map((row) => row.username);
+}
+
+/**
+ * Dinlenen odada sohbet eden / hediye gönderen hesapları izleme listesine ekler.
+ * Ücretli keşif feed'i olmadan kapsamın kendiliğinden büyümesini sağlar: bu
+ * adaylar bir sonraki taramada `check_alive` ile doğrulanır, yayındaysa dinlemeye
+ * alınır. Yalnızca daha önce kayıtlı olmayan adlar yazılır.
+ */
+export async function addWatchCandidates(
+  usernames: string[],
+  opts: { source?: string; score?: number; limit?: number } = {},
+): Promise<number> {
+  const source = opts.source ?? "room-harvest";
+  const score = Math.max(0, Math.min(100, Math.round(opts.score ?? 55)));
+  const limit = Math.max(1, Math.min(50, opts.limit ?? 12));
+  const clean = [...new Set(usernames.map((name) => name.replace(/^@+/, "").trim().toLowerCase()))]
+    .filter((name) => /^[\w.]{2,24}$/.test(name))
+    .slice(0, limit);
+  if (!clean.length) return 0;
+
+  const known = await db
+    .select({ username: targets.username })
+    .from(targets)
+    .where(inArray(targets.username, clean));
+  const existing = new Set(known.map((row) => row.username));
+  const fresh = clean.filter((name) => !existing.has(name));
+  if (!fresh.length) return 0;
+
+  await db.insert(targets).values(
+    fresh.map((username) => ({
+      username,
+      displayName: username,
+      score,
+      status: "new",
+      notes: `dinlenen odadaki etkileşimden keşfedildi (${source})`,
+    })),
+  );
+  return fresh.length;
 }
 
 /* -------------------------------------------------------------------------- */

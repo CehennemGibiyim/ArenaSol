@@ -44,13 +44,16 @@ if not exist .next (
   if errorlevel 1 ( echo  [!] Build basarisiz. & pause & exit /b 1 )
 )
 
-echo  [4/4] Panel + otomatik tarayici baslatiliyor...
-start "" http://localhost:3000
-start "Arena Agent - 7/24 tarama" cmd /c "node agent\arena-agent.mjs"
+echo  [4/4] Panel + tarama arka planda baslatiliyor...
+rem Panel gozcusu: panel cokse bile 20 sn icinde yeniden acilir ve tarama surer.
+start "" /b powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "scripts\start-panel.ps1" -KeepAlive
+start "Arena Agent - 7/24 tarama" /min cmd /c "agent\baslat.bat"
 
-set PORT=3000
-call npm run start
+rem Panel hazir olunca tarayici acilir.
+powershell -NoProfile -ExecutionPolicy Bypass -Command "for ($i=0; $i -lt 45; $i++) { try { if ((Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 'http://127.0.0.1:3000/api/health').StatusCode -eq 200) { Start-Process 'http://localhost:3000'; break } } catch { }; Start-Sleep -Seconds 2 }"
 
 echo.
-echo  Panel kapandi. Agent penceresi arka planda calismaya devam ediyor.
-pause
+echo  Panel ve tarama arka planda calisiyor: http://localhost:3000
+echo  Panel kapatilsa bile gozcu yeniden acar. Durdurmak icin: Durdur.bat
+timeout /t 6 >nul
+exit /b 0

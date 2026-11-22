@@ -201,6 +201,24 @@ async function main() {
   );
   live.sort((a, b) => b.viewers - a.viewers);
 
+  // Çevrimdışı havuzu koru: önceki turlarda doğrulanan yayıncılar veride kalır.
+  // Yayına geçtiklerinde aday listesinde oldukları için bir sonraki tur onları yakalar.
+  const RETENTION_MS = 7 * 24 * 3600 * 1000;
+  const liveUsers = new Set(live.map((room) => String(room.user || room.username).toLowerCase()));
+  const retained = (previousRooms?.rooms ?? [])
+    .filter((room) => room?.user && !liveUsers.has(String(room.user).toLowerCase()))
+    .map((room) => ({
+      ...room,
+      live: false,
+      lastSeenAt: room.lastSeenAt || room.checkedAt || new Date().toISOString(),
+      checkedAt: new Date().toISOString(),
+    }))
+    .filter((room) => Date.now() - new Date(room.lastSeenAt).getTime() < RETENTION_MS);
+  const roomsOut = [
+    ...live.map((room) => ({ ...room, live: true, lastSeenAt: room.checkedAt })),
+    ...retained,
+  ];
+
   // Kısa dinleme: sandık zarflarını yakala
   const freshChests = [];
   const seen = new Set((previousChests?.chests ?? []).map((c) => c.envelopeId).filter(Boolean));
@@ -275,7 +293,9 @@ async function main() {
         eulerKey: Boolean(eulerKey),
         checked: list.length,
         liveCount: live.length,
-        rooms: live,
+        retainedCount: retained.length,
+        totalKnown: roomsOut.length,
+        rooms: roomsOut,
       },
       null,
       2,

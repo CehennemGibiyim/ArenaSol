@@ -272,6 +272,8 @@ export const liveRooms = pgTable(
     lastError: text("last_error").notNull().default(""),
     firstSeenAt: timestamp("first_seen_at", { withTimezone: true }).notNull().defaultNow(),
     lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull().defaultNow(),
+    /** En son canlı kontrol zamanı — çevrimdışı havuzun dönüşümlü taranması için. */
+    lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [uniqueIndex("live_rooms_username_idx").on(table.username)],

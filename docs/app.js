@@ -108,7 +108,8 @@ function renderChests() {
 }
 
 function renderRooms() {
-  const list = state.rooms || [];
+  // data/rooms.json artık çevrimdışı havuzu da taşır; listelemede yalnızca canlılar görünür.
+  const list = (state.rooms || []).filter((room) => room.live !== false);
   $("room-count").textContent = `${list.length} oda`;
   if (!list.length) {
     $("rooms").innerHTML = '<p class="empty">Doğrulanmış canlı yayın yok. Bir sonraki tarama 5 dakika içinde.</p>';
@@ -135,7 +136,7 @@ function renderKpis() {
   const active = (state.chests || []).filter((c) => !c.opensAt || new Date(c.opensAt).getTime() > now - 120000);
   $("kpi-chests").textContent = active.length;
   $("kpi-coins").textContent = `${fmt(active.reduce((sum, c) => sum + Number(c.coins || 0), 0))} jeton`;
-  $("kpi-rooms").textContent = (state.rooms || []).length;
+  $("kpi-rooms").textContent = (state.rooms || []).filter((room) => room.live !== false).length;
   const best = active.reduce((max, c) => {
     const ratio = Number(c.ratio ?? (c.coins || 0) / Math.max(1, c.slots || 1));
     return ratio > max ? ratio : max;

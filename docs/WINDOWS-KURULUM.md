@@ -149,3 +149,10 @@ Otomatik yedek: `pg_dump app_db > yedek.sql`
 ## 12. Lisans / uyarı
 
 TikTok LIVE verisi resmi olmayan Webcast protokolü üzerinden okunur. `tiktok-live-connector` MIT lisanslıdır ve TikTok ile bağlantılı değildir. Yalnızca kamuya açık yayınların okunması önerilir.
+
+## Panel her zaman açık
+
+- Kurulum sonrası masaüstünde ve başlat menüsünde **Arena Panel** kısayolu `http://localhost:3000` adresini açar.
+- `scripts/start-panel.ps1 -KeepAlive` paneli gizli pencerede ayakta tutar; panel çökerse 20 sn içinde yeniden başlatır.
+- Kurulum, oturum açılışında panel gözcüsünü otomatik başlatır (`HKCU\\...\\Run\\ArenaLiveOSPanel`).
+- `Durdur.bat` paneli, gözcüyü ve ajanı birlikte kapatır; yeniden açmak için `Arena-Panel.bat` veya `Arena-Live-OS.bat`.

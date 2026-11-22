@@ -1,6 +1,7 @@
 # Sandık Radarı: gerçek veri, keşif ve dinleme
 
 - **Anahtarsız "bütün ülkeler" feed'i yoktur (2026-11'de ölçüldü):** `webcast.tiktok.com/webcast/ranklist/hour` → `404 page not found`; `tiktok.com/api/live/explore` ve `api/recommend/live` → `"url doesn't match"`; `tiktok.com/live/explore` → 4.6 KB challenge sayfası, oda listesi yok. Anahtarsız çalışan uçlar yalnızca tek hesap çözümlemesidir: `api-live/user/room`, `webcast/room/check_alive`, `webcast/room/info`. Bu yüzden anahtarsız kapsam = kayıtlı hesaplar + sabitlenenler + bulunan odalar + Tik.Tools'un 10 yayınlık açık listesi. Daha fazlası için anahtar gerekir: EulerStream ücretsiz anahtarı bağlantı kotasını artırır (feed için Business gerekir), TikTools Sandbox anahtarı 7 gün ücretsizdir (3 eşzamanlı WS, saatte 60 bağlantı).
+- **Kendiliğinden büyüyen izleme listesi:** Dinlenen odada sohbet eden ve hediye gönderen hesaplardan oturum başına en fazla 12 yeni ad `targets` tablosuna aday olarak yazılır; sonraki tarama bunları `check_alive` ile doğrular. Böylece anahtarsız kapsam zamanla kendi kendine genişler. Zaten kayıtlı adlar tekrar eklenmez.
 - Anahtarsız aday keşfi: [Tik.Tools açık top-channels listesi](https://tik.tools/docs), `GET https://api.tik.tools/api/live/top-channels`. En fazla 10 canlı yayın; IP başına 5 dakikada 1 çağrı. Yanıtlar (boş ve hata dahil) bellekte önbelleğe alınır. Bu liste **dünya taraması değildir**; boşsa yalnızca kayıtlı hesaplar ve sabitlenen odalar kontrol edilir.
 - `EULER_API_KEY` varsa EulerStream Business bölge feed'i çalışır; anahtar yoksa 0 bölge isteği gönderilir. Rapor `eulerRequests`, `publicRequests`, `regionsScanned`, `queued` alanlarını ayrı döndürür.
 - **Ücretli API zorunlu değil (2026-11-19 ölçümü):** İmza anahtarı olmadan `TikTokLiveConnection` bağlantısı kuruldu; 25 saniyede `chat` 14, `like` 27, `roomUser` 13, `member` 27, `gift` 5 olayı alındı. Yani sandık/çanta zarfları da aynı soketten anahtarsız okunur. `SIGN_API_KEY` yalnızca bağlantı kotasını yükseltir (ücretsiz topluluk anahtarı), `EULER_API_KEY` yalnızca bölge feed'i içindir. Ücretli plan satın almak gerekmez; tek gerçek sınır anahtarsız dünya çapı keşif feed'inin olmamasıdır.
@@ -15,3 +16,17 @@ Yeni kurulumda `npx drizzle-kit push` çalıştırın. İzleme kapasitesi ve imz
 - **GitHub Actions collector** (`.github/workflows/collect.yml`, her 5 dk): kullanıcı sistemde olmasa bile `agent/collect.mjs` çalışır; keşif + doğrulama + kısa dinleme yapıp `docs/data/rooms.json` ve `docs/data/chests.json` dosyalarını commit'ler. `deploy.yml` aynı `docs/` klasörünü GitHub Pages'e yayınlar; `docs/index.html` paneli bu veriyi 5 sn'de bir yeniler.
 - **Windows paketi** (`/api/packages/windows` veya `Arena-Agent.bat`): açılışta `agent/update.mjs` çalışır ve `raw.githubusercontent.com/CehennemGibiyim/Arena/main/agent/manifest.json` içindeki sha256 özetlerini yerelle karşılaştırır; değişen dosyaları indirir (kendini `update.mjs.pending` olarak bırakır, bir sonraki açılışta uygular). Ardından `arena-agent.mjs` uzaktan veri çeker: Pages ise JSON polling, canlı Next.js sunucusu ise `/api/chests/stream` SSE ile sandık **anında** (saniye gecikmesi olmadan) Windows'a itilir. Yerel dinleme yedek olarak paralel sürer.
 - Manifest güncelleme: `node scripts/build-agent-manifest.mjs` çalıştırıp commit'le.
+
+## Eşzamanlı dinleme kapasitesi ve süreklilik (2026-11)
+
+- **Panel:** varsayılan eşzamanlı dinleme **40 oda** (Ayarlar → Toplam dinleme kapasitesi, üst sınır 200).
+  Bağlantı açma hızı dakikada 8'dir (`LISTENER_CONNECTS_PER_MINUTE`); 429 alınırsa 65 sn ortak cooldown uygulanır.
+- **GitHub Actions:** her turda **8 oda aynı anda** 50 sn dinlenir; panel kapalıyken de sandık yakalanır.
+- **Çevrimdışı havuz:** yayıncılar veriden silinmez. `live_rooms.last_checked_at` alanına göre en uzun süredir
+  kontrol edilmeyen odalar ilk sıraya alınır (`retained` kaynağı), böylece tüm havuz dönüşümlü taranır.
+  `agent/collect.mjs` de önceki turların odalarını `data/rooms.json` içinde `live:false` olarak 7 gün tutar.
+- **Kendi toplu API'miz (ücretsiz):** `GET /api/live/batch?users=a,b,c` — 200 hesaba kadar; oda kimlikleri
+  `check_alive` ile 50'lik gruplar hâlinde sorulur, 45 sn içinde doğrulanmış odalar için istek harcanmaz.
+  `?feed=1` hiç TikTok isteği yapmadan kayıtlı canlı odaları döner. `ARENA_API_TOKEN` varsa `x-arena-token` gerekir.
+- **Tarama durdurulamaz:** `stop` isteği döngüyü kapatmaz, yeniden kurar. 30 sn watchdog zamanlayıcıyı onarır;
+  5 dakikayı aşan kilitli tur serbest bırakılır. Böylece süre/jeton sayacı kesintisiz çalışır.

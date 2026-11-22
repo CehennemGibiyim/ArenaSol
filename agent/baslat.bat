@@ -8,5 +8,10 @@ if not exist node_modules (
 )
 echo Panel adresi: %ARENA_PANEL_URL%
 echo Arena Local Agent baslatiliyor...
+
+:run
 node agent/arena-agent.mjs
-pause
+echo.
+echo [!] Agent kapandi. 10 sn sonra yeniden baslatiliyor... (durdurmak icin Durdur.bat)
+timeout /t 10 >nul
+goto run

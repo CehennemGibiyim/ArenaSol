@@ -18,12 +18,42 @@ export type ScannerStatus = {
   lastRegionSummary: ReturnType<typeof summarizeRegions> | null; scope: ScanScope;
 };
 const state = globalThis as typeof globalThis & { __arenaScanner?: {
-  timer: ReturnType<typeof setInterval> | null; running: boolean; lastRunAt: number | null;
+  timer: ReturnType<typeof setInterval> | null; watchdog: ReturnType<typeof setInterval> | null;
+  running: boolean; runningSince: number; lastRunAt: number | null;
   lastResult: ScannerStatus["lastResult"]; lastRegionSummary: ScannerStatus["lastRegionSummary"]; scope: ScanScope;
 } };
 function store() {
-  return state.__arenaScanner ??= { timer: null, running: false, lastRunAt: null, lastResult: null,
-    lastRegionSummary: null, scope: { regions: [...REGIONS_ALL], regionCoverage: "all", eulerAvailable: Boolean(process.env.EULER_API_KEY) } };
+  return state.__arenaScanner ??= { timer: null, watchdog: null, running: false, runningSince: 0, lastRunAt: null,
+    lastResult: null, lastRegionSummary: null,
+    scope: { regions: [...REGIONS_ALL], regionCoverage: "all", eulerAvailable: Boolean(process.env.EULER_API_KEY) } };
+}
+/** Tarama aralığı: ayarlardan okunur, asla 60 sn'nin altına inmez. */
+function scanInterval(settings: { scanIntervalSeconds?: number } | null): number {
+  return Math.max(60, Number(settings?.scanIntervalSeconds ?? 120));
+}
+function armScanTimer(intervalSeconds: number) {
+  const s = store();
+  if (s.timer) clearInterval(s.timer);
+  // Keşif döngüsü hiçbir koşulda kendiliğinden sonlanmaz; hata yutsa da yeniden dener.
+  s.timer = setInterval(() => {
+    void expireOldChests().catch(() => null);
+    void runScan().catch(() => null);
+  }, intervalSeconds * 1000);
+}
+/**
+ * Zamanlayıcıyı yeniden kurar ve tarama bayatsa hemen yeni tur başlatır.
+ * Panel, ajan ve watchdog aynı işlevi kullanır: tarama durdurulamaz, yalnızca
+ * yeniden ayağa kaldırılır.
+ */
+export async function ensureScanning() {
+  const s = store();
+  const settings = await getSettings().catch(() => null);
+  const intervalSeconds = scanInterval(settings);
+  if (!s.timer) armScanTimer(intervalSeconds);
+  const staleAfter = intervalSeconds * 4 * 1000;
+  if (!s.running && (!s.lastRunAt || Date.now() - s.lastRunAt > staleAfter)) {
+    void runScan().catch(() => null);
+  }
 }
 export async function getScannerStatus(): Promise<ScannerStatus> {
   const settings = await getSettings();
@@ -38,21 +68,19 @@ export async function getScannerStatus(): Promise<ScannerStatus> {
 export function startScannerLoop() {
   startListenerWorker();
   const s = store();
+  // 30 sn'lik watchdog: süreç ayakta kaldıkça tarama zamanlayıcısı da ayakta kalır.
+  if (!s.watchdog) {
+    s.watchdog = setInterval(() => { void ensureScanning().catch(() => null); }, 30_000);
+  }
   if (s.timer) return;
   // Tam otomatik: panel açılmasa da keşif döngüsü kendiliğinden çalışır.
   void runScan().catch(() => null);
-  void getSettings().then((settings) => {
-    if (s.timer) return;
-    s.timer = setInterval(() => {
-      void expireOldChests().catch(() => null);
-      void runScan().catch(() => null);
-    }, Math.max(60, Number(settings.scanIntervalSeconds ?? 120)) * 1000);
-  }).catch(() => null);
+  void ensureScanning().catch(() => null);
 }
+/** Geriye dönük uyumluluk: "durdur" isteği taramayı kapatmaz, yeniden kurar. */
 export function stopScannerLoop() {
-  const s = store();
-  if (s.timer) clearInterval(s.timer);
-  s.timer = null;
+  startScannerLoop();
+  void ensureScanning().catch(() => null);
 }
 export type ScanOptions = { regions?: string[]; only?: string[]; listenSecondsOverride?: number; maxRoomsOverride?: number };
 export async function runScan(options: ScanOptions = {}) {
@@ -61,9 +89,12 @@ export async function runScan(options: ScanOptions = {}) {
   const scope: ScanScope = { regions: process.env.EULER_API_KEY ? regions : [],
     regionCoverage: process.env.EULER_API_KEY ? options.regions?.length ? "custom" : "all" : "manual",
     eulerAvailable: Boolean(process.env.EULER_API_KEY) };
-  if (s.running) return { checked: 0, liveFound: 0, chestsFound: 0, source: "busy", error: "Tarama zaten çalışıyor.",
+  const stuck = s.running && s.runningSince > 0 && Date.now() - s.runningSince > 5 * 60_000;
+  if (s.running && !stuck) return { checked: 0, liveFound: 0, chestsFound: 0, source: "busy", error: "Tarama zaten çalışıyor.",
     scanId: 0, regionSummary: s.lastRegionSummary, scope: s.scope, errors: [], roomsConsidered: 0, eulerRequests: 0, publicRequests: 0, queued: 0 };
+  // 5 dakikadan uzun süren tur kilitlenmiş sayılır: tarama zinciri kopmaz.
   s.running = true;
+  s.runningSince = Date.now();
   s.scope = scope;
   let checked = 0, liveFound = 0, eulerRequests = 0, publicRequests = 0, queued = 0, roomsConsidered = 0;
   let error = "";
@@ -102,7 +133,7 @@ export async function runScan(options: ScanOptions = {}) {
     roomsConsidered = candidates.size;
     let cursor = 0;
     const list = [...candidates.values()];
-    await Promise.all(Array.from({ length: Math.min(10, list.length) }, async () => {
+    await Promise.all(Array.from({ length: Math.min(16, list.length) }, async () => {
       while (cursor < list.length) {
         const item = list[cursor++];
         if (!item) break;
@@ -131,7 +162,10 @@ export async function runScan(options: ScanOptions = {}) {
   finally {
     await expireOldChests().catch(() => 0);
     s.running = false;
+    s.runningSince = 0;
     s.lastRunAt = Date.now();
+    // Tur bittiğinde zamanlayıcı ölmüşse hemen yeniden kur.
+    if (!s.timer) armScanTimer(scanInterval(await getSettings().catch(() => null)));
     s.lastResult = { checked, liveFound, chestsFound: 0, source, error };
     if (scanId) await db.update(radarScans).set({ finishedAt: new Date(), checked, liveFound,
       chestsFound: 0, source, error }).where(eq(radarScans.id, scanId)).catch(() => null);

@@ -164,6 +164,16 @@ src/app/yardim/        Panel içi resimli rehber
 
 `GET /api/rooms` · `POST /api/rooms` · `PATCH/DELETE /api/rooms/[id]` · `POST /api/ingest` · `GET /api/chests` · `GET /api/chests/stream` (SSE) · `GET/PATCH/DELETE /api/chests/[id]` · `GET /api/chests/export` · `GET/POST /api/live/sessions` · `GET /api/live/feed` · `GET/POST /api/live/check` · `GET/POST /api/radar/scan` · `GET/PUT /api/settings` · `GET/POST /api/resources/[resource]` · `PATCH/DELETE /api/resources/[resource]/[id]` · `GET /api/qr?text=` · `POST /api/ai/chat` · `POST /api/demo/seed?force=1` · `GET /api/packages/windows` · `GET /api/packages/library` · `GET /api/health`
 
+**Toplu canlı sorgu (ücretsiz, anahtarsız):** `GET /api/live/batch?users=a,b,c` tek istekte 200 hesaba kadar sorgular; oda kimlikleri `check_alive` ile 50'lik gruplar hâlinde sorulur. `?feed=1` hiç TikTok isteği yapmadan kayıtlı canlı odaları döner. `ARENA_API_TOKEN` tanımlıysa `x-arena-token` başlığı gerekir.
+
+## Eşzamanlı dinleme ve süreklilik
+
+- Aynı anda dinlenen oda sayısı: panelde varsayılan **40** (Ayarlar → Toplam dinleme kapasitesi, en fazla 200). Bağlantı açma hızı dakikada **8**'dir (`LISTENER_CONNECTS_PER_MINUTE`); 429 gelirse ortak cooldown devreye girer ve hız kendiliğinden düşer.
+- GitHub Actions toplayıcısı her turda **8 odayı aynı anda** dinler (50 sn); böylece panel kapalıyken de sandık yakalanır.
+- Çevrimdışı yayıncılar silinmez: `live_rooms`/`rooms.json` içinde tutulur. En uzun süredir kontrol edilmeyen odalar öne alınarak dönüşümlü taranır; yayına geçtiklerinde otomatik olarak dinlemeye alınırlar.
+- Tarama durdurulamaz: `POST /api/radar/scan {action:"stop"}` bile döngüyü yeniden kurar. 30 sn'lik watchdog zamanlayıcıyı, 5 dakikayı aşan kilitli turu ve bayat taramayı onarır; jeton/süre sayacı kesintisiz kalır.
+- Windows'ta panel gözcüsü (`scripts/start-panel.ps1`) paneli ayakta tutar, çökerse 20 sn içinde yeniden başlatır; kurulum oturum açılışında otomatik başlatır ve masaüstü/menüye "Arena Panel" kısayolu ekler.
+
 ## Kapsam ve dürüst sınırlar
 
 - Anahtarsız "bütün ülkeler" feed'i yoktur; anahtarsız kapsam kayıtlı hesaplar + sabitlenenler + bulunan odalar + 10 yayınlık açık listedir. Ölçümler: [docs/RADAR-DINLEME.md](docs/RADAR-DINLEME.md)

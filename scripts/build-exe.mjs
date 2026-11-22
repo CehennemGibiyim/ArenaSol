@@ -29,7 +29,7 @@ const INCLUDE_FILES = [
   "package.json", "package-lock.json", "tsconfig.json", "next.config.ts",
   "postcss.config.mjs", "eslint.config.mjs", "drizzle.config.ts",
   ".env.example", "README.md", "KURULUM.bat", "Arena-Live-OS.bat",
-  "Durdur.bat", "Arena-Agent.bat",
+  "Arena-Panel.bat", "Durdur.bat", "Arena-Agent.bat",
 ];
 
 const log = (...a) => console.log("[build-exe]", ...a);

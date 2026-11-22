@@ -3,7 +3,7 @@ import { and, asc, eq, gt, inArray, lt, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { listenerJobs, liveRooms, type ListenerJob } from "@/db/schema";
 import { deriveChest, GiftFlow, recordChest, upsertFlow, type EnvelopeFields } from "@/server/chest";
-import { bumpRoomChest, upsertLiveRoom } from "@/server/rooms";
+import { addWatchCandidates, bumpRoomChest, upsertLiveRoom } from "@/server/rooms";
 import { envelopeReward, bagReward, roomRewards } from "@/server/rewards";
 import { getSettings } from "@/server/settings";
 
@@ -16,6 +16,8 @@ type Connection = {
 };
 const owner = randomUUID();
 const running = new Map<number, Connection>();
+/** Oturum başına izleme listesine eklenecek en fazla yeni aday (kota koruması). */
+const HARVEST_PER_SESSION = 12;
 const globalStore = globalThis as typeof globalThis & { __arenaListenerTimer?: ReturnType<typeof setInterval>; __arenaListenerCooldown?: number };
 
 export async function enqueueVerifiedRoom(input: { roomId: string; username: string; nickname: string; title: string; viewers: number }) {
@@ -63,6 +65,25 @@ async function listen(job: ListenerJob) {
   let lastError = "bağlantı kapandı";
   const flow = new GiftFlow();
   const meta = { username: job.username, nickname: job.nickname, title: job.title, roomId: job.roomId, viewers: job.viewers };
+  // Ücretsiz keşif: odada sohbet eden / hediye gönderen hesaplar yayıncı adayı olabilir.
+  // Toplanan adlar izleme listesine yazılır; bir sonraki tarama onları doğrular.
+  const harvest = new Set<string>();
+  const harvested = new Set<string>();
+  const collectHandle = (raw: unknown) => {
+    if (completed || harvest.size >= HARVEST_PER_SESSION) return;
+    const handle = String((raw as { user?: { uniqueId?: string } })?.user?.uniqueId ?? "")
+      .replace(/^@+/, "")
+      .toLowerCase();
+    if (!/^[\w.]{2,24}$/.test(handle) || handle === job.username || harvested.has(handle)) return;
+    harvested.add(handle);
+    harvest.add(handle);
+  };
+  const flushHarvest = async () => {
+    if (!harvest.size) return;
+    const batch = [...harvest];
+    harvest.clear();
+    await addWatchCandidates(batch, { source: "chat+gift", limit: HARVEST_PER_SESSION }).catch(() => 0);
+  };
   const saveReward = async (fields: EnvelopeFields | null) => {
     if (!fields || completed) return;
     try {
@@ -103,7 +124,9 @@ async function listen(job: ListenerJob) {
       // Gift diamonds are tracked separately. NEVER forwarded as chest coins.
       flow.addGift(job.username, meta, { user: gift.user?.uniqueId ?? "?", giftId: String(gift.giftId ?? ""),
         diamonds: Number(gift.diamondCount ?? 0), repeatCount: gift.repeatCount ?? 1 });
+      collectHandle(raw);
     });
+    socket.on("chat", (raw) => { collectHandle(raw); });
     socket.on("roomUser", (raw) => {
       const count = Number((raw as { viewerCount?: number })?.viewerCount);
       if (Number.isFinite(count) && count > 0) meta.viewers = count;
@@ -114,6 +137,7 @@ async function listen(job: ListenerJob) {
     void saveRoomInfo();
     refresh = setInterval(() => {
       void saveRoomInfo();
+      void flushHarvest();
       for (const row of flow.rows()) void upsertFlow({ ...row, liveNow: true }).catch(() => null);
     }, 120_000);
     heartbeat = setInterval(() => {
@@ -130,6 +154,7 @@ async function listen(job: ListenerJob) {
     completed = true;
     if (heartbeat) clearInterval(heartbeat);
     if (refresh) clearInterval(refresh);
+    await flushHarvest();
     running.delete(job.id);
     if (connection) await connection.disconnect().catch(() => null);
     for (const row of flow.rows()) await upsertFlow({ ...row, liveNow: !ended }).catch(() => null);
@@ -153,8 +178,9 @@ function connectGate(): number {
   const now = Date.now();
   const window = (rateStore.__arenaConnectWindow ??= []).filter((time) => now - time < 60_000);
   rateStore.__arenaConnectWindow = window;
-  // Anonymous signing allows only a few connections per minute; stay under it.
-  const budget = Math.max(1, Number(process.env.LISTENER_CONNECTS_PER_MINUTE ?? 4));
+  // Anonim imza dakikada sınırlı bağlantıya izin verir. Varsayılan 8'dir; 429
+  // alındığında ortak cooldown devreye girer ve hız kendiliğinden düşer.
+  const budget = Math.max(1, Math.min(60, Number(process.env.LISTENER_CONNECTS_PER_MINUTE ?? 8)));
   return window.length >= budget ? budget * 60_000 - (now - window[0]!) : 0;
 }
 function recordConnect() {
@@ -167,7 +193,8 @@ export async function tick() {
   ticking = true;
   try {
     const settings = await getSettings();
-    const capacity = Math.max(1, Math.min(120, Number(settings.listenerCapacity ?? settings.scanConcurrency ?? 20)));
+    // Eşzamanlı dinleme kapasitesi: varsayılan 40, en fazla 200 oda.
+    const capacity = Math.max(1, Math.min(200, Number(settings.listenerCapacity ?? settings.scanConcurrency ?? 40)));
     for (let i = 0; i < capacity; i++) {
       const wait = connectGate();
       if (wait > 0) break;
@@ -177,6 +204,10 @@ export async function tick() {
       void listen(job).catch(() => null);
     }
   } finally { ticking = false; }
+}
+
+export function listenerRuntime() {
+  return { active: running.size, owner };
 }
 
 export function startListenerWorker() {

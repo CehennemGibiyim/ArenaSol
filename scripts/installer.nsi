@@ -66,13 +66,22 @@ Section "Arena Live OS" SecMain
   CreateShortcut "$DESKTOP\Arena Live OS.lnk" "$INSTDIR\${APPEXE}" "" "$INSTDIR\${APPEXE}" 0
   CreateDirectory "$SMPROGRAMS\Arena Live OS"
   CreateShortcut "$SMPROGRAMS\Arena Live OS\Arena Live OS.lnk" "$INSTDIR\${APPEXE}"
+  ; Panel her zaman erisilebilir: dogrudan tarayicida acilan kisayol + arka plan gozcusu
+  CreateShortcut "$SMPROGRAMS\Arena Live OS\Arena Panel.lnk" "http://localhost:3000"
+  CreateShortcut "$DESKTOP\Arena Panel.lnk" "http://localhost:3000"
+  CreateShortcut "$SMPROGRAMS\Arena Live OS\Pencereyi Ac.lnk" "$INSTDIR\Arena-Panel.bat"
   CreateShortcut "$SMPROGRAMS\Arena Live OS\Kurulum Sihirbazi.lnk" "$INSTDIR\KURULUM.bat"
   CreateShortcut "$SMPROGRAMS\Arena Live OS\Durdur.lnk" "$INSTDIR\Durdur.bat"
   CreateShortcut "$SMPROGRAMS\Arena Live OS\Kaldir.lnk" "$INSTDIR\Uninstall.exe"
+
+  ; Oturum acilinca panel gozcusu kendiliginden baslar (panel kapanirsa yeniden acilir).
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "ArenaLiveOSPanel" 'cmd /c start "" /min "$INSTDIR\Arena-Panel.bat"'
 SectionEnd
 
 Section "Uninstall"
   Delete "$DESKTOP\Arena Live OS.lnk"
+  Delete "$DESKTOP\Arena Panel.lnk"
+  DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "ArenaLiveOSPanel"
   RMDir /r "$SMPROGRAMS\Arena Live OS"
   RMDir /r "$INSTDIR"
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\ArenaLiveOS"

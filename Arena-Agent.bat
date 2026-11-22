@@ -16,5 +16,10 @@ if exist agent\update.mjs.pending (
 
 echo [2/3] Yerel hizli durum: http://localhost:4780
 echo [3/3] Agent baslatiliyor (3 sn veri yenileme, sandık açma)...
+
+:run
 node agent\arena-agent.mjs
-pause
+echo.
+echo [!] Agent kapandi. 10 sn sonra yeniden baslatiliyor... (durdurmak icin Durdur.bat)
+timeout /t 10 >nul
+goto run

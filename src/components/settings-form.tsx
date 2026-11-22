@@ -206,8 +206,8 @@ export function SettingsForm() {
               <InputRow
                 label="Toplam dinleme kapasitesi"
                 type="number"
-                value={String(settings.listenerCapacity ?? 20)}
-                onChange={(value) => update("listenerCapacity", Math.max(1, Number(value) || 20))}
+                value={String(settings.listenerCapacity ?? 40)}
+                onChange={(value) => update("listenerCapacity", Math.max(1, Number(value) || 40))}
               />
               <InputRow
                 label="Sandık uyarı min. oran"

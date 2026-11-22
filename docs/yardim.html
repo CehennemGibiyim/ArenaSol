@@ -111,6 +111,10 @@ agent/data/alerts.jsonl  → otomatik açma ve bildirim kayıtları</pre>
         <code>MAX_ROOMS</code>.</li>
       <li>Panelde <b>Ayarlar → Sandık radarı tarayıcısı</b>: tarama aralığı, eşzamanlı oda, uyarı oranı/jeton eşiği.</li>
       <li>Panel açıkken <code>POST /api/radar/scan</code> anlık tarama başlatır; panel kapalıyken GitHub cron devralır.</li>
+      <li>Eşzamanlı dinleme varsayılan <b>40 oda</b>dır (Ayarlar → Toplam dinleme kapasitesi; en fazla 200). Bağlantı hızı dakikada 8'dir; 429 gelirse kendiliğinden yavaşlar.</li>
+      <li>Çevrimdışı yayıncılar veriden silinmez; dönüşümlü kontrol edilir ve yayına geçince tekrar dinlenir.</li>
+      <li>Tarama durdurulamaz: "durdur" isteği bile döngüyü yeniden kurar, böylece süre/jeton sayacı kesilmez.</li>
+      <li>Kendi toplu API'niz: <code>GET /api/live/batch?users=a,b,c</code> (200'e kadar) veya TikTok isteği harcamadan <code>?feed=1</code>.</li>
     </ul>
     <div class="callout">
       <p style="margin:0">

@@ -52,8 +52,13 @@ export async function POST(request: Request) {
   }
   if (body.action === "stop") {
     try {
+      // Tarama kalıcıdır: "durdur" isteği döngüyü kapatmaz, yeniden kurar.
       stopScannerLoop();
-      return NextResponse.json({ ok: true, ...(await scannerDashboard()) });
+      return NextResponse.json({
+        ok: true,
+        note: "Tarama durdurulamaz; döngü yeniden kuruldu. Jeton/süre sayacı kesintisiz devam eder.",
+        ...(await scannerDashboard()),
+      });
     } catch (error) {
       return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 500 });
     }
