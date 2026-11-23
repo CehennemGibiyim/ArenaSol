@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-23T07:59:40.014Z",
+  "generatedAt": "2026-11-23T20:05:49.338Z",
   "ok": true,
-  "durationMs": 55626,
+  "durationMs": 56755,
   "nextRunInSeconds": 300,
-  "candidates": 32,
-  "liveRooms": 12,
-  "activeChests": 1,
+  "candidates": 42,
+  "liveRooms": 19,
+  "activeChests": 0,
   "autoJoin": true,
   "source": "watchlist+public-sample",
   "note": "GitHub Actions taraması — kullanıcı paneli kapalı olsa da çalışır."
