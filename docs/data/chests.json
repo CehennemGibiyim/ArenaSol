@@ -1,5 +1,20 @@
 {
-  "generatedAt": "2026-11-23T00:22:44.011Z",
-  "count": 0,
-  "chests": []
+  "generatedAt": "2026-11-23T07:59:40.014Z",
+  "count": 1,
+  "chests": [
+    {
+      "envelopeId": "7711273322592471815",
+      "username": "kuenley.jigs",
+      "roomId": "7711270158307707656",
+      "nickname": "Kinley Penjor",
+      "coins": 68,
+      "slots": 48,
+      "ratio": 1.42,
+      "opensAt": "2026-11-23T07:59:30.000Z",
+      "detectedAt": "2026-11-23T07:59:01.214Z",
+      "skinId": 100,
+      "source": "actions-collector",
+      "url": "https://www.tiktok.com/@kuenley.jigs/live"
+    }
+  ]
 }
