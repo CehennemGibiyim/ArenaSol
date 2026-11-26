@@ -1,24 +1,284 @@
 {
-  "generatedAt": "2026-11-26T01:59:07.983Z",
+  "generatedAt": "2026-11-26T10:45:20.762Z",
   "source": "watchlist+public-sample",
   "eulerKey": false,
-  "checked": 97,
-  "liveCount": 25,
-  "retainedCount": 71,
-  "totalKnown": 96,
+  "checked": 105,
+  "liveCount": 21,
+  "retainedCount": 82,
+  "totalKnown": 103,
   "rooms": [
     {
       "user": "zektoga702",
-      "roomId": "7712286879936891649",
+      "roomId": "7712415551364156181",
       "nickname": "@zeк777",
       "title": "",
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:09.257Z",
+      "checkedAt": "2026-11-26T10:44:19.196Z",
       "url": "https://www.tiktok.com/@zektoga702/live",
       "live": true,
-      "lastSeenAt": "2026-11-26T01:58:09.257Z"
+      "lastSeenAt": "2026-11-26T10:44:19.196Z"
+    },
+    {
+      "user": "taroshu_1001",
+      "roomId": "7712395226911935239",
+      "nickname": "11/26🎂たろぴ🦎❀ུ͏  ⋆*",
+      "title": "生誕にこにこで過ごそーっと♪",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:19.197Z",
+      "url": "https://www.tiktok.com/@taroshu_1001/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:19.197Z"
+    },
+    {
+      "user": "wake_radio",
+      "roomId": "7712414992183593734",
+      "nickname": "WAKE RADIO",
+      "title": "Let's Live GO GO!",
+      "region": "TH",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:19.203Z",
+      "url": "https://www.tiktok.com/@wake_radio/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:19.203Z"
+    },
+    {
+      "user": "pandasanchezzz",
+      "roomId": "7712402715318127373",
+      "nickname": "Pandasanchezzz🐼",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:19.403Z",
+      "url": "https://www.tiktok.com/@pandasanchezzz/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:19.403Z"
+    },
+    {
+      "user": "latoni01",
+      "roomId": "7712399134111632150",
+      "nickname": "🦍🔥La Toni01🌶",
+      "title": "HALT DIE FRESSE",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:20.648Z",
+      "url": "https://www.tiktok.com/@latoni01/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:20.648Z"
+    },
+    {
+      "user": "sonamthai66",
+      "roomId": "7712410437237984007",
+      "nickname": "tiktok kota",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:20.848Z",
+      "url": "https://www.tiktok.com/@sonamthai66/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:20.848Z"
+    },
+    {
+      "user": "ema_.333",
+      "roomId": "7712417515850926869",
+      "nickname": "Ёма 333",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:20.853Z",
+      "url": "https://www.tiktok.com/@ema_.333/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:20.853Z"
+    },
+    {
+      "user": "mubarizkaka",
+      "roomId": "7712427842071513908",
+      "nickname": "Mubariz kaka",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:20.970Z",
+      "url": "https://www.tiktok.com/@mubarizkaka/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:20.970Z"
+    },
+    {
+      "user": "palo_warrior",
+      "roomId": "7712401809834314502",
+      "nickname": "𝕻𝖆𝖑𝖔🇵🇸𝖜𝖆𝖗𝖗𝖎𝖔𝖗🥷",
+      "title": "🥷🏿🇵🇸🥷🏿",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:22.247Z",
+      "url": "https://www.tiktok.com/@palo_warrior/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:22.247Z"
+    },
+    {
+      "user": "chiamaka_irene1",
+      "roomId": "7712421835341679373",
+      "nickname": "CUTE EYES 🦋",
+      "title": "Lets Go LIVE!",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:22.528Z",
+      "url": "https://www.tiktok.com/@chiamaka_irene1/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:22.528Z"
+    },
+    {
+      "user": "alonequeen274",
+      "roomId": "7712371113422048021",
+      "nickname": "It’s me Ada 💔",
+      "title": "You’re life your choice 🙏🇳🇵❤️",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:22.574Z",
+      "url": "https://www.tiktok.com/@alonequeen274/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:22.574Z"
+    },
+    {
+      "user": "seerat_kaur96",
+      "roomId": "7712420166675516193",
+      "nickname": "🪯🍁𝓚𝓪𝓾𝓻🍁🪯",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:23.206Z",
+      "url": "https://www.tiktok.com/@seerat_kaur96/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:23.206Z"
+    },
+    {
+      "user": "mavgonzalezz",
+      "roomId": "7712393647450966805",
+      "nickname": "Mavi🪬",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:24.156Z",
+      "url": "https://www.tiktok.com/@mavgonzalezz/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:24.156Z"
+    },
+    {
+      "user": "kuenley.jigs",
+      "roomId": "7712406133545552658",
+      "nickname": "Kinley Penjor",
+      "title": "",
+      "region": "",
+      "source": "watchlist",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:24.927Z",
+      "url": "https://www.tiktok.com/@kuenley.jigs/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:24.927Z"
+    },
+    {
+      "user": "burakc0085",
+      "roomId": "7712399881607875350",
+      "nickname": "Burakᴮ🐬",
+      "title": "LIVE PRO EVENT",
+      "region": "FI",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:25.385Z",
+      "url": "https://www.tiktok.com/@burakc0085/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:25.385Z"
+    },
+    {
+      "user": "psychopatbejr1",
+      "roomId": "7712424008712571670",
+      "nickname": "PsychopatBejr1",
+      "title": "",
+      "region": "SK",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:25.679Z",
+      "url": "https://www.tiktok.com/@psychopatbejr1/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:25.679Z"
+    },
+    {
+      "user": "az_lion",
+      "roomId": "7712417684440501025",
+      "nickname": "Abdullah Aziz",
+      "title": "",
+      "region": "NL",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:25.754Z",
+      "url": "https://www.tiktok.com/@az_lion/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:25.754Z"
+    },
+    {
+      "user": "princity.mcdonald",
+      "roomId": "7712377428722797330",
+      "nickname": "Black legend music 🎶 🎵",
+      "title": "",
+      "region": "JM",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:25.755Z",
+      "url": "https://www.tiktok.com/@princity.mcdonald/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:25.755Z"
+    },
+    {
+      "user": "nucmanali_official",
+      "roomId": "7712387824783362838",
+      "nickname": "Nucman_ali",
+      "title": "",
+      "region": "FI",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:25.957Z",
+      "url": "https://www.tiktok.com/@nucmanali_official/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:25.957Z"
+    },
+    {
+      "user": "laurishenriquez",
+      "roomId": "7712424769756482324",
+      "nickname": "𝕷𝖆𝖚𝖗𝖎𝖘 🫀👸🏻",
+      "title": "",
+      "region": "PE",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:26.325Z",
+      "url": "https://www.tiktok.com/@laurishenriquez/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:26.325Z"
+    },
+    {
+      "user": "sunflower59615",
+      "roomId": "7712389948087487233",
+      "nickname": "🇧🇹 @sunflower🌻",
+      "title": "",
+      "region": "MV",
+      "source": "public-sample",
+      "viewers": 0,
+      "checkedAt": "2026-11-26T10:44:27.000Z",
+      "url": "https://www.tiktok.com/@sunflower59615/live",
+      "live": true,
+      "lastSeenAt": "2026-11-26T10:44:27.000Z"
     },
     {
       "user": "ariiane.daaa",
@@ -28,36 +288,10 @@
       "region": "SE+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:09.467Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@ariiane.daaa/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:09.467Z"
-    },
-    {
-      "user": "wake_radio",
-      "roomId": "7712256229510908692",
-      "nickname": "WAKE RADIO",
-      "title": "Let's Live GO GO!",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:09.722Z",
-      "url": "https://www.tiktok.com/@wake_radio/live",
-      "live": true,
-      "lastSeenAt": "2026-11-26T01:58:09.722Z"
-    },
-    {
-      "user": "taroshu_1001",
-      "roomId": "7712106683379616520",
-      "nickname": "11/26🎂たろぴ🦎❀ུ͏  ⋆*",
-      "title": "生誕にこにこで過ごそーっと♪",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:10.393Z",
-      "url": "https://www.tiktok.com/@taroshu_1001/live",
-      "live": true,
-      "lastSeenAt": "2026-11-26T01:58:10.393Z"
     },
     {
       "user": "andrea.viral208",
@@ -67,9 +301,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:10.653Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@andrea.viral208/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:10.653Z"
     },
     {
@@ -80,23 +314,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:10.930Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@l_dollxx/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:10.930Z"
-    },
-    {
-      "user": "pandasanchezzz",
-      "roomId": "7712288400136620813",
-      "nickname": "Pandasanchezzz🐼",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:11.104Z",
-      "url": "https://www.tiktok.com/@pandasanchezzz/live",
-      "live": true,
-      "lastSeenAt": "2026-11-26T01:58:11.104Z"
     },
     {
       "user": "linaroxxy",
@@ -106,9 +327,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:11.874Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@linaroxxy/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:11.874Z"
     },
     {
@@ -119,9 +340,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:11.929Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@julsevareal22/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:11.929Z"
     },
     {
@@ -132,9 +353,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:11.951Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@marycherrysz/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:11.951Z"
     },
     {
@@ -145,9 +366,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:12.057Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@crisitos33/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:12.057Z"
     },
     {
@@ -158,9 +379,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:12.101Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@kailany.ph/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:12.101Z"
     },
     {
@@ -171,9 +392,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:12.190Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@latifa1_q8/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:12.190Z"
     },
     {
@@ -184,9 +405,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:13.239Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@sexyreds61/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:13.239Z"
     },
     {
@@ -197,9 +418,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:13.705Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@salar_on_top_ji1/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:13.705Z"
     },
     {
@@ -210,9 +431,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:13.827Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@naiiaramlopezzz/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:13.827Z"
     },
     {
@@ -223,9 +444,9 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:14.007Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@muktah123/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:14.007Z"
     },
     {
@@ -236,9 +457,9 @@
       "region": "NO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:14.715Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@akim.tech/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:14.715Z"
     },
     {
@@ -249,9 +470,9 @@
       "region": "MENA",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:14.856Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@douhalaribiii/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:14.856Z"
     },
     {
@@ -262,9 +483,9 @@
       "region": "AZ",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:14.889Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@narmisha7___/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:14.889Z"
     },
     {
@@ -275,9 +496,9 @@
       "region": "VN",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.015Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@lorichen112/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:15.015Z"
     },
     {
@@ -288,9 +509,9 @@
       "region": "GB",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.128Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@m.p.musical/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:15.128Z"
     },
     {
@@ -301,9 +522,9 @@
       "region": "GR",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.189Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@albasita111/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:15.189Z"
     },
     {
@@ -314,9 +535,9 @@
       "region": "RO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.226Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@catalinaaqn/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:15.226Z"
     },
     {
@@ -327,9 +548,9 @@
       "region": "BE",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@coachemmasoleily/live",
-      "live": true,
+      "live": false,
       "lastSeenAt": "2026-11-26T01:58:15.288Z"
     },
     {
@@ -340,36 +561,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@jimmieislive/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:50.844Z"
-    },
-    {
-      "user": "latoni01",
-      "roomId": "7712169817830116118",
-      "nickname": "🦍🔥La Toni01🌶",
-      "title": "HALT DIE FRESSE",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@latoni01/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T18:42:51.560Z"
-    },
-    {
-      "user": "ema_.333",
-      "roomId": "7712166512928328468",
-      "nickname": "Ёма 333",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@ema_.333/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T18:42:52.213Z"
     },
     {
       "user": "bozefit",
@@ -379,36 +574,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@bozefit/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:52.248Z"
-    },
-    {
-      "user": "mubarizkaka",
-      "roomId": "7712152700575550226",
-      "nickname": "Mubariz kaka",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@mubarizkaka/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T18:42:52.744Z"
-    },
-    {
-      "user": "sonamthai66",
-      "roomId": "7712163541080312583",
-      "nickname": "tiktok kota",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@sonamthai66/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T18:42:53.376Z"
     },
     {
       "user": "r1outvofficial",
@@ -418,7 +587,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@r1outvofficial/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:53.666Z"
@@ -431,7 +600,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@silakitikit/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:53.993Z"
@@ -444,7 +613,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@semis_weet4/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:54.790Z"
@@ -457,7 +626,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@_pantera88888/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:54.971Z"
@@ -470,7 +639,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@foradacaixaesemfiltro/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:54.982Z"
@@ -483,7 +652,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@taron.sargsyann.officall/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:55.103Z"
@@ -496,7 +665,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@cachandrii/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:55.387Z"
@@ -509,7 +678,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@pamsaba0/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:55.601Z"
@@ -522,7 +691,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@prophetkibokoyawachawi/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:55.908Z"
@@ -535,7 +704,7 @@
       "region": "VN",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@ht.st.1208/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:55.989Z"
@@ -548,7 +717,7 @@
       "region": "MY",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@uuuki88/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.090Z"
@@ -561,7 +730,7 @@
       "region": "KZ",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@boyka_3101/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.090Z"
@@ -574,7 +743,7 @@
       "region": "MV",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@couchpotato850/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.195Z"
@@ -587,7 +756,7 @@
       "region": "SV",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@milagro636/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.387Z"
@@ -600,7 +769,7 @@
       "region": "SK",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@sztiflerr18/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.416Z"
@@ -613,7 +782,7 @@
       "region": "NL",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@nasalegend/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.684Z"
@@ -626,7 +795,7 @@
       "region": "MT",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@mrpops196/live",
       "live": false,
       "lastSeenAt": "2026-11-25T18:42:56.699Z"
@@ -639,7 +808,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@soyvaleryxo_/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:32.743Z"
@@ -652,7 +821,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@dav81777/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:34.448Z"
@@ -665,23 +834,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@raxii.live/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.066Z"
-    },
-    {
-      "user": "palo_warrior",
-      "roomId": "7712007291144801044",
-      "nickname": "𝕻𝖆𝖑𝖔🇵🇸𝖜𝖆𝖗𝖗𝖎𝖔𝖗🥷",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@palo_warrior/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T08:17:35.235Z"
     },
     {
       "user": "shi5130",
@@ -691,23 +847,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@shi5130/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.297Z"
-    },
-    {
-      "user": "chiamaka_irene1",
-      "roomId": "7711956899579284237",
-      "nickname": "CUTE EYES 🦋",
-      "title": "Lets Go LIVE!",
-      "region": "NG",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@chiamaka_irene1/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T08:17:35.564Z"
     },
     {
       "user": "valentina.live26",
@@ -717,23 +860,10 @@
       "region": "CO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@valentina.live26/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.669Z"
-    },
-    {
-      "user": "alonequeen274",
-      "roomId": "7711940889156864788",
-      "nickname": "It’s me Ada 💔",
-      "title": "broken heart 💔",
-      "region": "NP",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@alonequeen274/live",
-      "live": false,
-      "lastSeenAt": "2026-11-25T08:17:35.677Z"
     },
     {
       "user": "austinwiding3",
@@ -743,7 +873,7 @@
       "region": "US+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@austinwiding3/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.685Z"
@@ -756,7 +886,7 @@
       "region": "PY",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@hamudiomais22/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.921Z"
@@ -769,7 +899,7 @@
       "region": "JP",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@runa1126_/live",
       "live": false,
       "lastSeenAt": "2026-11-25T08:17:35.964Z"
@@ -782,7 +912,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@sovra_empire/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:27.348Z"
@@ -795,7 +925,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@atila_official/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:28.664Z"
@@ -808,7 +938,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@tatjana_official/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:28.772Z"
@@ -821,23 +951,10 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@nastya_myr_9999/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:29.596Z"
-    },
-    {
-      "user": "seerat_kaur96",
-      "roomId": "7711870087791184673",
-      "nickname": "🪯🍁𝓚𝓪𝓾𝓻🍁🪯",
-      "title": "",
-      "region": "PT+",
-      "source": "public-sample",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@seerat_kaur96/live",
-      "live": false,
-      "lastSeenAt": "2026-11-24T23:59:29.771Z"
     },
     {
       "user": "greca99",
@@ -847,7 +964,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@greca99/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:29.840Z"
@@ -860,7 +977,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@erin.xo20/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:29.950Z"
@@ -873,7 +990,7 @@
       "region": "PT+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@filipecardoso791/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.085Z"
@@ -886,7 +1003,7 @@
       "region": "CH",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@ice_queen482/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.169Z"
@@ -899,7 +1016,7 @@
       "region": "AM",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@snep_jr/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.348Z"
@@ -912,7 +1029,7 @@
       "region": "BO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@larahoenen/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.433Z"
@@ -925,7 +1042,7 @@
       "region": "PL",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@hejkatuwerkaaa/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.646Z"
@@ -938,7 +1055,7 @@
       "region": "RO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@asjlive5/live",
       "live": false,
       "lastSeenAt": "2026-11-24T23:59:30.650Z"
@@ -951,7 +1068,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@1slicenation/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:33.170Z"
@@ -964,7 +1081,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@jannat909095/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:33.426Z"
@@ -977,7 +1094,7 @@
       "region": "PY",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@acursito/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:34.945Z"
@@ -990,7 +1107,7 @@
       "region": "PH",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@richardnua/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:35.068Z"
@@ -1003,7 +1120,7 @@
       "region": "JP",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@sakipi.esmok/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:35.143Z"
@@ -1016,7 +1133,7 @@
       "region": "IE+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@cduffy101/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:35.334Z"
@@ -1029,23 +1146,10 @@
       "region": "IE+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@bulochka_sll/live",
       "live": false,
       "lastSeenAt": "2026-11-24T15:21:35.404Z"
-    },
-    {
-      "user": "mavgonzalezz",
-      "roomId": "7711576676664232710",
-      "nickname": "Mavi🪬",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@mavgonzalezz/live",
-      "live": false,
-      "lastSeenAt": "2026-11-24T04:45:01.646Z"
     },
     {
       "user": "miraavdi",
@@ -1055,7 +1159,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@miraavdi/live",
       "live": false,
       "lastSeenAt": "2026-11-24T04:45:01.735Z"
@@ -1068,7 +1172,7 @@
       "region": "DE+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@knkmitherzbruch/live",
       "live": false,
       "lastSeenAt": "2026-11-24T04:45:02.989Z"
@@ -1081,7 +1185,7 @@
       "region": "UZ",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@xamdamjan/live",
       "live": false,
       "lastSeenAt": "2026-11-24T04:45:03.026Z"
@@ -1094,7 +1198,7 @@
       "region": "PH",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@its_me_ms.ann/live",
       "live": false,
       "lastSeenAt": "2026-11-24T04:45:03.237Z"
@@ -1107,7 +1211,7 @@
       "region": "BR",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@gabilyofc/live",
       "live": false,
       "lastSeenAt": "2026-11-24T04:45:03.321Z"
@@ -1120,7 +1224,7 @@
       "region": "",
       "source": "watchlist",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@fla47flavio47/live",
       "live": false,
       "lastSeenAt": "2026-11-23T20:04:54.678Z"
@@ -1133,7 +1237,7 @@
       "region": "CO",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@mafejimenez___/live",
       "live": false,
       "lastSeenAt": "2026-11-23T20:04:55.519Z"
@@ -1146,23 +1250,10 @@
       "region": "MD",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@abduraxmon_mavlonov/live",
       "live": false,
       "lastSeenAt": "2026-11-23T20:04:55.881Z"
-    },
-    {
-      "user": "kuenley.jigs",
-      "roomId": "7711270158307707656",
-      "nickname": "Kinley Penjor",
-      "title": "",
-      "region": "",
-      "source": "watchlist",
-      "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
-      "url": "https://www.tiktok.com/@kuenley.jigs/live",
-      "live": false,
-      "lastSeenAt": "2026-11-23T07:58:46.300Z"
     },
     {
       "user": "melusiasnow",
@@ -1172,7 +1263,7 @@
       "region": "FR+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@melusiasnow/live",
       "live": false,
       "lastSeenAt": "2026-11-23T07:58:46.542Z"
@@ -1185,7 +1276,7 @@
       "region": "PL",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@jamaciek/live",
       "live": false,
       "lastSeenAt": "2026-11-23T07:58:46.919Z"
@@ -1198,7 +1289,7 @@
       "region": "LATAM",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@peli.negraaa/live",
       "live": false,
       "lastSeenAt": "2026-11-23T07:58:46.971Z"
@@ -1211,7 +1302,7 @@
       "region": "GL",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@happy57349/live",
       "live": false,
       "lastSeenAt": "2026-11-23T00:21:49.958Z"
@@ -1224,7 +1315,7 @@
       "region": "AZ",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@rvan.adal/live",
       "live": false,
       "lastSeenAt": "2026-11-23T00:21:50.368Z"
@@ -1237,7 +1328,7 @@
       "region": "CO+",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@hannasofia72/live",
       "live": false,
       "lastSeenAt": "2026-11-23T00:21:50.379Z"
@@ -1250,7 +1341,7 @@
       "region": "LU",
       "source": "public-sample",
       "viewers": 0,
-      "checkedAt": "2026-11-26T01:58:15.288Z",
+      "checkedAt": "2026-11-26T10:44:27.000Z",
       "url": "https://www.tiktok.com/@justdn03/live",
       "live": false,
       "lastSeenAt": "2026-11-23T00:21:50.568Z"
