@@ -22,6 +22,13 @@ export type RoomUpsert = {
   lastError?: string;
 };
 
+/**
+ * Çevrimdışı doğrulanan hesabın yeniden denenme aralığı: 2 → 4 → 8 → 15 → 30 → 60 dakika.
+ * Yayında bulunan hesapta sayaç sıfırlanır, böylece canlı yayıncı her turda kontrol edilir.
+ */
+const CHECK_BACKOFF_MINUTES = sql`case least(greatest(${liveRooms.checkMisses} + 1, 1), 6)
+  when 1 then 2 when 2 then 4 when 3 then 8 when 4 then 15 when 5 then 30 else 60 end`;
+
 export async function upsertLiveRoom(input: RoomUpsert): Promise<LiveRoom | null> {
   const username = input.username.replace(/^@+/, "").trim().toLowerCase();
   if (!username) return null;
@@ -43,6 +50,8 @@ export async function upsertLiveRoom(input: RoomUpsert): Promise<LiveRoom | null
     lastError: input.lastError ?? "",
     lastSeenAt: new Date(),
     lastCheckedAt: new Date(),
+    checkMisses: 0,
+    nextCheckAt: new Date(),
   };
 
   const [row] = await db
@@ -64,6 +73,11 @@ export async function upsertLiveRoom(input: RoomUpsert): Promise<LiveRoom | null
         monitoring: values.monitoring,
         lastError: values.lastError,
         lastCheckedAt: new Date(),
+        // Artan aralıklı yeniden deneme: yayında olmayan hesap her turda sorgulanmaz.
+        checkMisses: values.liveNow ? 0 : sql`${liveRooms.checkMisses} + 1`,
+        nextCheckAt: values.liveNow
+          ? new Date()
+          : sql`now() + (${CHECK_BACKOFF_MINUTES} * interval '1 minute')`,
         // Çevrimdışı kontrolü "son görülme" bilgisini bozmamalı; havuz rotasyonu buna dayanır.
         lastSeenAt: values.liveNow ? new Date() : sql`${liveRooms.lastSeenAt}`,
       },

@@ -3,6 +3,7 @@ import { and, asc, eq, gt, inArray, lt, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { listenerJobs, liveRooms, type ListenerJob } from "@/db/schema";
 import { deriveChest, GiftFlow, recordChest, upsertFlow, type EnvelopeFields } from "@/server/chest";
+import { refreshChestRhythms } from "@/server/chest-rhythm";
 import { addWatchCandidates, bumpRoomChest, upsertLiveRoom } from "@/server/rooms";
 import { envelopeReward, bagReward, roomRewards } from "@/server/rewards";
 import { getSettings } from "@/server/settings";
@@ -18,7 +19,7 @@ const owner = randomUUID();
 const running = new Map<number, Connection>();
 /** Oturum başına izleme listesine eklenecek en fazla yeni aday (kota koruması). */
 const HARVEST_PER_SESSION = 12;
-const globalStore = globalThis as typeof globalThis & { __arenaListenerTimer?: ReturnType<typeof setInterval>; __arenaListenerCooldown?: number };
+const globalStore = globalThis as typeof globalThis & { __arenaListenerTimer?: ReturnType<typeof setInterval>; __arenaListenerCooldown?: number; __arenaRhythmAt?: number };
 
 export async function enqueueVerifiedRoom(input: { roomId: string; username: string; nickname: string; title: string; viewers: number }) {
   const roomId = input.roomId.trim();
@@ -38,17 +39,35 @@ export async function enqueueVerifiedRoom(input: { roomId: string; username: str
   void tick().catch(() => null);
 }
 
+/**
+ * Sandık ritmi kapısı: kota, yalnızca sandık ihtimali yüksek odalara ayrılır.
+ * `CHEST_RHYTHM_GATE=0` ile eski davranışa dönülebilir.
+ */
+function rhythmGateEnabled() {
+  return !/^(0|false|off|no)$/i.test((process.env.CHEST_RHYTHM_GATE ?? "").trim());
+}
+
 async function claim(capacity: number): Promise<ListenerJob | null> {
   return db.transaction(async (tx) => {
     await tx.execute(sql`select pg_advisory_xact_lock(61720401)`);
     const [count] = await tx.select({ n: sql<number>`count(*)::int` }).from(listenerJobs)
       .where(and(eq(listenerJobs.status, "listening"), gt(listenerJobs.leaseUntil, new Date())));
     if ((count?.n ?? 0) >= capacity) return null;
-    const [candidate] = await tx.select().from(listenerJobs)
+    // Ritmi bilinmeyen (next_listen_at null) odalar, sabitlenenler/elle izlenenler ve
+    // daha önce hiç bağlanılmamış odalar (yeni yayın oturumu, attempts = 0) her zaman
+    // bağlanır; ritmi bilinen odalar sandık penceresi açılınca sıraya girer.
+    const gate = rhythmGateEnabled()
+      ? [sql`(${liveRooms.nextListenAt} is null or ${liveRooms.nextListenAt} <= now() or ${liveRooms.pinned} = true or ${liveRooms.monitoring} = true or ${listenerJobs.attempts} = 0)`]
+      : [];
+    const [row] = await tx.select({ job: listenerJobs })
+      .from(listenerJobs)
+      .leftJoin(liveRooms, eq(liveRooms.username, listenerJobs.username))
       .where(and(inArray(listenerJobs.status, ["queued", "retry", "listening"]),
         sql`${listenerJobs.nextAttemptAt} <= now()`,
-        sql`(${listenerJobs.status} <> 'listening' or ${listenerJobs.leaseUntil} < now())`))
+        sql`(${listenerJobs.status} <> 'listening' or ${listenerJobs.leaseUntil} < now())`,
+        ...gate))
       .orderBy(asc(listenerJobs.nextAttemptAt), asc(listenerJobs.id)).limit(1);
+    const candidate = row?.job;
     if (!candidate) return null;
     const [leased] = await tx.update(listenerJobs).set({ owner, status: "listening", leaseUntil: new Date(Date.now() + 45_000), updatedAt: new Date() })
       .where(eq(listenerJobs.id, candidate.id)).returning();
@@ -192,6 +211,11 @@ export async function tick() {
   if (ticking || (globalStore.__arenaListenerCooldown ?? 0) > Date.now()) return;
   ticking = true;
   try {
+    // Sandık ritmi dakikada bir tazelenir; bağlantı kapısı buna göre güncellenir.
+    if (Date.now() - (globalStore.__arenaRhythmAt ?? 0) > 60_000) {
+      globalStore.__arenaRhythmAt = Date.now();
+      void refreshChestRhythms().catch(() => null);
+    }
     const settings = await getSettings();
     // Eşzamanlı dinleme kapasitesi: varsayılan 40, en fazla 200 oda.
     const capacity = Math.max(1, Math.min(200, Number(settings.listenerCapacity ?? settings.scanConcurrency ?? 40)));

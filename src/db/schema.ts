@@ -274,6 +274,16 @@ export const liveRooms = pgTable(
     lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull().defaultNow(),
     /** En son canlı kontrol zamanı — çevrimdışı havuzun dönüşümlü taranması için. */
     lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
+    /** Gözlenen sandıklar arası medyan süre (sn) — oda başına sandık ritmi. 0 = bilinmiyor. */
+    chestIntervalSeconds: integer("chest_interval_seconds").notNull().default(0),
+    /** Son sandığa göre beklenen bir sonraki sandık zamanı. */
+    chestDueAt: timestamp("chest_due_at", { withTimezone: true }),
+    /** Dinleme kapısı: bu zamandan önce WebSocket açılmaz (null = ritim yok, kısıtlama yok). */
+    nextListenAt: timestamp("next_listen_at", { withTimezone: true }),
+    /** Yayında bulunmadığı doğrulanan ardışık kontrol sayısı (artan aralıklı yeniden deneme). */
+    checkMisses: integer("check_misses").notNull().default(0),
+    /** Bir sonraki canlı kontrol zamanı — geri çekilen adaylar o zamana kadar atlanır. */
+    nextCheckAt: timestamp("next_check_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [uniqueIndex("live_rooms_username_idx").on(table.username)],

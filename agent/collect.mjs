@@ -4,7 +4,7 @@
  * ---------------------------------------------------------------------------
  * Kullanıcı sisteme girmeden de çalışır (GitHub Actions cron, 5 dakikada bir):
  *   1) WATCHLIST + pinlenenler + açık örnek liste + (varsa) EulerStream bölge feed'i
- *   2) her adayı TikTok check_alive ile doğrula
+ *   2) oda kimliği bilinen adayları check_alive ile 50'lik gruplar hâlinde doğrula
  *   3) en iyi N odaya kısa WebSocket dinlemesi yap, sandık/çanta zarflarını yakala
  *   4) sonucu docs/data/rooms.json, chests.json ve status.json olarak commit'le
  *
@@ -144,6 +144,12 @@ async function main() {
     .map((x) => x.trim().replace(/^@+/, ""))
     .filter(Boolean);
   const pinned = (previousRooms?.rooms ?? []).map((r) => r.user || r.username).filter(Boolean);
+  // Önceki turun geri çekme durumu (checkMisses / nextCheckAt) korunur.
+  const previousByName = new Map();
+  for (const room of previousRooms?.rooms ?? []) {
+    const user = String(room?.user || room?.username || "").replace(/^@+/, "").toLowerCase();
+    if (user) previousByName.set(user, room);
+  }
 
   const candidates = new Map();
   for (const user of [...watchlist, ...pinned])
@@ -159,46 +165,84 @@ async function main() {
     }
   }
 
-  const live = [];
-  let cursor = 0;
+  /* --- Toplu anahtarsız doğrulama -----------------------------------------
+   * Oda kimliği bilinen adaylar tek `check_alive` isteğiyle 50'li gruplar
+   * hâlinde sorulur; hesap başına `user/room` çağrısı harcanmaz. Yayında
+   * olmadığı doğrulanan adaya artan aralıklı yeniden deneme zamanı yazılır
+   * (2 → 4 → 8 → 15 → 30 → 60 dk) ve o zamana kadar atlanır.
+   */
+  const BACKOFF_MINUTES = [2, 4, 8, 15, 30, 60];
+  const ROOM_ID = /^\d{10,20}$/;
   const list = [...candidates.values()];
+  const now = Date.now();
+  for (const [name, state] of previousByName) {
+    const c = candidates.get(name);
+    if (!c) continue;
+    if (state?.checkMisses) c.checkMisses = Number(state.checkMisses) || 0;
+    if (state?.nextCheckAt) c.nextCheckAt = String(state.nextCheckAt);
+  }
+
+  // 1) Oda kimliği bilinmeyen adlar çözülür (en fazla 10 paralel istek).
+  const unresolved = list.filter((c) => !ROOM_ID.test(c.roomId || ""));
+  let cursor = 0;
   await Promise.all(
-    Array.from({ length: Math.min(10, list.length || 1) }, async () => {
-      while (cursor < list.length) {
-        const c = list[cursor++];
+    Array.from({ length: Math.min(10, unresolved.length || 1) }, async () => {
+      while (cursor < unresolved.length) {
+        const c = unresolved[cursor++];
         if (!c) break;
         try {
-          let roomId = c.roomId;
-          let nickname = c.nickname || c.user;
-          let title = c.title || "";
-          let viewers = c.viewers || 0;
-          if (!roomId || !viewers) {
-            const info = await userRoom(c.user);
-            roomId = roomId || info.roomId;
-            nickname = info.nickname || nickname;
-            title = info.title || title;
-            viewers = viewers || info.viewers;
+          const info = await userRoom(c.user);
+          if (info.roomId) {
+            c.roomId = info.roomId;
+            c.nickname = info.nickname || c.nickname || c.user;
+            c.title = info.title || c.title || "";
+            c.viewers = Number(info.viewers || c.viewers || 0);
           }
-          if (!roomId) continue;
-          const alive = await checkAlive([roomId]);
-          if (alive[roomId])
-            live.push({
-              user: c.user,
-              roomId,
-              nickname,
-              title,
-              region: c.region || "",
-              source: c.source,
-              viewers,
-              checkedAt: new Date().toISOString(),
-              url: `https://www.tiktok.com/@${c.user}/live`,
-            });
         } catch {
           /* tek hesap hatası */
         }
       }
     }),
   );
+
+  // 2) Geri çekilmiş adaylar atlanır; hiçbiri sırası gelmemişse en yakın 20'si denenir.
+  const ready = list.filter((c) => ROOM_ID.test(c.roomId || ""));
+  const due = ready.filter((c) => !c.nextCheckAt || new Date(c.nextCheckAt).getTime() <= now);
+  const dueSet = new Set(due);
+  const deferred = ready
+    .filter((c) => !dueSet.has(c))
+    .sort((a, b) => new Date(a.nextCheckAt || 0).getTime() - new Date(b.nextCheckAt || 0).getTime());
+  const batch = due.length ? due : deferred.slice(0, 20);
+
+  // 3) check_alive: tek istekte 50 oda kimliği.
+  const aliveMap = batch.length ? await checkAlive(batch.map((c) => c.roomId)) : {};
+  const live = [];
+  const checkedUsers = new Set();
+  for (const c of batch) {
+    const user = String(c.user).toLowerCase();
+    checkedUsers.add(user);
+    if (aliveMap[c.roomId]) {
+      c.checkMisses = 0;
+      c.nextCheckAt = null;
+      live.push({
+        user: c.user,
+        roomId: c.roomId,
+        nickname: c.nickname || c.user,
+        title: c.title || "",
+        region: c.region || "",
+        source: c.source,
+        viewers: Number(c.viewers || 0),
+        checkMisses: 0,
+        nextCheckAt: null,
+        checkedAt: new Date().toISOString(),
+        url: `https://www.tiktok.com/@${c.user}/live`,
+      });
+    } else {
+      const misses = Math.min(6, Number(c.checkMisses || 0) + 1);
+      c.checkMisses = misses;
+      c.nextCheckAt = new Date(now + BACKOFF_MINUTES[misses - 1] * 60000).toISOString();
+    }
+  }
   live.sort((a, b) => b.viewers - a.viewers);
 
   // Çevrimdışı havuzu koru: önceki turlarda doğrulanan yayıncılar veride kalır.
@@ -207,12 +251,20 @@ async function main() {
   const liveUsers = new Set(live.map((room) => String(room.user || room.username).toLowerCase()));
   const retained = (previousRooms?.rooms ?? [])
     .filter((room) => room?.user && !liveUsers.has(String(room.user).toLowerCase()))
-    .map((room) => ({
-      ...room,
-      live: false,
-      lastSeenAt: room.lastSeenAt || room.checkedAt || new Date().toISOString(),
-      checkedAt: new Date().toISOString(),
-    }))
+    .map((room) => {
+      const user = String(room.user || "").replace(/^@+/, "").toLowerCase();
+      const c = candidates.get(user);
+      // Bu turda geri çekildiği için atlanan oda eski durumunu korur.
+      if (c && !checkedUsers.has(user)) return { ...room };
+      return {
+        ...room,
+        live: false,
+        checkMisses: Number(c?.checkMisses ?? room.checkMisses ?? 0) || 0,
+        nextCheckAt: c?.nextCheckAt ?? room.nextCheckAt ?? null,
+        lastSeenAt: room.lastSeenAt || room.checkedAt || new Date().toISOString(),
+        checkedAt: new Date().toISOString(),
+      };
+    })
     .filter((room) => Date.now() - new Date(room.lastSeenAt).getTime() < RETENTION_MS);
   const roomsOut = [
     ...live.map((room) => ({ ...room, live: true, lastSeenAt: room.checkedAt })),
@@ -291,7 +343,8 @@ async function main() {
         generatedAt,
         source: eulerKey ? "euler+watchlist+public" : "watchlist+public-sample",
         eulerKey: Boolean(eulerKey),
-        checked: list.length,
+        checked: checkedUsers.size,
+        deferredCount: ready.length - batch.length,
         liveCount: live.length,
         retainedCount: retained.length,
         totalKnown: roomsOut.length,
@@ -314,6 +367,8 @@ async function main() {
         durationMs: Date.now() - startedAt,
         nextRunInSeconds: 300,
         candidates: list.length,
+        checked: checkedUsers.size,
+        deferred: ready.length - batch.length,
         liveRooms: live.length,
         activeChests: activeChests.length,
         autoJoin: true,
@@ -324,7 +379,7 @@ async function main() {
       2,
     ),
   );
-  log(`tamam: ${list.length} kontrol · ${live.length} canlı · ${activeChests.length} aktif sandık`);
+  log(`tamam: ${checkedUsers.size} kontrol (${ready.length - batch.length} geri çekilmiş) · ${live.length} canlı · ${activeChests.length} aktif sandık`);
 }
 
 main().catch(async (e) => {

@@ -6,6 +6,10 @@ import { publicLiveSample } from "@/server/public-feed";
 
 export type Candidate = {
   username: string; roomId: string; nickname: string; title: string; viewers: number; region: string; source: string;
+  /** Sabitlenen hesap her turda doğrulanır. */
+  pinned?: boolean;
+  /** Artan aralıklı yeniden deneme: bu zamana kadar atlanır (epoch ms). */
+  nextCheckAt?: number | null;
 };
 
 export type FreeDiscovery = {
@@ -49,6 +53,8 @@ export async function discoverCandidates(regions: string[]): Promise<FreeDiscove
       viewers: input.viewers || previous?.viewers || 0,
       region: input.region || previous?.region || "",
       source: input.source,
+      pinned: input.pinned ?? previous?.pinned,
+      nextCheckAt: input.nextCheckAt ?? previous?.nextCheckAt,
     });
   };
 
@@ -56,16 +62,19 @@ export async function discoverCandidates(regions: string[]): Promise<FreeDiscove
     db.select().from(liveRooms).where(eq(liveRooms.pinned, true)).orderBy(desc(liveRooms.lastSeenAt)).limit(120).catch(() => []),
     db.select().from(targets).orderBy(desc(targets.score)).limit(400).catch(() => []),
     db.select().from(liveRooms).orderBy(desc(liveRooms.lastSeenAt)).limit(400).catch(() => []),
-    // Çevrimdışı havuza dönüşüm: en uzun süredir kontrol edilmeyen odalar öne alınır,
-    // böylece veride tutulan yayıncılar yayına geçince yeniden yakalanır.
-    db.select().from(liveRooms).orderBy(sql`${liveRooms.lastCheckedAt} asc nulls first`).limit(400).catch(() => []),
+    // Çevrimdışı havuza dönüşüm: sırası gelmiş odalar (next_check_at geçmiş ya da hiç
+    // kontrol edilmemiş) öne alınır; geri çekilmiş adaylar sıralarını bekler.
+    db.select().from(liveRooms)
+      .orderBy(sql`${liveRooms.nextCheckAt} asc nulls first`, sql`${liveRooms.lastCheckedAt} asc nulls first`)
+      .limit(400).catch(() => []),
   ]);
-  for (const row of pinned) { add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "pinned" }); keyless.pinned++; }
+  const nextCheck = (value: Date | null) => (value ? new Date(value).getTime() : null);
+  for (const row of pinned) { add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "pinned", pinned: true, nextCheckAt: nextCheck(row.nextCheckAt) }); keyless.pinned++; }
   for (const row of saved) { add({ username: row.username, nickname: row.displayName, viewers: row.viewers, source: "watchlist" }); keyless.watchlist++; }
-  for (const row of discovered) { add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "discovered" }); keyless.discovered++; }
+  for (const row of discovered) { add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "discovered", pinned: row.pinned, nextCheckAt: nextCheck(row.nextCheckAt) }); keyless.discovered++; }
   for (const row of rotation) {
     if (map.has(row.username)) continue;
-    add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "retained" });
+    add({ username: row.username, roomId: row.roomId, nickname: row.nickname, title: row.title, viewers: row.viewers, region: row.region, source: "retained", pinned: row.pinned, nextCheckAt: nextCheck(row.nextCheckAt) });
     keyless.retained++;
   }
 
